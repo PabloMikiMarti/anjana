@@ -20,6 +20,7 @@
   --paper: #F3F4F0;      /* page: cool, faintly green off-white */
   --plate: #E9ECE6;      /* figure plates; equals the animation background */
   --surface: #F9FAF7;    /* cards inside plates */
+  --band: #FFFFFF;       /* alternate section band */
   --faint: #D6DBD3;
   --ink: #121A21;        /* blue-black */
   --ink-soft: #2B343C;
@@ -34,6 +35,11 @@
   --f-body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
   --f-mono: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif; /* small labels: sans, no monospace */
 
+  /* spacing system */
+  --sp-section: clamp(4.5rem, 9vw, 7.5rem);
+  --sp-block: clamp(3rem, 6vw, 4.5rem);
+  --sp-gap: clamp(1.4rem, 2.5vw, 1.75rem);
+  --sp-fig: clamp(2rem, 4.5vw, 3rem);
   --col: 41rem;
   --wide: 76rem;
   --gutter-l: max(16px, env(safe-area-inset-left, 0px));
@@ -41,14 +47,14 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --paper: #0F1418; --plate: #151B20; --surface: #1B2328; --faint: #28323A;
+    --paper: #0F1418; --plate: #151B20; --surface: #1B2328; --band: #1A2126; --faint: #28323A;
     --ink: #E6EAE5; --ink-soft: #C9D0CB; --muted: #93A0A8; --rule: #2B353C;
     --accent: #EE5A5F; --amber: #E3A63B; --amber-text: #E8B65A; --on-ink: #0F1418;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --paper: #0F1418; --plate: #151B20; --surface: #1B2328; --faint: #28323A;
+  --paper: #0F1418; --plate: #151B20; --surface: #1B2328; --band: #1A2126; --faint: #28323A;
   --ink: #E6EAE5; --ink-soft: #C9D0CB; --muted: #93A0A8; --rule: #2B353C;
   --accent: #EE5A5F; --amber: #E3A63B; --amber-text: #E8B65A; --on-ink: #0F1418;
   color-scheme: dark;
@@ -106,7 +112,13 @@ p { margin: 0; }
 @media (max-width: 860px) { .mast nav { display: none; } .mast .btn { margin-left: auto; } }
 
 /* ---------- hero ---------- */
-.hero { padding-block: clamp(2.5rem, 7vw, 6rem) 0; }
+.hero { padding-block: clamp(2.5rem, 7vw, 5.5rem) var(--sp-section); min-height: calc(100svh - 61px); }
+.hero .fig-block { margin-bottom: 0; }
+.ribbon { margin-top: clamp(2.2rem, 5vw, 3.5rem); display: grid; grid-template-columns: 11.5rem minmax(0, 1fr); align-items: center; gap: 1.5rem; border-block: 1px solid var(--rule); }
+.ribbon-label { font: 500 0.75rem/1.45 var(--f-mono); letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); }
+.ribbon .marquee { border-block: 0; padding-block: 1.15rem; }
+.ribbon .trial b { font-size: clamp(1.35rem, 2.2vw, 1.75rem); }
+@media (max-width: 720px) { .ribbon { grid-template-columns: minmax(0, 1fr); gap: 0; padding-top: 1rem; } }
 .hero .eyebrow { margin-bottom: 1.6rem; display: flex; align-items: center; gap: 0.7rem; }
 .hero .eyebrow::before { content: ""; width: 26px; height: 1px; background: var(--muted); }
 .hero-sub { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 2.5rem 4rem; margin-top: clamp(1.8rem, 4vw, 3rem); align-items: end; }
@@ -119,28 +131,34 @@ figure { margin: 0; }
 .plate .frame { position: relative; aspect-ratio: 16 / 9; max-width: 100%; background: var(--plate); }
 .plate.hero-plate .frame { aspect-ratio: 1920 / 820; }
 .plate video, .plate img.poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; }
-.figcap { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 0.4rem 1.1rem; align-items: start; padding: 0.95rem 0 0; font-size: 0.92rem; line-height: 1.5; color: var(--muted); }
-.figcap .fig-n { font: 500 0.75rem/1.6 var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); white-space: nowrap; }
-.figcap .ctrls { display: flex; gap: 0.35rem; }
-.icon-btn { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--rule); background: transparent; color: var(--ink); display: grid; place-items: center; cursor: pointer; padding: 0; }
-.icon-btn:hover { border-color: var(--ink); }
-.icon-btn svg { width: 14px; height: 14px; }
-@media (max-width: 560px) { .figcap { grid-template-columns: minmax(0, 1fr) auto; } .figcap .fig-n { grid-column: 1 / -1; } }
+.figcap { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr) auto; gap: 0.4rem 1.25rem; align-items: start; padding: 1rem 0 0; font-size: 0.92rem; line-height: 1.375rem; color: var(--muted); }
+.figcap .fig-n { font: 500 0.75rem/1.375rem var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); white-space: nowrap; }
+.figcap .ctrls { display: flex; gap: 0.4rem; margin-top: calc((1.375rem - 36px) / 2); }
+.icon-btn { width: 36px; height: 36px; flex: none; border-radius: 50%; border: 1px solid var(--rule); background: transparent; color: var(--ink); display: grid; place-items: center; cursor: pointer; padding: 0; transition: border-color .15s, background .15s; }
+.icon-btn:hover { border-color: var(--ink); background: var(--plate); }
+.icon-btn svg { width: 16px; height: 16px; display: block; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.icon-btn svg .fill { fill: currentColor; }
+@media (max-width: 560px) { .figcap { grid-template-columns: minmax(0, 1fr) auto; } .figcap .fig-n { grid-column: 1 / -1; } .figcap .ctrls { margin-top: 0; } }
 .play-overlay { position: absolute; inset: auto auto 14px 14px; display: none; }
 .reduced .play-overlay { display: block; }
 
-.fig-block { margin-block: clamp(2rem, 5vw, 3.5rem); }
+.fig-block { margin-block: var(--sp-fig); }
 @media (max-width: 640px) {
   .fig-block .plate { margin-left: calc(-1 * var(--gutter-l)); margin-right: calc(-1 * var(--gutter-r)); border-radius: 0; }
 }
 
 /* ---------- sections ---------- */
-section.chapter { padding-block: clamp(4rem, 10vw, 8rem) 0; }
-.chapter-head { display: grid; gap: 1.2rem; margin-bottom: clamp(1.6rem, 3vw, 2.4rem); }
+section.chapter { padding-block: var(--sp-section); background: var(--paper); border-top: 1px solid var(--rule); }
+section.chapter.band-alt { background: var(--band); }
+.chapter-head.sub { margin-top: var(--sp-block); }
+.mt-gap { margin-top: var(--sp-gap); }
+.mb-gap { margin-bottom: var(--sp-gap); }
+.mt-block { margin-top: var(--sp-block); }
+.chapter-head { display: grid; gap: 1.1rem; margin-bottom: var(--sp-gap); }
 .chapter-head .mono-label { color: var(--accent); }
 
 /* ---------- key figures ---------- */
-.figures-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; margin-top: clamp(2.2rem, 5vw, 3.5rem); }
+.figures-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; margin-top: var(--sp-fig); }
 .stat { display: grid; gap: 0.45rem; align-content: start; padding-top: 1rem; border-top: 1px solid var(--ink); }
 .stat .num { font-size: clamp(2.6rem, 5vw, 3.9rem); line-height: 0.95; color: var(--ink); letter-spacing: -0.02em; }
 .stat .num small { font-size: 0.5em; color: var(--muted); letter-spacing: 0; }
@@ -210,7 +228,7 @@ section.chapter { padding-block: clamp(4rem, 10vw, 8rem) 0; }
 .op-bar span { display: block; height: 100%; transition: flex-basis .45s cubic-bezier(.2,.7,.2,1); }
 .op-bar .ai { background: var(--ink); }
 .op-bar .hu { background: var(--amber); }
-.op-legend { display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; font-size: 0.82rem; color: var(--muted); }
+.op-legend { margin-top: 0.6rem; display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; font-size: 0.82rem; color: var(--muted); }
 .op-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
 .chart-wrap { position: relative; }
 .chart-wrap svg { width: 100%; height: auto; display: block; overflow: visible; }
@@ -255,7 +273,7 @@ td .sub { display: block; font-size: 0.8rem; color: var(--muted); }
 @media (max-width: 760px) { .steps { grid-template-columns: minmax(0, 1fr); } .steps li, .steps li + li { padding: 1rem 0; border-left: 0; } .steps li + li { border-top: 1px solid var(--rule); } }
 
 /* ---------- journals ---------- */
-.journals { margin-top: 2.4rem; display: grid; gap: 1rem; }
+.journals { margin-top: var(--sp-gap); display: grid; gap: 1rem; }
 .jrow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem 2rem; padding-top: 1.1rem; border-top: 1px solid var(--rule); }
 .journal { display: grid; gap: 0.35rem; align-content: start; text-decoration: none; color: var(--ink); }
 .journal .jn { font: 400 1.3rem/1.2 var(--f-display); transition: color .15s; }
@@ -268,9 +286,9 @@ td .sub { display: block; font-size: 0.8rem; color: var(--muted); }
 .paper-link:hover { color: var(--accent); }
 
 /* ---------- lab ---------- */
-.people { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; margin-top: 2.2rem; }
+.people { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; margin-top: var(--sp-gap); }
 .person { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1rem; align-items: start; padding: 1.4rem; background: var(--plate); border-radius: 4px; }
-.person h4 { margin: 0.3rem 0 0.5rem; font: 500 1.25rem/1.2 var(--f-display); color: var(--ink); }
+.person h4 { white-space: nowrap; margin: 0.3rem 0 0.5rem; font: 500 1.25rem/1.2 var(--f-display); color: var(--ink); }
 .person p:last-child { font-size: 0.92rem; line-height: 1.5; }
 .mono-ini { width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid var(--ink); display: grid; place-items: center; font: 500 0.82rem/1 var(--f-mono); letter-spacing: 0.06em; color: var(--ink); background: var(--surface); }
 @media (max-width: 900px) { .people { grid-template-columns: minmax(0, 1fr); } }
@@ -315,14 +333,14 @@ td .sub { display: block; font-size: 0.8rem; color: var(--muted); }
 .pubs .meta { color: var(--muted); font-size: 0.88rem; }
 
 /* ---------- contact ---------- */
-.contact { margin-top: clamp(4rem, 10vw, 8rem); background: var(--ink); color: var(--on-ink); }
-.contact .wide { padding-block: clamp(3rem, 8vw, 6rem); display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 2rem 4rem; align-items: end; }
+.contact { background: var(--ink); color: var(--on-ink); }
+.contact .wide { padding-block: var(--sp-section); display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 2rem 4rem; align-items: end; }
 .contact h2 { color: var(--on-ink); }
 .contact .contact-lede { font-size: clamp(1.2rem, 1.8vw, 1.45rem); line-height: 1.45; }
 .contact p { color: color-mix(in srgb, var(--on-ink) 78%, transparent); }
 .contact .mono-label { color: color-mix(in srgb, var(--on-ink) 65%, transparent); }
 .contact .addr { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.8rem; }
-.contact .addr code { font: 500 1.05rem/1.3 var(--f-mono); color: var(--on-ink); user-select: all; padding: 0.55rem 0.75rem; border: 1px solid color-mix(in srgb, var(--on-ink) 35%, transparent); border-radius: 3px; }
+.contact .addr code { overflow-wrap: anywhere; font: 500 1.05rem/1.3 var(--f-mono); color: var(--on-ink); user-select: all; padding: 0.55rem 0.75rem; border: 1px solid color-mix(in srgb, var(--on-ink) 35%, transparent); border-radius: 3px; }
 .contact .btn { border-color: var(--on-ink); color: var(--on-ink); }
 .contact .btn:hover { background: var(--on-ink); color: var(--ink); }
 @media (max-width: 760px) { .contact .wide { grid-template-columns: minmax(0, 1fr); } }
@@ -351,7 +369,7 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <!-- ================= HERO ================= -->
   <section class="hero wrap">
     <div class="wide">
-      <h1>Every cardiovascular trial ends in a <em>reading room.</em></h1>
+      <h1>Every cardiovascular trial ends in <em>adjudication.</em></h1>
       <div class="hero-sub">
         <p class="lede">Before a trial can report its result, physicians on a clinical events committee read every reported hospitalization, heart attack, stroke and death, one dossier at a time. Anjana is an AI copilot that reads alongside them. Its methods have been validated against gold-standard committees in two global outcome trials.</p>
         <div class="cta">
@@ -360,7 +378,16 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
         </div>
       </div>
 
-      <figure class="fig-block plate-fig" style="margin-bottom:0">
+      <div class="ribbon" aria-label="Global outcome trials led or adjudicated by the Brigham group">
+        <p class="ribbon-label">From the Brigham group that led or adjudicated</p>
+        <div class="marquee">
+        <div class="track">
+          <div class="set"><span class="trial"><b>PARAGON-HF</b><span>Novartis · sacubitril/valsartan</span></span><i class="sep" aria-hidden="true"></i><span class="trial"><b>PARADISE-MI</b><span>Novartis · sacubitril/valsartan</span></span><i class="sep" aria-hidden="true"></i><span class="trial"><b>DELIVER</b><span>AstraZeneca · dapagliflozin</span></span><i class="sep" aria-hidden="true"></i><span class="trial"><b>FINEARTS-HF</b><span>Bayer · finerenone</span></span><i class="sep" aria-hidden="true"></i><span class="trial"><b>INVESTED</b><span>NHLBI · influenza vaccine</span></span><i class="sep" aria-hidden="true"></i><span class="trial"><b>PRO2TECT</b><span>Akebia · vadadustat</span></span><i class="sep" aria-hidden="true"></i><span class="trial"><b>INNO2VATE</b><span>Akebia · vadadustat</span></span><i class="sep" aria-hidden="true"></i></div><div class="set" aria-hidden="true"><span class="trial" aria-hidden="true"><b>PARAGON-HF</b><span>Novartis · sacubitril/valsartan</span></span><i class="sep" aria-hidden="true"></i><span class="trial" aria-hidden="true"><b>PARADISE-MI</b><span>Novartis · sacubitril/valsartan</span></span><i class="sep" aria-hidden="true"></i><span class="trial" aria-hidden="true"><b>DELIVER</b><span>AstraZeneca · dapagliflozin</span></span><i class="sep" aria-hidden="true"></i><span class="trial" aria-hidden="true"><b>FINEARTS-HF</b><span>Bayer · finerenone</span></span><i class="sep" aria-hidden="true"></i><span class="trial" aria-hidden="true"><b>INVESTED</b><span>NHLBI · influenza vaccine</span></span><i class="sep" aria-hidden="true"></i><span class="trial" aria-hidden="true"><b>PRO2TECT</b><span>Akebia · vadadustat</span></span><i class="sep" aria-hidden="true"></i><span class="trial" aria-hidden="true"><b>INNO2VATE</b><span>Akebia · vadadustat</span></span><i class="sep" aria-hidden="true"></i></div>
+        </div>
+      </div>
+      </div>
+
+      <figure class="fig-block plate-fig">
         <div class="plate hero-plate" data-fig="hero" data-autoplay="always">
           <div class="frame">
             <img class="poster" alt="Diagram: dossiers flow into two overlapping circles representing two independent AI readers, then split into three lanes: confident event, confident no event, and uncertain cases routed to a human reviewer." src="" loading="eager">
@@ -370,7 +397,7 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <figcaption class="figcap">
           <span class="fig-n">Overview</span>
           <span>Dossiers enter. Two independent AI readers assess each one. When they agree, the decision is recorded with its evidence; when they disagree, the case goes to a human adjudicator.</span>
-          <span class="ctrls"><button class="icon-btn" data-act="expand" aria-label="View full screen"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M1.8 5.2V1.8h3.4M8.8 1.8h3.4v3.4M12.2 8.8v3.4H8.8M5.2 12.2H1.8V8.8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button><button class="icon-btn" data-act="toggle" aria-label="Pause animation"><svg viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button></span>
+          <span class="ctrls"><button class="icon-btn" data-act="expand" aria-label="View full screen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 4H4v4.5M15.5 4H20v4.5M20 15.5V20h-4.5M8.5 20H4v-4.5"/></svg></button><button class="icon-btn" data-act="toggle" aria-label="Pause animation"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5v13M15 5.5v13" style="stroke-width:2.25"/></svg></button></span>
         </figcaption>
       </figure>
 
@@ -400,7 +427,7 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
   </section>
 
   <!-- ================= PROBLEM ================= -->
-  <section class="chapter wrap" id="problem">
+  <section class="chapter band-alt wrap" id="problem">
     <div class="col chapter-head">
       <p class="mono-label">The problem</p>
       <h2>The gold standard is a committee of physicians, <em>reading.</em></h2>
@@ -421,9 +448,9 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <span class="fig-n">Fig. 1</span>
         <span>How events are adjudicated today. Every dossier is read twice; every disagreement goes to committee. Agreement statistics are published estimates for heart-failure hospitalization in global trials; the squares are illustrative.</span>
         <span class="ctrls">
-          <button class="icon-btn" data-act="replay" aria-label="Replay figure 1"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 2.2a4.8 4.8 0 1 1-4.5 3.1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.6 1.8v3.9h3.9" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
-          <button class="icon-btn" data-act="expand" aria-label="View full screen"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M1.8 5.2V1.8h3.4M8.8 1.8h3.4v3.4M12.2 8.8v3.4H8.8M5.2 12.2H1.8V8.8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
-          <button class="icon-btn" data-act="toggle" aria-label="Pause figure 1"><svg viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
+          <button class="icon-btn" data-act="replay" aria-label="Replay figure 1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.75 12a8.25 8.25 0 1 0 2.42-5.83L3.75 8.6"/><path d="M3.75 3.75V8.6H8.6"/></svg></button>
+          <button class="icon-btn" data-act="expand" aria-label="View full screen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 4H4v4.5M15.5 4H20v4.5M20 15.5V20h-4.5M8.5 20H4v-4.5"/></svg></button>
+          <button class="icon-btn" data-act="toggle" aria-label="Pause figure 1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5v13M15 5.5v13" style="stroke-width:2.25"/></svg></button>
         </span>
       </figcaption>
     </figure>
@@ -469,7 +496,7 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <p>A Clinical Longformer model fine-tuned on thousands of events adjudicated by physician committees in completed trials. It scores how likely a committee would be to confirm the event.</p>
       </div>
     </div>
-    <div class="col prose" style="margin-top:1.4rem">
+    <div class="col prose mt-gap">
       <p>When both readers agree with confidence, the decision stands with its evidence attached. When they disagree, the event is flagged as uncertain and routed to a human adjudicator. Disagreement between independent readers is also how a committee finds its hard cases.</p>
     </div>
 
@@ -484,14 +511,14 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <span class="fig-n">Fig. 2</span>
         <span>The committee's logic, with two AI readers. Agreement produces a confident decision; disagreement is the uncertainty signal that brings in a person.</span>
         <span class="ctrls">
-          <button class="icon-btn" data-act="replay" aria-label="Replay figure 2"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 2.2a4.8 4.8 0 1 1-4.5 3.1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.6 1.8v3.9h3.9" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
-          <button class="icon-btn" data-act="expand" aria-label="View full screen"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M1.8 5.2V1.8h3.4M8.8 1.8h3.4v3.4M12.2 8.8v3.4H8.8M5.2 12.2H1.8V8.8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
-          <button class="icon-btn" data-act="toggle" aria-label="Pause figure 2"><svg viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
+          <button class="icon-btn" data-act="replay" aria-label="Replay figure 2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.75 12a8.25 8.25 0 1 0 2.42-5.83L3.75 8.6"/><path d="M3.75 3.75V8.6H8.6"/></svg></button>
+          <button class="icon-btn" data-act="expand" aria-label="View full screen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 4H4v4.5M15.5 4H20v4.5M20 15.5V20h-4.5M8.5 20H4v-4.5"/></svg></button>
+          <button class="icon-btn" data-act="toggle" aria-label="Pause figure 2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5v13M15 5.5v13" style="stroke-width:2.25"/></svg></button>
         </span>
       </figcaption>
     </figure>
 
-    <div class="col chapter-head" style="margin-top:clamp(2.5rem,6vw,4.5rem)">
+    <div class="col chapter-head sub">
       <h3>Every decision shows its work.</h3>
     </div>
     <div class="col prose">
@@ -509,16 +536,16 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <span class="fig-n">Fig. 3</span>
         <span>Criterion-level evidence for a heart-failure hospitalization. The record shown is a synthetic example; in the study, details of real cases were changed to protect confidentiality.</span>
         <span class="ctrls">
-          <button class="icon-btn" data-act="replay" aria-label="Replay figure 3"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 2.2a4.8 4.8 0 1 1-4.5 3.1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.6 1.8v3.9h3.9" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
-          <button class="icon-btn" data-act="expand" aria-label="View full screen"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M1.8 5.2V1.8h3.4M8.8 1.8h3.4v3.4M12.2 8.8v3.4H8.8M5.2 12.2H1.8V8.8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
-          <button class="icon-btn" data-act="toggle" aria-label="Pause figure 3"><svg viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
+          <button class="icon-btn" data-act="replay" aria-label="Replay figure 3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.75 12a8.25 8.25 0 1 0 2.42-5.83L3.75 8.6"/><path d="M3.75 3.75V8.6H8.6"/></svg></button>
+          <button class="icon-btn" data-act="expand" aria-label="View full screen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 4H4v4.5M15.5 4H20v4.5M20 15.5V20h-4.5M8.5 20H4v-4.5"/></svg></button>
+          <button class="icon-btn" data-act="toggle" aria-label="Pause figure 3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5v13M15 5.5v13" style="stroke-width:2.25"/></svg></button>
         </span>
       </figcaption>
     </figure>
   </section>
 
   <!-- ================= EVIDENCE ================= -->
-  <section class="chapter wrap" id="evidence">
+  <section class="chapter band-alt wrap" id="evidence">
     <div class="col chapter-head">
       <p class="mono-label">The evidence</p>
       <h2>Validated where adjudication is <em>hardest.</em></h2>
@@ -537,7 +564,7 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
       </div>
     </div>
 
-    <div class="wide studies" style="margin-top:2rem">
+    <div class="wide studies mt-gap">
       <article class="study">
         <div class="top"><span class="mono-label">Heart-failure hospitalization</span><a class="mono-label paper-link" href="https://doi.org/10.1161/CIRCHEARTFAILURE.124.012514" target="_blank" rel="noopener">Circ Heart Fail 2025 ↗</a></div>
         <h3>DELIVER</h3>
@@ -560,7 +587,7 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
       </article>
     </div>
 
-    <div class="col chapter-head" style="margin-top:clamp(2.5rem,6vw,4.5rem)">
+    <div class="col chapter-head sub">
       <h3>Confidence tracks the committee.</h3>
     </div>
     <div class="col prose">
@@ -578,9 +605,9 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <span class="fig-n">Fig. 4</span>
         <span>Triage in DELIVER. Each dot is about 1% of events (≈16 dossiers); category sizes are rounded. Filled dots were confirmed as HF hospitalizations by the committee.</span>
         <span class="ctrls">
-          <button class="icon-btn" data-act="replay" aria-label="Replay figure 4"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 2.2a4.8 4.8 0 1 1-4.5 3.1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.6 1.8v3.9h3.9" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
-          <button class="icon-btn" data-act="expand" aria-label="View full screen"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M1.8 5.2V1.8h3.4M8.8 1.8h3.4v3.4M12.2 8.8v3.4H8.8M5.2 12.2H1.8V8.8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
-          <button class="icon-btn" data-act="toggle" aria-label="Pause figure 4"><svg viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
+          <button class="icon-btn" data-act="replay" aria-label="Replay figure 4"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.75 12a8.25 8.25 0 1 0 2.42-5.83L3.75 8.6"/><path d="M3.75 3.75V8.6H8.6"/></svg></button>
+          <button class="icon-btn" data-act="expand" aria-label="View full screen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 4H4v4.5M15.5 4H20v4.5M20 15.5V20h-4.5M8.5 20H4v-4.5"/></svg></button>
+          <button class="icon-btn" data-act="toggle" aria-label="Pause figure 4"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5v13M15 5.5v13" style="stroke-width:2.25"/></svg></button>
         </span>
       </figcaption>
     </figure>
@@ -588,7 +615,7 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
     <div class="col chapter-head">
       <h3>The sponsor chooses the operating point.</h3>
     </div>
-    <div class="col prose" style="margin-bottom:1.6rem">
+    <div class="col prose mb-gap">
       <p>Because every event carries a confidence score, the amount of physician review becomes a setting rather than a fixed cost. These are the strategies evaluated in DELIVER.</p>
     </div>
 
@@ -610,7 +637,7 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
         </div>
         <div>
           <div class="op-bar" aria-hidden="true"><span class="ai" id="op-bar-ai" style="flex-basis:84%"></span><span class="hu" id="op-bar-hu" style="flex-basis:16%"></span></div>
-          <div class="op-legend" style="margin-top:0.55rem"><span><i style="background:var(--ink)"></i>Adjudicated by AI</span><span><i style="background:var(--amber)"></i>Reviewed by physicians</span></div>
+          <div class="op-legend"><span><i style="background:var(--ink)"></i>Adjudicated by AI</span><span><i style="background:var(--amber)"></i>Reviewed by physicians</span></div>
         </div>
         <div class="chart-wrap" id="op-chart">
           <p class="chart-title">More review buys more agreement, with diminishing returns</p>
@@ -621,10 +648,10 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
       </div>
     </div>
 
-    <div class="col chapter-head" style="margin-top:clamp(2.5rem,6vw,4.5rem)">
+    <div class="col chapter-head sub">
       <h3>The same approach extends to MACE.</h3>
     </div>
-    <div class="col prose" style="margin-bottom:1.4rem">
+    <div class="col prose mb-gap">
       <p>In PARADISE-MI, Auto-MACE applied the two-reader design to cardiovascular death, myocardial infarction and stroke. Where the readers agreed, the AI matched the committee 88–97% of the time. Sending only the uncertain events to physicians raised agreement to 89–98%.</p>
     </div>
     <div class="col">
@@ -641,7 +668,7 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <p class="tbl-note">With no physician review at all, agreement was 86% for deaths, 76% for MIs and 84% for strokes. Text-extraction problems with lab tables and checkbox forms contributed to MI errors.</p>
     </div>
 
-    <div class="col chapter-head" style="margin-top:clamp(2.5rem,6vw,4.5rem)">
+    <div class="col chapter-head sub">
       <h3>The trial result does not move.</h3>
     </div>
     <div class="col prose">
@@ -659,15 +686,15 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <span class="fig-n">Fig. 5</span>
         <span>Hazard ratios with 95% confidence intervals, using each trial's prespecified Cox model. DELIVER: time to first HF hospitalization. PARADISE-MI: time to first MACE.</span>
         <span class="ctrls">
-          <button class="icon-btn" data-act="replay" aria-label="Replay figure 5"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 2.2a4.8 4.8 0 1 1-4.5 3.1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.6 1.8v3.9h3.9" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
-          <button class="icon-btn" data-act="expand" aria-label="View full screen"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M1.8 5.2V1.8h3.4M8.8 1.8h3.4v3.4M12.2 8.8v3.4H8.8M5.2 12.2H1.8V8.8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
-          <button class="icon-btn" data-act="toggle" aria-label="Pause figure 5"><svg viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
+          <button class="icon-btn" data-act="replay" aria-label="Replay figure 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.75 12a8.25 8.25 0 1 0 2.42-5.83L3.75 8.6"/><path d="M3.75 3.75V8.6H8.6"/></svg></button>
+          <button class="icon-btn" data-act="expand" aria-label="View full screen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 4H4v4.5M15.5 4H20v4.5M20 15.5V20h-4.5M8.5 20H4v-4.5"/></svg></button>
+          <button class="icon-btn" data-act="toggle" aria-label="Pause figure 5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5v13M15 5.5v13" style="stroke-width:2.25"/></svg></button>
         </span>
       </figcaption>
     </figure>
 
-    <div class="wide" style="margin-top:clamp(3rem,7vw,5rem)">
-      <p class="mono-label" style="margin-bottom:1.6rem">Track record</p>
+    <div class="wide mt-block">
+      <p class="mono-label mb-gap">Track record</p>
       <ol class="timeline">
         <li><span class="when">JACC: HF · 2023</span><h4>One health system</h4><p>An NLP model trained on Mass General Brigham records identified HF hospitalizations more accurately than diagnosis codes.</p></li>
         <li><span class="when">JAMA Cardiol · 2024</span><h4>A multicenter trial</h4><p>In INVESTED, the model agreed with the committee 87% of the time out of the box; 93% after fine-tuning, against 94% between the committee's own reviewers.</p></li>
@@ -699,9 +726,9 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <span class="fig-n">Fig. 6</span>
         <span>A sketch of Anjana's adjudicator workflow, drawn from the working application. The case and identifiers shown are synthetic.</span>
         <span class="ctrls">
-          <button class="icon-btn" data-act="replay" aria-label="Replay figure 6"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 2.2a4.8 4.8 0 1 1-4.5 3.1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.6 1.8v3.9h3.9" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
-          <button class="icon-btn" data-act="expand" aria-label="View full screen"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M1.8 5.2V1.8h3.4M8.8 1.8h3.4v3.4M12.2 8.8v3.4H8.8M5.2 12.2H1.8V8.8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
-          <button class="icon-btn" data-act="toggle" aria-label="Pause figure 6"><svg viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
+          <button class="icon-btn" data-act="replay" aria-label="Replay figure 6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.75 12a8.25 8.25 0 1 0 2.42-5.83L3.75 8.6"/><path d="M3.75 3.75V8.6H8.6"/></svg></button>
+          <button class="icon-btn" data-act="expand" aria-label="View full screen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 4H4v4.5M15.5 4H20v4.5M20 15.5V20h-4.5M8.5 20H4v-4.5"/></svg></button>
+          <button class="icon-btn" data-act="toggle" aria-label="Pause figure 6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5v13M15 5.5v13" style="stroke-width:2.25"/></svg></button>
         </span>
       </figcaption>
     </figure>
@@ -712,10 +739,10 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <li><span class="mono-label">Decision</span><h4>The adjudicator signs</h4><p>Confirm or override, complete the committee's form, sign, and move to the next case.</p></li>
     </ol>
 
-    <div class="col chapter-head" style="margin-top:clamp(3rem,7vw,5rem)">
+    <div class="col chapter-head sub">
       <h3>Where it applies.</h3>
     </div>
-    <div class="col prose" style="margin-bottom:1.4rem">
+    <div class="col prose mb-gap">
       <p>Pivotal trials keep their committees and spend physician time only where it matters. Pragmatic trials that enroll whole health systems or countries cannot afford chart review at all and fall back on diagnosis codes; automated adjudication can bring committee-grade endpoints to studies that never had them.</p>
     </div>
     <div class="wide">
@@ -731,7 +758,7 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
       </div>
     </div>
 
-    <div class="col chapter-head" style="margin-top:clamp(3rem,7vw,5rem)">
+    <div class="col chapter-head sub">
       <h3>What comes next.</h3>
     </div>
     <div class="col">
@@ -746,7 +773,7 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
   </section>
 
   <!-- ================= THE LAB ================= -->
-  <section class="chapter wrap" id="lab">
+  <section class="chapter band-alt wrap" id="lab">
     <div class="col chapter-head">
       <p class="mono-label">The lab</p>
       <h2>Built where the trials are <em>adjudicated.</em></h2>
@@ -758,30 +785,20 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
     <div class="wide people">
       <article class="person">
         <span class="mono-ini" aria-hidden="true">SS</span>
-        <div><p class="mono-label">Senior investigator</p><h4>Scott D. Solomon, MD</h4><p>Edward D. Frohlich Distinguished Chair and Professor of Medicine, Harvard Medical School. Leads the Cardiac Imaging Core Laboratory and the Clinical Trials Endpoints Center at Brigham and Women's Hospital.</p></div>
+        <div><p class="mono-label">Senior investigator · MD</p><h4>Scott D. Solomon</h4><p>Edward D. Frohlich Distinguished Chair and Professor of Medicine, Harvard Medical School. Leads the Cardiac Imaging Core Laboratory and the Clinical Trials Endpoints Center at Brigham and Women's Hospital.</p></div>
       </article>
       <article class="person">
         <span class="mono-ini" aria-hidden="true">JC</span>
-        <div><p class="mono-label">Senior investigator</p><h4>Jonathan W. Cunningham, MD, MPH</h4><p>Cardiologist at Brigham and Women's Hospital and Harvard Medical School. Senior author of the HF-NLP and Auto-MACE studies.</p></div>
+        <div><p class="mono-label">Senior investigator · MD, MPH</p><h4>Jonathan W. Cunningham</h4><p>Cardiologist at Brigham and Women's Hospital and Harvard Medical School. Senior author of the HF-NLP and Auto-MACE studies.</p></div>
       </article>
       <article class="person">
         <span class="mono-ini" aria-hidden="true">PM</span>
-        <div><p class="mono-label">Lead researcher</p><h4>Pablo M. Martí Castellote, PhD</h4><p>Brigham and Women's Hospital and the Broad Institute of MIT and Harvard. First author of the HF-NLP and Auto-MACE studies.</p></div>
+        <div><p class="mono-label">Lead researcher · PhD</p><h4>Pablo M. Martí Castellote</h4><p>Brigham and Women's Hospital and the Broad Institute of MIT and Harvard. First author of the HF-NLP and Auto-MACE studies.</p></div>
       </article>
     </div>
 
-    <div class="trials" aria-label="Global outcome trials led or adjudicated by the Brigham group">
-      <p class="wide mono-label trials-label">Global outcome trials led or adjudicated by the Brigham group</p>
-      <div class="marquee">
-        <div class="track">
-          <div class="set"><span class="trial"><b>PARAGON-HF</b><span>Novartis · sacubitril/valsartan</span></span><i class="sep" aria-hidden="true"></i><span class="trial"><b>PARADISE-MI</b><span>Novartis · sacubitril/valsartan</span></span><i class="sep" aria-hidden="true"></i><span class="trial"><b>DELIVER</b><span>AstraZeneca · dapagliflozin</span></span><i class="sep" aria-hidden="true"></i><span class="trial"><b>FINEARTS-HF</b><span>Bayer · finerenone</span></span><i class="sep" aria-hidden="true"></i><span class="trial"><b>INVESTED</b><span>NHLBI · influenza vaccine</span></span><i class="sep" aria-hidden="true"></i><span class="trial"><b>PRO2TECT</b><span>Akebia · vadadustat</span></span><i class="sep" aria-hidden="true"></i><span class="trial"><b>INNO2VATE</b><span>Akebia · vadadustat</span></span><i class="sep" aria-hidden="true"></i></div><div class="set" aria-hidden="true"><span class="trial" aria-hidden="true"><b>PARAGON-HF</b><span>Novartis · sacubitril/valsartan</span></span><i class="sep" aria-hidden="true"></i><span class="trial" aria-hidden="true"><b>PARADISE-MI</b><span>Novartis · sacubitril/valsartan</span></span><i class="sep" aria-hidden="true"></i><span class="trial" aria-hidden="true"><b>DELIVER</b><span>AstraZeneca · dapagliflozin</span></span><i class="sep" aria-hidden="true"></i><span class="trial" aria-hidden="true"><b>FINEARTS-HF</b><span>Bayer · finerenone</span></span><i class="sep" aria-hidden="true"></i><span class="trial" aria-hidden="true"><b>INVESTED</b><span>NHLBI · influenza vaccine</span></span><i class="sep" aria-hidden="true"></i><span class="trial" aria-hidden="true"><b>PRO2TECT</b><span>Akebia · vadadustat</span></span><i class="sep" aria-hidden="true"></i><span class="trial" aria-hidden="true"><b>INNO2VATE</b><span>Akebia · vadadustat</span></span><i class="sep" aria-hidden="true"></i></div>
-        </div>
-      </div>
-      <p class="wide trials-note">Sponsor names identify each trial's funder and do not imply endorsement of Anjana.</p>
-    </div>
-
-    <div class="col" style="margin-top:clamp(3rem,7vw,4.5rem)">
-      <p class="mono-label" style="margin-bottom:1.4rem">Publications</p>
+    <div class="col mt-block">
+      <p class="mono-label mb-gap">Publications</p>
       <ol class="pubs">
         <li><div><a class="ttl" href="https://doi.org/10.1016/j.jacc.2025.10.055" target="_blank" rel="noopener">Using Artificial Intelligence to Adjudicate Major Adverse Cardiovascular Events in Clinical Trials</a><span class="meta">Marti-Castellote PM, Badrouchi S, Claggett B, et al. Journal of the American College of Cardiology. 2025.</span></div></li>
         <li><div><a class="ttl" href="https://doi.org/10.1161/CIRCHEARTFAILURE.124.012514" target="_blank" rel="noopener">Natural Language Processing to Adjudicate Heart Failure Hospitalizations in Global Clinical Trials</a><span class="meta">Marti-Castellote PM, Reeder C, Claggett B, et al. Circulation: Heart Failure. 2025;18:e012514.</span></div></li>
@@ -801,7 +818,7 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
       </div>
       <div>
         <p class="mono-label">Write to us</p>
-        <div class="addr"><code id="addr">hello@anjana.example</code><button class="btn" id="copy-addr" type="button">Copy address</button></div>
+        <div class="addr"><code id="addr">pmarticastellote@bwh.harvard.edu</code><button class="btn" id="copy-addr" type="button">Copy address</button></div>
       </div>
     </div>
   </section>
@@ -809,7 +826,7 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
 
 <footer class="wrap">
   <div class="wide">
-    <span>Anjana takes its name from the anjanas, the benevolent spirits of Cantabrian mythology. Figures re-draw published results from DELIVER and PARADISE-MI; records shown are synthetic.</span>
+    <span>Anjana takes its name from the anjanas, the benevolent spirits of Cantabrian mythology. Figures re-draw published results from DELIVER and PARADISE-MI; records shown are synthetic. Sponsor names identify each trial's funder and do not imply endorsement of Anjana.</span>
     <span>© 2026 Anjana</span>
   </div>
 </footer>
@@ -847,8 +864,8 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
     const fig = p.closest('figure'); if (!fig) return;
     const b = fig.querySelector('[data-act="toggle"]'); if (!b) return;
     b.innerHTML = playing
-      ? '<svg viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg>'
-      : '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.2l8 4.8-8 4.8z" fill="currentColor"/></svg>';
+      ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5v13M15 5.5v13" style="stroke-width:2.25"/></svg>'
+      : '<svg viewBox="0 0 24 24" aria-hidden="true"><path class="fill" d="M8 5.5v13l10.5-6.5z"/></svg>';
     b.setAttribute('aria-label', (playing ? 'Pause ' : 'Play ') + (p.dataset.fig === 'hero' ? 'animation' : 'figure ' + p.dataset.fig.replace('fig', '')));
   }
   plates.forEach(p => {
