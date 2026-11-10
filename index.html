@@ -3,6 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>
+try {
+  const savedTheme = localStorage.getItem('anjana-theme');
+  if (savedTheme === 'light' || savedTheme === 'dark') {
+    document.documentElement.dataset.theme = savedTheme;
+  }
+} catch {}
+</script>
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -109,7 +117,14 @@ p { margin: 0; }
 .btn.solid { background: var(--ink); color: var(--on-ink); }
 .btn.solid:hover { background: transparent; color: var(--ink); }
 .mast .btn { padding: 0.55rem 0.9rem; font-size: 0.85rem; }
-@media (max-width: 860px) { .mast nav { display: none; } .mast .btn { margin-left: auto; } }
+.mast-actions { display: flex; align-items: center; gap: 0.55rem; }
+.theme-toggle .sun, :root[data-theme="dark"] .theme-toggle .moon { display: none; }
+:root[data-theme="dark"] .theme-toggle .sun { display: block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .theme-toggle .moon { display: none; }
+  :root:not([data-theme]) .theme-toggle .sun { display: block; }
+}
+@media (max-width: 860px) { .mast nav { display: none; } .mast-actions { margin-left: auto; } }
 
 /* ---------- hero ---------- */
 .hero { padding-block: clamp(2.5rem, 7vw, 5.5rem) var(--sp-section); min-height: calc(100svh - 61px); }
@@ -361,7 +376,13 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <a href="#copilot">Anjana</a>
       <a href="#lab">The lab</a>
     </nav>
-    <a class="btn" href="#contact">Talk to us</a>
+    <div class="mast-actions">
+      <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false" hidden>
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15a8.5 8.5 0 0 1-11-11 8.5 8.5 0 1 0 11 11Z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
+      </button>
+      <a class="btn" href="#contact">Talk to us</a>
+    </div>
   </div>
 </header>
 
@@ -839,6 +860,12 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
   const theme = () => root.dataset.theme === 'dark' ? 'dark' : root.dataset.theme === 'light' ? 'light' : (mq.matches ? 'dark' : 'light');
   const plates = [...document.querySelectorAll('.plate[data-fig]')];
+  const themeToggle = document.getElementById('theme-toggle');
+  themeToggle.addEventListener('click', () => {
+    const next = theme() === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try { localStorage.setItem('anjana-theme', next); } catch {}
+  });
 
   function setSources(p, force) {
     const id = p.dataset.fig, th = theme();
@@ -891,7 +918,14 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
       if (btn.dataset.act !== 'toggle' || !v.paused) delete p.dataset.userPaused;
     }));
   });
-  const onTheme = () => plates.forEach(p => setSources(p));
+  const onTheme = () => {
+    const isDark = theme() === 'dark';
+    themeToggle.setAttribute('aria-pressed', String(isDark));
+    themeToggle.title = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+    plates.forEach(p => setSources(p));
+  };
+  onTheme();
+  themeToggle.hidden = false;
   mq.addEventListener ? mq.addEventListener('change', onTheme) : mq.addListener(onTheme);
   new MutationObserver(onTheme).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
 
