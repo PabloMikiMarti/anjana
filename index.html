@@ -1,0 +1,979 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Anjana</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="An AI copilot for clinical events committees, validated against gold-standard adjudication in global cardiovascular outcome trials.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+@font-face { font-family: "Serif de Muestra"; src: url(data:font/woff2;base64,d09GMgABAAAAAE5sAAwAAAAAopgAAE4VAAAZmgAAAAAAAAAAAAAAAAAAAAAAAAAAG4EiHII4BmAAgmAKgqtUgdEGATYCJAODIAuBVAAEIAWFXweFDBukc0UHatg4ANDz7DxHImzUXGUZFbVikxIC/58SuCFTKsbtL22QtnBc1HIlxbglE0F7qeUManwZ37Yt42uEfmr3xdfcpmwRQyLTl2/7XrnrFJ06CMqP+4NilOEpZ2DbyJ/k5B3idfPvjQQSVhaQMDSbLcmGnZBFYGcxVQJJYMtOAAdDtgtlSm11M7RVcaK2rtHhqO5ax+x01tb+Xxsg4CUwEXT4/uzeo2gjqpguXptAwJuGIhzBRDT0y/U/gH9/HRvGuoEH4pPU/Um3vv3t3zaCnNjCiWnRiVW/6khL2nmjEeSNJEFOQtj1EzhzAEF2dToAdPN5fEi9T827DxHg4Fw3/82Vn90bvNx+AdGtIDomXZ+bVuflvMMwJc3Ue27pcIWrOnTFUnc7ZUuPJbcKqtVyX9wdQuMkCMXjLLGJhRyt7s+gmzANwQ3GgIf2/+33q76LiDSdcyiRxKFRKiHyZ+bLZXCxkAidZrZiEtIuDfo2a0k05Q15QzNLaiFFixs3aQvr/6dqfguu7D0OubK7FJrSbYW57808YAYMGpBcChQ3gIrgRkBahzRUcEip2uPO3Q+RckjVj13/K7fl5/nmRt9/Q2QXoiE1XRAuGqIq5qwgBagO2d3v0KapwlkLbzg7Ub8Z1SGqbfceznUwCIGnIqq+ON6++lLrkRQA6gABBAA8NgH44CjFANzvjuurgDsUAODXodDteW0VcJ4ZRaHgFZ1P4ZV6OqwFuGSSGGYIrSG8W5CKxldEmd5/XsSYrYXO3mIdxIFMBcuEuawIj7BexIpiT4QrOjTsHEGoHCXT0DTJ8WTAp6eV1fvZ18VmQEHLBoDysC5DUe/Ndq7mCCQQQy1DoQqNWvUZLB9GeGHzaUdqRwFBvRiihU1DlKuYDa1elMT7xebxi/Npx/uFyHEpU5drJgjXmDOJ54HImz8GjmChBKURPm4uAYpMOSwQeJJAmNBC0BoYKOZBK6DYARA/JTiO/ieQ//3fA8AoNOnGFvrsUUGveWoDgpSRgAZTNClXSyWSwXDGFGSeSNFk0uSq0myTaUd844QLvnPFNXfc89BLv3vtrY/+NyAEQZzpFDqN7v9vfPoEoOMKxRMlnlw6s0U2SnOk0v3+3ZQtFTIa8Om7eXIedSzwqTRuFbtqleKVKNQrn5FOlFQa6ln/b/l/wYOUB/IH0ZhCkEQpdBt3AVBPcT0wPSRDPrM88y04Cy2UKY0WXuui1MBVaUpH8GQoulAn8DMhkCu9K4hrwU3HakJchnJoVj6amvbMpYmwXpmXU2eI7s5hLNqwJuKNbF96C5TASKDOh7rZnNjfeKFfrN6d+AlzdtKvfr5uztv8tXO2FK79+tP5ibjvUApZzbLquekkS5knpSCQGOveG9pjNPgkc3P9tNyYCllq85Xx8eF1THY3V+hXnsUamJNGZmeT2Nw5WhZLx0l1c8kUxJV0FrLrl4R3l86ld7LjSa6ZXAJxriuPRuIRE6SahDAugxvGYDC4y9o8PWd5lH8YfZX+A24ubB83FyPGDS10w7gGGNOoJIwRe8MzRayBqtuy4BOEGktWWxwIZHZJAKOC9WgOR20KTIotUc9SiaUcxbV4PTBZwiEhV58eWOKRerHQ4x/6jio31STFtCORPZR5tvgEVsm4TpVkLWHTraZtephSmsrWMTaYrzFsITjRGgG3S1UXEtaFuheiMosPl8lEtUxWxU1K09/Yi3mBV7F/VqRNPIAk6aqBh6TtMbPVtaXf9HPlnyuBENMFh4JuvBpsAsoDy2suz45iD8/RLKpyweo0hBHuf6zoX/UhsS2xpM9k8ZddC1y6UyE3s5ygwLKUWLXRQ0gITeKKxImJsviXeT7ykIAfWEyNzrFit9laAd+KagQD+LdQMp2HSKE6rSTLakpt2yelASL+wSeJ8bF2kerEZIXo72+LMQc8zxPAI5wswy0Oik/cpOlm9Y3tW+WwCIjwBdNeL0cpBYpdy3JGOlPqqvVMjzZhUf9Qs6uCoLBdg82LIyl4NFkzyTeBryG4QMysz58Nyl6PTtAD6gBYMTqZvPeYCkEaZJnLbcRU2toLgo/0ugnJoBt483fAcMkwEqs0/TmGtMjzu8igOUh1mpB9Yp0qEj8Wnm5VbsXfikjIKF4OW0jIxt0ACHAo5eIe7uEZYGkFp/zdRJvrLrhrA49Qwir9TaPrNImpAmMLOzUz9kHAQGk0YIqNMZQ+ia6TyfW0Mx5Pev3utfbTW6jmg/F929o+rI7WW4lByyuMkyYkmGRsodcd5seFQNCjN+HMEzaqCOpaCsjyrQEwXGiWU8jaOrJB0h2eAk4gxAULFWgoiqtw12qO9yo8jah3X+RhaRO2XhvLaMglIQK67/a0hfxrDuMa0yhE9pfnWRAvKeFrFs1bqamaZf4bippU7sCyYn6F5X2t52NqNjQNiWnBPUm7XUPqfBUD65GtXOUiAR/2Ts0CAsrqE69ZLJxs/hhFPh9HSKHtS330qI0f+e3mZlbqmeawIhCHXgp8nrrkBKP62Z2lV11fPgHwoA/MmDPjwVNvbpwTqlCIx+cT32TawJA/fVlylxPouFWGAl35MPe2eH7qI4w0GpCBbiTAuG2xB15iSR8XmxGQBKqcHzkoNWI+PHJct/kL5P8N0CggwocOVFFZyJcZylmr5hT0/iVbsISzowQO/9fpwW5mQTiPQsWhp5RAUjKVa6WxGlo8RqnEtVdeFu4TX0A6itg+ay7cgnb6GFsnwLoDQOgPUhC8GWlr/EzI2FhiYXdf2/t2OwIy/kz8z4nFkSXsu5G3fD2LO9PK8/x2dAkQrHzeRwOiF+/pTZ1GDrLHQiDTgW0TzCC43FVCC8ItjcNc8OHZH2lTXX7/VttsfBwIA/yk5D4NvVMNTw8xLTt5Dja8Ue7sCRlFjTQaQL7ZhMxSITC4huWJdqa+Yg4R8fHlVqouCVcsGlmIMiittmyhuYO1ytlSWmRwj0b5q5JUwJdIUCeAq6nbVIslUzunC1oJ93q5k1aZzXh50RCSUZpmWYAAx23g8ar9paVDP/8ts4n4AWHaMiHiQC8ahPWdMKbqzt4szdcJ5fJZ5fAMar3+XeYZYy48szyhyyNnCJ8cZ10ESao8jgly4/8PLWNRDeIRz3K3M8pRSa1lUMq4ryl7KAAo1P0DFpBfGP3PCXbuHgMGMKci6E7GSHhsewR6lbz1m0W5Rt/X6vb2OM+TEo0cPYQ1kIqOdWNXSrPEiOP0g03ns+V1CpmVxs1qwa1PKBwhiH+KJj0dskl7NHKzRyk1TAJpp3QylXobWa/fSWxJd2wrPtAlBfTBwtpP2VKsVOSVm0sFBykSIq0nkHMvBJVLHgwLFs+nPcAo7kTqLXp7sspHrIyEMDtmVPQjPlzDQ/OjNtdWFf6bHjabXD5nAPMSLDUvNadUxM0TrmscMIIXiPRarqJklxs6Uqqk7mxJV1SdkaY80tr8ZsDyVvVaOJqflu/U8aZGYd72qyIacjrZuiMDn+IIJg9i7gMvGgMAxCalAQ0BAmyhOn6s1PH+eZKkWR38D8jGYNNrOlHUJ8wOkRBhYFDJA9sh2Rv+8E6qmcOCNzOlCjsnHR7LwQWJLvil0h6QJJ0sp7ZbgI8iYeRccM8zjjuxjDuz43gcuAfayRKAXcWKo7nTUL7ZoCwIZLPFEQdnT/BW5FW5GKwZzLRvdalWdV3Ie3RA92im7EEyNq0OVL6xh8GPjTggqwqR/K79RokMfaU8Uf+scFWs4WCkqlkAXupBoHWyDuJK0wtzg1WVTL7dr5aKoFqtsfiLagxVkr1yjWu6pCYHMwyPkA7K8FPfUJmj5COSsmPP3V3DFlmuMC5Hh9I2tCd4agaJ741jKSfhSkPbvra7zKpY1LCtg5aeD7hWAThqWJ516wQPvS3qUMvDia8RFdDxHC9bZsKinr2g7rz8kj9+itUKpmAg3j2P99X63uFPnVDPhs5ybvqaFGZ4mW/pmXrbVQpY8qGrO8+7Y36c0qhMu0PLmOlJWw45HOqIskTI8UG/ZFvvpLputW9v6n+87yGdjHUp/EXyjieZ4lCSUJahdSWh5wLxByX4N2q+Q1wlq2jDAGY0f5/OTQb1SshSzq08ZbqXD8NaLywSjsOTPvjXTBONymr5bQiUOYppvU73baVgeRRzNKrrjHteyqx8GmQvDuchLYNmF25WumheDtVdFuv60kTOboHSnzkpV8Wpn8NU5Pm5YP+liNqYR5viEHo/kYmowipS/YCn9IfRpKJwkflp9JMrNdI/+iwGzTlFNEmasy3xTHJL2ZrewW/XZyEbki7O5R5a4eeD7KDH0QhWmbGW7H8vsTDunf6BMEhY8MJTv2WR7g3/10dt2eU1n2czzjK06syUNnPlss4tpB8dtMj+tEQAVgDsTJCIumBzL0cpdKehEqIzqsbm4X9zLHKDaSRHExeDo3oXvkQZ17MENQRjYJA9L7zG1kb0AdKOwWR4fFDUC0VHMOpI83E4u9hXEfOcgeBOO5ZtcFMEEu5AnxPp8OVfGFir6yS6ZsMC3GSAph+S54sScSZ7V8FLenmSuKL6sl7dLR6207XnyUeBM3GbBhfsvAIpafGriVqfdM6A5DZmTGzOlRVkwLARVfYYjm0tex03ij2eEFL1Dm3COyQlT9SGCCy8EsBlMvTi/r31tF8/jeU/qHd5wgdhtd4MTE4Ia4p8JhOsz8aEcP4t/x8zZWOzYQnsqGkjkahC2AD4+cSHdzDhxKYs7+h11X1+EycPxfh5mtAbDYdprbNcDDH7SBjimp7kREeD4jFNA2NUtYdTYPNKpbx8633CCA2fwjePpQ5ZcTH4hViyZwCh+QQkV64YuB8IwswWRLXVVk2xfKRgcWQt+M4LaIw/Y5cdu0ibFay/LQAoi72jskx4yZcj8zrP7xfzu11P+7T7pdqZeVN+YpFvpYssYYea1mUQ3jSy4Q+8PQE0fsPpLptunMY2fQ8w1XwuUK9waKkG26Ws4zXp/yKO1ocewfFZB6yWSBeeyNUbHbJHDdmP5ioctbK7vc6ddWaZ8sG9PbE8KRxRco8An4S/RIblFMvRlVCKqKzAVRutR7mj3pFcMbIj8FTvd96RXawTpLcKuSMgkZzmikOXlsO/YFQmI9DBlvXYqzYf8euyhISrnpeyFoEB+aB0iH40Cn5VapPYGPmHAeeLdFc8vqSkKy1XyggD+NRR0aj6oQCgiZbr5V1udlCSU+sI4gvjKaBa4+xj3P1fCMP93v7aSEACHwKAbmnY55rghgH21OG+q3weEbZmkfQ7/HLSg65F9NRG1dcrBOtKvZo7r4GlnmfcugNQafgb3T68sGFMCCsegwtT19SXtDOU4rIm3B1JS8kXBdeWr9nSr8+lrMPQoompYvrT/MKSgpqPTyGeSEB+ZfZXUd+h63V6EoFoRx+a9G8r2CX7abv8ByaWCHnfLmWJ1z/iXGkIhra+S41IImV1XWx+zxuhHwWj4cU0eLblcUs1vqB3OD1frWVYztJUhUnMx13+VmHRmOYq22lN2bFwfFwu5KnaVOvh619/QcpvqTtXUcOyRxmX2mo+T5oRNtfQ/+R++xL9RHfh0h62BKkAEXiAzSA8VQRsPyKfF0HaZacecYIDpzwAQNVE1LF3s3XAnM//FHEARklL9+W8LhoUCB8fSrENrMk0OB7WNT5XJ4xUB8Cob4xQvPR3KFZP+hjn10nLEfJu8/Pm4+iL8lxA7j1vRAN1Fya5bLJaTYcDgSC9bGH+u/sopP5YgaB+gZEAVIJfoa9oqqBo0bcxAjgbi00KVMaaGGPfBRGErbXmy8HOsya9NidsStVfPh5FKvyovFOtG4CgZ7Yja257K3AESctbCGPegdsYInEwA98jWAYegtm9ksEK36Vx29BBdG2gUcBLhslHqtB+nArvS+RjAfiNSGjDh9qCpdIy5zsym+rys+FZLaGpBYnrfOU8qQltAimDt3Lbn0CcmDzemfku1Y6gTqjxwCWl7KteEJbyzZKq0w7ARGLehIe5Pza4OwsgpgMTDuM9XHLoBjGfpZkhsXoiQtzQKlRvEYCC9enIW8WxHAstILJ7lJ1o4lGGk5DJkSoZ/VQ/AeNdwt2U+0C6OisSx5hVt+fSgTvZkPC8FBzYq71w0OSrR7o7YcMm1j/iEC9HhNL3ek8gI8N2ipAYqrHRB5pEzh3P/g05n6uxCFtjuybrIl5KNDsIlarcSvm/dHmA/RJB0l3x+xIN3qav+Ckf8U+2K5TI2MIzDvhsGL9yWYEyBK+cqHJuwErK8AijPZcgOO5J3Iw//qCedI12Ww7P8S7yoB9chyGTjyj1jL0oa91OOeCTkkGXJYe7ws1L2ZQRlpsVI8siz/KpRCD6rcPpP1awGs+1w+dLIScW51RIcGbY45gePQ7xpzS266QWLmlgG37ebZGka//DOtXTzWb1Jc3tsVORAJobavGBMiVRTHOozujUqcA6ARFXpi+pqtSf3vxVCTa868Fbp567A3czIwEOH81A0lTuN9s5Ns0JR9DElY4mr67QxLQqnaa0rQON17wPcrS7fMtvrttNi59OH6CZ8kKSuMjPUrKrtNg8uVtr1VUKFXuWFiFOvnBGYat5RVUnKQVFOAN+qtm0MWo0B9npLFlFb7Of22hQA4mxU4ocorFeI0eggMmTynw07LqzvubsAt/7ho+cW/PVME0hz8hOk26WsfYorjXkk5fe/18gYH3g5Na6yy8Dl5fcwwTluL5FYTmXxpvSqz4/Y5t6QD1HuXCzQ5x+nmAzQVpj/xV+h3bwCWWkfiLCLbHf0KqfijNvyuhz57UHvJ9EVZt6Rf57KZHQlq2CtFzSyumulUM3RnHdNVJCDqzJB4vqZjFwGRo7r8dEmoM2rxJE7CDuY6zxAhL7wf1710XtWyGuaYdIiyuXGoM3XQdyj50b538pMbT6bD1EYyD5yWNLQ8+ryrXUvxgxtPYtUyAJ2V2bgM2pPG+anu3QM8MDijXSZ+VeUXxyg8CT8MRSr2DMjoPxrlmcR6c4OVVyTTF8Sjw+cl5hYUOwAsY5s0ySh8IMsg3mMtuHLEvEAa4meq8A+Lak6QdFxi6RgRkLuuA6LlhkNp4n5siyxG37j4kuc1ZMSs5V/f+DluwRGvjnoioZcmIWKpaaQ+yZV5p9FIkY+6hKQ1kWsrmlt/yFBLElp8RJhPFX3Bik77cq0VaPXKmWP6d2digA2E/vFU09/CjjxwVMoyMSHK4+IPAi73TygcieQzMmfbtrbAVIWtZFqmanE0EdjAnJSPyuqjdv/nsMQqa5j8+lVo81XxOliXF0D5iu4OZPdwG3gXvQMDewcNbZJ2vk945L1hvs6Ij5C6Ukal0GPWR0cZ2XkGryfCWQsg+kd+28uc2rRSy4hCWJmA/SXMCMuLPoGRhmsNZb1zfyx6S9l7nbkODnuIoOzgiRM1P/wiQLdCGmEzYxVeMPCVYv1d1kQ1+3XTjMHJ2W3fFNW3DdUQBbMDIHAtKjkvdFm3kIYsoncRNY1Y8ngs5U1Ie/h510NCm9wfDgzLTPq26XOknE1TZt5oTAAPZVPOpBpCWvtSLXtof+Oxh3K33BpWonahkO7HDhOIef6Dw5cOf+6ify4lf6OhHybVQ2XVGxu09BUuIYEgtaw7iv9JrfpvdUeGgul9UE/d19lmW+TfPm4tVr/eFz3TG05dJ9tDS/uXxsCmSN5haHX8SzUpjS1Ucf9jfHtG80bY38ouwrRnjk9u1fCgt4AVGXPepcvXM+NeWEZ4pkiim+QGrhUznd/qmTTWsfiEDbQabjxifBGj8ty3Rkt5xDtXgwK7Qm0saOTIEnqcQJkImibJb/5ZgcUFxw2cPqJoTuy4DjqI0yaGbxEfsN/USbr7FpPnepNiR1rMo6+3jrTINi/Z+WOWA3t6Vhmp5Sav/WB0/12RoiHtdn87CVdOBXQt+HA94TlMPiIxOkcJn46Cu29vtvLmjRNVEQKRL+e55gs7kT5YwMN9K/CDN/XzQVfA5ra3pc/5m5tL7KcxfuW/YuyJyEtZrIS2pOwN0TaU6C6Fxqm6130mZNzYOTdJ4lGsYiossOzOSiygm/uORwNsoZ/YcZzVwenx/l6agh5RfOeI3isX1xOHcfCA8xa0mHwAPZXDz8xxVT/8xkn5P7TZ+wNfPe7XHusnz05o0J7wYY+aRTOeE4k5KmH2B573Ftdni408FxEX7sW5SYRrxSMikQ+MSs1x7tUkg0/uVeMLlcCMgvL2+Pm4Z1Sw/4CV3JwqqJfXO6KWQwrFOaLzGIdm+RcvpknQue0r5+9N0ALQZgZXORMSxDZbNZpJAMZ5fRzjwrfPPy0WQ7BL5VmJajSFEwOobCBCIcDP2p8kijOQWJPD4kY+8jB+4Pdpnqkt8GtMe1Vh0e72sZyo7jkKsNqnGFiXmh2ZRZjOPlSpQ+BeVbvvptGHTuTu+VLVn+8/HqDRUtl9i+R/oq2+FMFEhNHQ8/sSSVID+mRWor9kSI1Gucd4Mfnx3Sbt3h6j3sg57/lr/gzqI3OccyPcl6S72TfbyOOjzbljgPm6GDP1tqDgjc65oUyrYOz3Kyqa7VFKW8O0zfpIzP3pgA4OT1/N2qsgpZZ0B3FDQZUDIZUjKnxgkgFihJwUS2h+gb5bdv5QYptsv4pHXKWbgHD94nY3/iJ44cwn4ysv3B7WSX70VK+Vj4nNazyK1Amk/TA9kIV0x0Sdy+YXnfKSUZEVX2P2EfWZnLoJuVtAdmHfKY+Ai/efPVc9jmKxQVkNy1BQT2JXflysS1mSvyYZM8ZlF4DiSQvK9kr7xm93XPO4UbhUu3H9tzhpvdbzgNoG+DjzkorF3WWO4IiC4umztsi7PmIsSNMHHd1+6j+3QrmuHJvXfjZkRD2gUk0tKyfhBXv7SaoZE+wl5h52scabOUo4DRugQqnAnBBsiofl9iVnpJhHwKsdRaoTNzUbLfbHXSw3NkezadbVJ7AoTIDMhKaUkkQ5GSDNTqzVEbF08AgQa3w6E5DmBQmiUTJrNWJHklLE/oliodb1smA1/qc7Z46+ppgvE5a2KIv3emspCvGLrNukaDMdeULBHxAMmYQblQzJMUBL/wJJuI1lxLmGFx+FZK+L5Z/ZDYWGSNWhwTBsg/3LFjqfo4pUBEIb7pEA/pKnVCyLR+U2Bu7E9g80M+QAcZPaUBNVWVi+sWiJj3+kQEkfrWax5qPUQeW6xOdC83j9Sd3Cu/05NOPvrl0UaJLE0GMjINQZizrwsXJ1P1Io6N5mMTcSw0mj1gDUfUWi0U1bQJWO0dAuECjjWIt2bbtXZdrdTZxuWW+vjaOOwyv9BmLteKo5ZKI0pwtBJpYDPNx87h2JxpJdKAApR+wMsv+qp4qSSqKBjvPgk8Gig/tETkOFEaI/cGBA5w9Xw/B4VlpeFLPOt/Yfn9QnQXAoi+RsSzRvpYyGIfn1IJN4vKjk+ZLy8hh5CXcZt9Q0o4bCuOpqCM9Mqh6sdg6xcv+dCqSNgVLKitAQWucPBfXuTDJHzwlkTlmoTXJ+XPSEpPk11nzk7sbVolXdrd6wUftTX8Lrg4btKoB5cnRa/3QjQ+9W5X1ms0A20j7j+XYY3dpAhR3flg2Bzxs4u699+t9RvfCBls7zgvMfG+xjnndReDcd4S4wid8Tef+bKjS+gWAortDceB3qnD6wZ17ymb/cPg7eMrc4ykKm99i4lHdmX5ENzTuxIp7dSAZQxjZGRvX3kzAnUpP5Ve7+omV2d1RObkHIbkrXc8WYhaSM54/L0mfnz9Me6Nd5jt24xhXWc7nkLwIaNlAkLcJe8paf1Zc0oYyAJtdXh8T09kUJC69szkYRSdPFSqAAdf/L135uIsik5NCxKys3mTs5Rvm/Pq1KY3b3Fnb2sQMHPEP4H4PIccBplBbT1knkdO8vU5D3Aup+XqNapkIBhokzx+MyLoPP1jY/GZuokvowNim5u4jE4hLdii0cNwkyMtrbg4Vzsm/NNoustfzpFsnRkdfYfsGNnTMdRRZ0lBdCARwNo4LAm2207LP1qNIzCcGLFzV3BkX29MbGWVzb2pnRsDwy1qdTkMP4LohIMGww4I3ma4QyJi9ha1okX1Q0rv8hznrgtJa8HMUT8d8W8tOQy0Wgr7lcGNbQcJODxbXpL1b2/ftNS3OeBSSWFmJRkLlyiPZGUtDiwo+O2eJTgWwtn5rCujkWnZJEvw/I/fM8sWICpY5sLWtjlE/7/vHfbHnw+YzA+JgIV1xSIQp7F9jaQTf74nN1GpmD/fZAyO3r5bsOjQKok7ef1TOVRlNFbE7a4FbyuOHSeRj7q6TdnWuYBqlZGaVfyvqUTOCaExFh1N8J4HBYS5u01ULtvkcqNsgfA1RgKTEWcSkZh1mX61NyY9m5lJm4/uJmfloYpYF0qIJCIlzVES73T+DB9sDAolYdRBkQIx1pNIKqDLijVYjWq1KHpjDWjAQ+0A/stAfNre5sS0b906OwtDR4pLHgpHo4NXruDzIirs7qoKipVKz3eoYmLGpxGYZOfTM9UaTy97o0FPDVywYMzxoubKlYU+TpBLy8DMy6UBS4iitLie6bsubaeeUzv3RwxyZW1K6JAe/yZ/UXFxWppDOQ92DXViCmXL9cKF6Y7etAV6Q4lK15q55eB2bBT37LkZcwbTi0NkzwVHXj0oGBAofdSmdZEy8HoQTVUlPLwfJ0j57t5fmGFBQFubFz8hi4sQAP2pdwcJN9z/pZOx3CeoWFG/iVSL/0Bg0KPoDIaukIpuQyfGJi3heH+WaSxeDjYRGHPDeXyR/o0H9VeSc6RCyJsn1Nuw6W+IaIQvAs1NA+YSUADS5kKeA7zd2r3qhnBRrRXDE1Gwy7KI3niFjyeRsEkO4seyiDRcBD/KVX3CNUiU+I7OE0fLCGDvd646hlOSqV19gg9RivihwvYG9vxTCJN3mJi0BCRDUUxiOmeCoSg4bhaAmL/abzxFMbbvKbF3fkmQtu/4gSEWQFawpRGY6oCS33Qc7wsMnkadYF5d47eXlJt2F0P+oNLcAIaR7KW5FAtV1dwXHX3Kdcvec9uWN+ZLoGoekEMQhkaC/lQxhUolEZ7Kan6NxeC6Tmye6xJliBA3g7E3s8KrhRmqjjoMvcZmP6M79CfT+K1JefNF1hhbmdjb+wizc7zZZuM0wn5++R74iK2yaEn02mJO8tsHZI9RRaJ2p/Jh1uXv70/vnD76s+kY01qmSUOwqJNzLIYFogdizTNf3mW8DmxyAFJBXWDdA1dqLF42RVHSiMtbc/H4oBrI82wUIGaWx/lB0j7Qt2MYhlkUGF0/FRucqpPE9lIWEuT7t8KJ0DIjFTDqMiO8bkDEzrIlwIIHucAaBm3ZUFKPv4x5cGzckQG4J4rXzBOsWq3wNrOb6fwP1riQxSykBtWx2bVU7wwWy/xzl5r9JBsaL22K865ltfDlzexab2qtqIXOa2LVBroMdnM4r3nv88krV9KzzRDxAaAzdI+xmOhHyNEjAAMKGvwar+wu8PVw1lok/HBxXbG3j4ZUxFK2rl4DrqmAwV2QKSvIi6evXBket3IFL3zFynh6E7s2MHARiVlADSpgmuKy9mTxwpvLkmudnhhl5c0CwYrFfH65qJbqXccWFXpTzexmPmPlSh69hV1ElS+R82KDQW4G0ObOKdi9sRV33GQCwmrQnkXZ6DwHjJEL6nyKPFx8fiX5NtFDkv4z7SQhkZt/7nu/R72LoddG6YryKvhws0TSTBAsXinja7V9PyzlSLq7UHRqEsW3SEmuQGMAekjjT5q/qeYlySUEDQ7kBrFKpHl/WAa2O46FhDZ0zSmeTuJIu+2JWn5CeYvJkaxJHBtL1Aroj6ktu3bu2nXsa6m0256bJ+dV5CPQuEbTD8EV5UWFdkUmE8pPAhmFzI5XbpR2r78y10YU6ED7sd8EJ77IBe5p5hIzSPUA0nevzZh6z84HHI78CQfeYLr89df961c4P2II8sp1+rxcg2Jx9jtEVAoh3Y1f0DB6KwqXqI6U4TjloCA/MXte64PjcjzRJRrZGMANJCcGlrwdeMEj0oAcVBlNoAYo6GVrnN0Ks1sE/Jzs8SkELjP+sGvXD8ZmCBmf1mp1+vI8vU6bMz6NwG8T7U9OfmG1ShMdJZuyd+5UixEBkQIMwAIskIFCZO4h0FxIuAh2aGBIwMmHvyk96RioWzlGhR5kdt+tPRF0yX0exse8MWNzEIhC9liGbz1+0zV8oNAyquFUlpTExa0sDfdxF+P9nCXCAIV2dWzMBlUuhHw/0rNl88ULAvNb4tCB9oEbQ+fePN6+48f2OUBpsxpVY+tDY1asECQkLaoEmvlVQVbUr7LEERJS3yAlH7MaPZSz5sKJQ3tlXnVJJVgu/3Hn+XW68+OSJFOWTK5yGGj+QhqdyPCJcyFR8rPFixBkkVpSDiNHpqy9pidd9ZxgcX3nk/fVtIyM0qawX3CZqdKN+9Ur0uOt1orFCDRitH6U7ztoeXwZkmWAma9uJ1zZ1vMtQECBPbThtRvtldHTdCVRuVEOwFVzYedAocqo3lK6Vds7tkga+5jZI5WsWzcycXLvrfMQ4e1bPtZlRuUkEmMLeRQWjoSLrIuUtM5pKOzKEq17usXNkzjoWt9h6vvehpwdGpWIPaobLDygZHg+8HwmH7xy5UZd7fMTV7fr5DtOnOySCxr37BnW60b27LUJBOK2AY3upkhx69abx7dunTx56DBq3gaD87V1ByHk7PUeof3buxQY09mZvrDEkRdiJCdqYGJiItlKE0aZjBnJfwlVTRCyfz8FOlTXjhOMnMiQrHt2Rg1uYTswvLYdI9cyhy41S3IVxAUB1GVEQzYVrwijE91DfRJcg0pbyvz8jylLYXh6XJszODg7RYdGDHdf69r1nW2ahARutYhKFQqcqVDB8NYtN9cMdBYVWttIvxg37+UrBIbyRIRICrowIpEs7/T03H5g1FqyBt6zLnGvknCg8NlI9rG42P7mYN+CUUwaxkhUX3WEIjPvvoahQwbreRh52vG3jXOw6+07h31o0NNzZEdampG4lBpQTRLEiqUebggSDiGsaMnn8TKFskr7+e2tH4b1lI01gP5EEPL39bZVXzhll2EopMrtHt7KRZyuR4rLkUpo4DprwMDb89JwlnCtA/Ay6kj4ZOv3Nhgd3vH0fdzdhuTkvj4UblapymC0t6+iQqHPLj92wOxcRHJLehCgvGOAsmyXhWP5FQiczakaX49Be/tquGUQlMVZcHSnxuTiWLePKhE5NQqJviXRFi+6ufVBq9mrnkARNHRuO8SV9iir2ARpnmPz5hb2C1Y8lADk8WyTBRzAnDo96CRywoaZnCCNPCmpWkbgmBhLpQGLGfrEiP37JZyATfDgl8kuKoLpk+LI9esiEYpOTGwaePmynR9nZXFWdqhBANGqaUpcnPr+aadBBRHqBwMMFDdpaFjApJvrtIpmYZfHxJw8MDQ8xFQOvRysc9nt5rLr76KOYseH5xbDtWvnD6EUo+rJ1uD7AUGf5RTgFmYVL5L2j2TWjJoeb36bQAQvoX1exIeb9vf839Xt0hGZbGK0sC4ysn88JjQ7K6M38fdeT4+kefMWOgm28RQ/PjpenP4PwEWz29jeGAyXvSd3sFLit3JlqPcTWFeYmKghekM5oAJUFQG1y9zYN8Tq2yR8pEEkkGWAZMRM4TOoywfPQcj+fd9FBvWPx8Ro853r4FOgzcPXK+MuCaftiIsSRw/Uk7fwoYKfcyA4PQdkULH06b2i4vyDuR1Zwvdk7qZr7xh7ZqxTgzqhdwC5LjGpKA4UgWSxm5svKdtc3WOnOoiCjNiCBMav93UP72U1QjulQOVFRgMShDjs+t7MTLsdgb/7T77NZrp5Y6gTmwCACh2rZtJXSRpoVB2LVB9MqyMzM6nKtjY+YzUnJNSx2XXPymeS64N86kjkAqppNd37gQJr3xIb0V16ukf0uIbR5bt6zRIhq01ip1It4sVMRmsbn7l6FWOBE+btHR/+6tUCZjO7kEqtY3MsgbQG7ioGfW3iS5T/K9nFlx0eGjivdqvy3prObd325Q0yeUuzMGHlSqagmV1LpdaJFtP5Law62ush5bWw66i0OmE5n1+W0+DkGj0AwuHqXAG1nsO2OItXr+JQDWKO3SfYzuasJYhaV7N7ifPkqpUtrKhYKPubn3kBdvHtiItec3ydlup3wfy4i9shEre1ctjt7UJhewdT2NbmZ6VXZDMLqN41LIef5Ds435u/ciWfV3aNf5JpCHZX77tuc9Z0xEb2q3c7tyZcvrlazGlvE7HaWkWiZRI7jVZIZlmC5oNz+kgRf8kSoWj1KgFj9WqBYDGngRpUSCqh05MaiVeulP2oKQvl60u8sm0nurt7RtLTskgFVGq9ZCmfvpLdEEQtZJHMVGoh6zoRWaiRNnjRV6/m0VetFgjKyqLjjzznn/sez2uTNlJpFvYSAat1NYOxtp0duX93c2kkTdbSkqBvaaaHNwlrqN617GZefEsLr3QGJOy8/8ov3Z8Voe3rRTEjPUmR6/u0UXp9Rb5CUZHfM4U/MoVievuWcZoJsuik/r6kKKs1v7y3D8WMT2mTjgLP33/IbgHNoPfnzTWtr5HNPjt7UXR6OiVFX5iSryCuCDhwvSZfqV+0yGqNjPxSlQuj0+QB8gCJ9gvROVgh5NflFFFc/nyvxMJlKlULdEJzw49naVqoxUFZ3Mrx8eboiMu0kiFvq53IS539YiGnxI4oyVLbH86b1o4WVI9PYS5yE4PR3t5lyxobUeT9uOq4RmOzaaN6HPkpVmtUkr04P98+t7w608XDSWsR8fhhV8FjeOf3jCveDqGUyGUBzUZxFez95efe1L7+6Jhi28K0vqbokL7+tDQjoyIgw2ZMP15NqXd6L98Tp9xTCL67T2YXBGsqYbhCvTE2xkZaHRCwjGhKS21uCmtC+wOWMW0xMX3NMdFNZalpb6ccX+FB3O7D8HFJtvDC3Tmjs9wFvx2+8tSnXvnOK6h/PCTEUZxRYDQVeC8mWeLS+vuDQ8b7Q4KbbHq/sABcxsMHu3NPqhojBI+ANNVPNVZawl3zs/KK6fzZ8fuVMNRs/GHXl1OzkVo9sV+idkBIknZM8DQi4TKvdfM2w+jdiVc/qJszx9UUASFXYnaUxIQ2Ncdn3RPBSjgLmg8M4MTa1ocQr23vwZix0cWlSTtZ36uzfhb15vcvtrOOqX/oGVvcnN/7BbuWFXbm1+/0jvVKJEeno8XEtTIo8ZV8YI+9jA+Xe5l7mzXNr1o0/YMBdhquWNpGdPZRDdSABUBXCqJ3rwWF8IOvk5cpaJqte3/cvoNEPn9rU/20Ja9t/7NXOq++/uDFHI/bqelabdCxP69em9jBFh8MGck91r042j1GBuRRDct3bf35Fffq8vmbZpXk9uS8ixZ9no//cmrhBQw8a4O4OWRwFvvQis8tglg6UAHk9Ly1te8PrCOi+x6f26QkeaQKI3GBxPv4roPiA90N2+rkaEB0k6nKR5Bz4YVpPQLf95AvNxk/fBiy2GBFVK2cG1FdqpkvSVZn5cgVnp9xcnvJ4WKKMsEye+ThQxldngAeYkHmZda2bR/qalkInKNUVyan0J3itIxMoX3pkkY7inYNX7i4ZavdKr3yUG0dvV7rfQfn5tOWEOzZbV/y8SNT8Dvms4ii5pas4vLmoiKHCVsd0D2LIOefPV7+5PzhyRrzi5AtV8BXSO1bpf3p8tEkLO3zL/AeZGN2WXS0rqiq8tDExUvmmlFbD8wsrP7cxZnjLRhc+/ZpNHftFoVxwFLQutHgChwW2xJIVrJv0+bftImfxijhQPK1x2HYkBTkqbF3uKu2Fvzx4p/SogV3pOIwpWrxIm4iDHWL7GevDZyEoLdgMyzotj95kpOjL8qvaGInJydFBG3sbVpaJeNX5GWa1aaz+0VNtyM+jPXIk7wVbA+e5PXuV4psMkGcu4X1aXIN+WX4Ls6lq3TboL3RyalhQoVK5y33/e6Ar8sJyThR6aUgPgyCAWTCbHR2f1YFqeIDPLBAoz9R4uZmf7zV3ck89DnTkZT7p8+WH43Mv2prnhEnGoce/eDuPmerK7Lzc8VkcW4GpVo6X4DHS5S+LGeCS66imiQbi/eQyBXaR5czL3jgIlnhIaEhr8HRXwHzeK1u0DCyZaYZuOEXcEXTmS+HBiXqTLniWaGUW19PPu9OE+Op+xsbDkrX6Z7O2gPVPSQv0hGSKH5BWcre9/tuFW1J4Ok0oX5JrIGHErGn01S/Nw6LrPrmK7D9gMm4ZeZQvSf/nS5faT2jrVV/8i7cR3pFj2gM/T7s0LmBuQU3Eo4ELc4xL9j9djYlqfQtd+5Pe0Chjb0b73KtOBRU5eSACp+s/R2YJ1r2TPtDzq23lvoVwkh8INGw17RLgZPA+cTZkwpIGRcRpdmypvbFN6Z8EBRCjsK5j7t6rg9mAwWqKJCsvPDh2ymbtV7gHFRc8E6ex2+LqNaBzIF+M64CkkdFzM0/v2eLKrhs8x5k495i++6k1HkdztT0n2wLggIfxgbeujfviGr75XXoHM/HHy0d7cBT+7iajpn8ldFnEDY0nh08b2NAOYlAm8uw3tgyak75uO74ZuwJow18Db5pjGyiUhskqxi8Ff1Uz6fwCug7D60vesru/a/sD+PW112c8/S1i4Hi80vQickYGA/yQQWonO+LBiufiM9e4zvvX/vitZEYjDWlqoHRXV6bsTH9xue5OV2HviATZt3wwazdgUEhSJDznAlmQvJXWQ+VcJCgB0Wnx8vzG+0oVKY6ltNCe8V79S1xb2D1XuL3e7QL+sZQuFytboHR8ank6islRJdAJ18gfE369gizqCCjCBzfR7p67fGGXZCxlCbt1g8NhatcBvav3U6z2oDIHVQDIwRYGmeXE2gXXVdQ0AoGCjkuQFy7D0BZ4iUOKa481DnvVLLB93F+7dnnCGq7fz7g3EkV0ZQ9MzM6mb0xe/K3cm8nT8jJA+PsGtFZw/7pCJH8SsBPuLGaOrh6NViIx6rgDx2k/VMebW2WIjfXJnd8MCWQG17dg/NbeXLtARXK98CGLLVlFZNxOx80CjDSrnbuxSONBr4ZJEx/D286kOwWJY6KbCya55/0e8HnX2aC0eIrzROThfR+Tms5JcgnCo5yU292Id37ilRbU13LHP/yzd6ziRh+GFCRS282Wn5bJsVr1g5sAl52Zm21uRBsfLGIc2p6vI0VjQLw7/ApZXSO36J59PRDEw+lWZyXt050doOOSLzmpCv553skXYa0hv+8wPPUP7kYPihb/Tm3rOv2rw39QVKRCKs6tft1jwcumBwUkF//k+EpirwlwujICOnHfZN2wfzWGfYWhHgwFXyH5REHCvFFZyG0qTkzUxPhcHjDmZFdufORH/qTkuuKDk9h4G2GQ00y0HPhPIoSNFgvc347KsMmDM1PzTcYIyPPnUOgrsIPBxXPijJkUXohiqIFEeui/J1jpK1hInOHuuZ6UD1lIce6zOxLeSosqiMTgefPU38IzR0qT6shw4IRN+jG8Q2y6pXlb88bto9s553b8c+6Do20fnlE5Ocb3GRMb39Fad80iukezS27eOfw5JkDQ/XiKwl0XiWGw0bnv/agHSLhg1iXQwW7T/6PstmpG4uM97VFV/c5d37GjjlKIFNiJRS4PG4GpD4neqLCUMiJSzScP3z46RrS+8LvDhamtzTPcdIQzKdFuTA63HXXsA2GDhj+TXV++xoiew4QAM2t0qgHS4EWKrSeLMa59v9FIpF4G9WCK9fuzDLDBNK6xsb1PaN7zhYSH3mm9DfLZSs3REcNb5dwtpJZRCC3YTbi3P6qcI+URGsv7PspxXPOtgNLT/U6lncO33kyliuhUiVrDyxOWhff1R+B4YswtTyeO/DqZpx8+GAv+AwLtb96vY7hjK+gYqD4SRe8Q5bR0o/ii8Je+W5ZUHC7s9ETYzVevz41aUm4sxHnd4hUX2f6Vo1/srZ2e9c9byzFlPDhX/Bf0ST36PGQoh0QtNX8frjzxumDydFUHYWLUxXrK2cZ8WKolY85DjoQeN+YahRydS21iLCcwXaJGKN9+/ZYaekjvPtmGoWv9wkKsXjbmF4ZmfVRkaB1A/XJNaJtquzZMxEze3sCAh6Cz6DXjqbBQQQdNS6N9xNBLT99d90bce40bSYoGkEnDlIkrO05Ymh+mo7OCbXe/+F9gCd10LQWKBrAsBJodRdmuvxTERVOlt7V0LX/jCgr+xU4CZ/I5WeRzEHUBvFipmD1aj5zFbfTm5pJysqMm3T3olEfwBJ2EGcvsXTxOsx5/6pC/3lLJY1UWiaJtChQ/1gW297Oo7ew62lBRaxrVrL7lDv1gTj2VBnOzcbZsjpO1txCj29h1wXSFjFJVVRvs4hd602tIRfLR8BJYAmN0WhSBVQzi2WhBTWy2RYatZDMNFNFawNqMCEHPYizHrgg1vFgc+PkIS6mP4li9Q12cLhWKnfv893NtAIWqSAgsIaV1RxKjTnk4fonpZtR29razr91T2WtGljCErUFFKLc4aIbk2pec5iZzYm7nQl+hB6iaxmxOoC/w8lvw6l3iZpeB49X1iKXr15N55WxawOoZhazMHD0JCIrJr30feaNo37MdQEOKtXKWSKoDeZWEomLaNQCJnNBoLeZJaqhBtaxWmCMlxfYXEz5Ge/y5lKltkinjbQ3lpWVXJ47gYFzlbty82T8ygqBvKr1BUN2wd0liBIeGspjBeHwn506jSADVwX6IBt5JFnG2F0DkQ6c6S+FHu0Jo8s3U5/sdsUitgeiaRTtaRBYR1F0er02t6pkfZaosJVQ6HSDPxC1po4xkXvNM2G2O0c7Po248ArmRzYqf8HC+7BfTTIZr14RgeRdkrBc4nWKI1V3rM3NkfMWt9iLo0OaS90rl7CEq1czBK1tQuESkZVKK2SSzdTK194es24eY+7YNYTQ1n2eYe/dyPo7bWJRtaSJZsMV0Dq5q/iMZnYNVbEyNvD4U68ZPggeuMI4+Ifk3cUFVWUt4eEbVtB5Lc0KfVlLPK+FVUcNKCAxDeFos4V1gdRqUpZMbiueb76v5IJKrDlhY8puvgYUeRqL6mCo32bqh+AmlaoUgp6PBaS3LzdpahxF7YLPuZIWWF65AMFu5siJx7mvMmrOfZZUvRLrtlPurUSJSwsccrlWC4pqnPf1p9bXR2n7erXanjH7yMb8clV2ylKVsgmGy1TqJgiaC9XrjallThJG2ccpJYAybu3HCjEuoVldLgAFB5wSCLgex/J6uTyHZaFRHQHtQvYStiPYx85hW5zEba1izqrVHFFba2TI3f89bt8tVBz+wh9XKo1Y7OtbwhGX+OCbuFwbDVcilZbSAtolJTScI6BDlCb2ps77yW4XSoqi8G5HPPyXHVgagSuTRugx/hJ1fr42EcVUvuFigLY4sibRwJqzGwdwwUp+GH9jWfSMU0QTzn9eShK3wi96aWdICa1F2sF1diR2EIqZbRv94xoPnXU/nXhNOIKiPaPaxPFprrRQn12+aXdrLrF0+5H/T4ZnJlAA/bQn6zU8uCJH9t0DvSYblJaCLKiG0bmOhC2LesYkX32fVMGXabU7b22NWLjw0pFSHrTpFX1N19/aouunY7E+Pv4YNpRizvD3Xbkinv6pIfBVb19jDE2hJ7TGKsGVNkLMr2zu+t7kqN5eP/r0rQaI5IjM8HNVEMHrDGAtA1aQCXjf/dYjmx2rXMKX55cr9Nocg0Wz4pS5TfkRhzju7bD0QMi2+nDivVTQKhUivkCsjMK7Tl3NCCzy9dp2Tqu97Eq7Q3yxr5cIGoN/O58asUGbWKRLirToc58PbOHdvc+qNIlqQj9dokY2tc1Y/tnEw1rq9kPoKLSSErthJQqlR9bhVCAVI1/ULhf09UeFWC0liWOdnSb1kx9HJx5mqOu2nqk2D9XzA9ra30PEA+baWx4rvIJLHPLM7BILrILV9rIcGe8rdR6ElPxxkL9OzXhu5nyImo8JPmk0vn/GOySTGQ2GCFpK0Mbv5mVSJU0luqj07/evPXVwSBIsauh8/2728O+/VS5VEPK95CXFpaF+0V5t7V6yuTEJFuKCAGoVUZEr/exc5mZrI5fxIDCh7dg++uGe3CSbNZHdQkFfg9POrpm3sR3E8MlJHlG//PaRMQRkIPr7Z4Ih8tnP9ucX26KDV2blR0ElQAe0QE8iSUs2nQyX9jYuj5KBM+UuLn9tkikHOwYXUhJjkkEeK0e6JCYKp17e2WA4z7ls5hn2MPfZxhFkLgyjfaVMDTUcZC0Eei4pu7V1zSCnq1YczhPpI5z9j75mZo3dgbanwJWEOeFO8EZ1HgznqcXlEPI6QbdcJXrxYeiWCaP4o1ZS0tVQtbTRjqLTSs30iuL/CX/cimL+jz9weHYUVCE6ncGfSLyL/NjJxNSIbr1Aba0z499c2fRPbLCKuILbdrhxbXmkdMUJZdv5CyzzdUJj7vIrgz/fRnSJ0gj1y3P5fko6Eb44/fbqkfvtpzLkuv0Xvbzn+pNUUGPXWSoB5pI8ZOv6dv5uR9GR0aQ8ceLmsHjFzdmqR/QJ5rdhmZbfBd8OgR0w9LJoGwzTi5tFg8FBJZ6pPtrkAAsa29sTyUKUc2F09PDHjNuTs5lmT8/Pihf5UD0xgdAr2eCCtKkgM0IRGwoT9jwYFMyb6FGSazKRCxbrC17NxB0ZVsq3Zfpvah+wkNVj31bYBXAr0nhA/K4UadXPGuRabYmViLEJwrI66sPKtroa/y8QzmlojFdaQOH01/CmA3keUc4x2vP7D1zNgZ3a0rBAGx2b7JW2pmbPK243s7C6ptD17oGo0UZthN2+8sclYmMThHBx+IVP8W4lpw+cs/0JzmOfDP+9uDA4xOHIJOMjnfyFlbje3iQKInRHMBcunjDgzXDdw5k64mhhUVhcryrFzyndj00Ko0biIAcGyuFG9B3cus0qeD+YIYtMIDyAMSXjo+oNXyj+5sBJsV4rsmwMqFiTmyQVpWdW+++p+XLKTrSVxiKqUggV1hRcXvrBeYTJmBwbslp/ZZju3LaZeGAXurnBevv2ri1nwVJoqd3xl3fyc33nGxmDBQai3EPLi5vUGl1jzyyMqgKEYQKx+vx+avYtvfUxV0DwhjQaoACa2M6ag4v8Uc6ZqtyhbbS6X5hj63gZ9Ae1RSrbWFKOzZqbp9BrSZzxKcLGdpa6r4+oqd8+fMl690iPCYK5G5n6hIn9L//kEMZzveQnRaJ3eAV+6zRzasu55eud2sFP0Ca2UoUWH3l1JTjd0NhEjdjZVIJitbvOnBGLBro3P5JtKbr5/t2hCQT+9tMVQNYXM8p2/xFcjJ23tK8XA5UpVQ4I6tQVdkHQ9kLvHZ1qFTDFrPkIg2bT5bDQnCUGbX2kDpYp/03g39L1Z2dmLkhd0VLv1tCvzoeRB4SiQRUbu0YB2khEwADXWh9S1kQAbUyUmlX+wHXNQTJRSIBkURIe3SxKiuho528jEUCSHmiJMLsd0H4MCPASERkFMQUMsNnkEyVdH97Bw5wsMzVniRpcqp6eujrq7nlo4hj1THfP3pnuEYznwUNvn03qhyDesbYWeYQZ9u4dQ6Ampkf3r2Njg4OEDn7GQx1DTgDkXOLhxrxyFMoR74qOKnUsCHTMJMSJoi8PgNafBj5OkYLzV398I2X1T2IJqid1QZJQcVBdt6j3FBwffOQUKhJtxSVtoXC2LfMZmpHhrNYdEDw6O7N28dFLh85Rs5UypL/zLnMr0JzjOI9MNlz8H6N6QWhoX29F/mAdDot2GNa2RwSFZaTi8raWFuclHgO26VkEvXhxZnM380MtZ3/HIGDfYIZ7YAAgMoivN4ZaX4QU3+/NzTVac/Pq61GoTK3eQNb2LM2PZq2SEgipnF+ki9Ta7Usq5fwcypemy/5uhAp2YmwCSCHCZB3D+/I2QmFaC9+bklEICQRofaG8epNHIpmGxwcRxdu0ET1NudqeHhQd7cnNtZqWVMnA3i0wWntcDaKfPBwneJ3veKwgGhpSm7IyA3Q5S5KSlzdcOLxl83OdsY15yJXMKxSKLV6+cb+CK4wrbUSyPw2l7pjQ9jv7pbGvhG68QvF1dQqk0YQI820RyZk6MHDxYkd9aWlPU3RM5eqEhNVVsTHHvh5L/rC1uPHH6xZjNx9cRtofGxyPa8x2rHfIhtLqOeHLSplmGrVWWMZF+uHcQ576zznD8sKJHVvWjvZc+/HgQRbzUPpfARmmJyrju/dd3WfOThz+34WfpsenZ7mSnQG63UtlELP9A2PBp8Ql2cyW+LyFqEZBU2PmTI9TPa8SCwc1GhTeXjTcsu01VDM48E0CFpRLV/RGu7IKG1G4Im95g111gPGmPqHzHgFFTItbQgNj6vk9ozVt9HZgfFQEQzniNJY9KrLEkZzc1BsT2mjNKCi2R4c4HNEx30gqYGzf+rQ0R29YbG+vLN1ojZf1HYuRn7BCsxdavkkenf6aafYOWERiLqSOrRg4vxhERZswnvTszxxRQet7Q0L6+2JD+/viYlesCA1dtSo+LtcRX9bCZ6z9u8UiZwt7sSAuyWQsUQ35g33Iw0H+TTIydTgmenGLPtB5fHozAlfkIVCX4Uj9iOBV8SeWY3o6mLZsW7innG7aMrxj20ZC+eB7GDUEeYUt3L1zASHc0aOVoCzd8Jzcnj+zYDhXnF0CkpLOf/jOMU93RmU0Zq7hI/RNCZE68d8BNI5AVFIhVU/WZnaUo3jUYSqeK9VklX18SOow7SwecobTg3SuP04oxhrfU7oyCohXpjEw66Itx4kHAu5leW50Rg8dfPLj7QsovF1pGIGQnt5t8t/UpvUERkt5YxeKftbM6e5u6HrVZTOelsttjxC4KmLpMvGyJeUB3j1NSyqfP7d315h3nHMa0OI+hH3XxQ9JT6wywnLnhKdftvj5NvVotV/v2rXL1jg2NjiIQCMW/XmS6Pr17q69MxOHIOekTurb3+a/Pi0yDQ/v44usqfSk7vnldUWenohZmqvCJWiWxMYYLdPrwT5YZ95h0mywd1O9P2/p9rM17f7+5bN9YxkzbGtAgRv5z4WeBgzPtd5kX3PabjUR8X/X7n389/NrxmNb6z4qtviDqBW/HU3ddPxaRBSZpyZF2gvWgISg66WrE6xdntT7h5AfHRsWRPkuMlm53JsnvUjN4mHGbcu/CHz+1qlrZc3Nu0fcvF3sKLI/gWcjsaU8QjN3WVmTH6rxKfs8s9U4BSOZ5lnbaSK/bYbDtKVE/EsDuVj6w8IHUSDY1TWHrsPqUPEeMq4rypeShBcsTIPy/ArwL/bJSQSm7o/WpHlpN97auWMRlYTdBSD+zAmXTuks49oTQD31XHH5CvFG0WK2pxdGlqvBKiA1Ls473mPNnBR3lSiK4eGloRMyQcwNEE97WvpFgnGYQ71/CISN6Oh8w+g9CBkwoE4IBu41fe5WVlmB8aP5nL4RQIKDJctCfKeVULFtFkYmLxaDB/sA1BgT5iqXLRMrXv+Wp8nL5f25PWHvcQjXiMHtCtFHK4gkIRgLVxGaqli2tK1pd6b+9cFtunDRIsckVfzOAof1/zkYymKbQakk2u4R5s5VELrcj4iUCmLPf8r4mZ5R4tQ0Bu3rXTC/UJ+Ssv5Pr9fjKKa3t7KyrxeFS1U/tPCuDIV/SyQcueOO3fvfJYVKZW0U9c4elsFOjww6XVSko3f+/DxcZjHLndO322D7KiuNzKmRLvdhAA95jBhytbvEudCOhfi+K0umzQLHp6u5OVdzm+F1c3fUX97xrcDGnPrvUxdAEiMG6+pZdfTuP/6zM5QqVYNNyeXOOHXOWz9eyc2CoNIASQshIT9l/ZTrUVUpjPb2LeOWQnCWZ9X4tM+rU/SwHrnMkC7c4Ta0XSpBQMN/R4wiA5ExpdQA6x51lKZMrZ7nmZnVEhva1ZiTAyNTDSf66LVZufUvd/3Dhr5tvL3pYkXFmZn3BUMYrqKIQcUES5ZUzh8bMx5lbfjsu+SbSD7uLE3KwWGxaPmNBeN6AHizukKKyj/XFb/P3Hfn3oJNA3E4+fc1vt4FPw3tR+AX3gR0O3I2dnSotyg6yIF/ubxrA4kSPgE7rQiZ1+3IymZT5sLIrG0lChrZ4trjQeBsYbMw+icZ/ZZm51T93bZt18zfTnSkF09QQna3N9q3bp1UzLHFe2iePzONoVC+eo2SWstp4RpdFPTwhTrvPHzk6lXh8SUlBYsMRi1F+/PvBgS9cHFmpvtopBITACmKp09qq+SEMm51SYmQPZCrCgb5fuEQmOencadXVbCLnDn9K6o8syC4PEK6GJZr84YVKlXDMKPhIIjYYznRSeiXiLMhKIe7zN4YHL1qmVDYkVcBp8ApZXmSJpqPld2cmiaHyyXm0R4U3mm3/U5SNtrsxaPTE5OHR0/N3Nt2G/TYxmG41Kgqg+Ay49ehMWVlAkFZS+4cD7FPODrXR+LBbRgvwnq3tKTF7hSXwugqNWG5ZQfEuv60mAACL6p9umrkvKRMoIHe0F/AL5iCVGAAKRAJuN0iMnuqKvtSgWwP45bPLcYeWRroq1gEvkfpzMSkbRfKvYNKisvFeaUtC4NOuG/7SyTeUigLd0LKm/vsk6FxwXNwqYf3f4gaS4yueHDAB4JWZT/j0uaqyyojxLoO791n9ZYxJql3rDTL+aVWoc/Lk8uWrFAyvsg+kDOwSbqVbGmT8CUR+kic++1ND1jPlv8FwdbXbxLhPXmPGPWWwEDr4UlFBLvvv4MJZ2zWq2jnbcaU+uNT0aO/b9pDuI3dg4Pr+SSx89RYoe6mrbim7Ra+S6i/2jW8ZYtN6NGtmDPniNIBQSWiI9+bSuai0f4w1G/SrIThFMlBv/u5Tq9QZPKwhrX2qVa7/ljK0d9JJ5KbrVnFH4M6UMCRZGyR7C86A6MXLq5dx3G8VayPS21uTqRlhm7/ziubFtG/IibEavzK56dNRRMQdKOu4zmDiFk7cHbtsByu525U2vbJdXYKQl21omfOYJ8xUfTDEHR4WCx6emNilI7tGCy0ybdugZ0od9erUMzUnfGW8DmmzcXicggzPY3CpvB4m2aod/ueIef29lMrefFlLTJ+lmMDVa98PfjiKUXy2bQuM3Wh/NWxRGLHAVbOjWpju6rmxlmYXGw/c31iFANfsttfCccWLHCU8PnVESoXkbRCJrM3JkVNrdckPr0xMYFAZ+qwfwu27yjzyit9+u7FcnLNgxMyzHEMRae3OXJy9HqtdteX0D5zJxlt75iaNtq3VlUudrMpN2ZPLzRvYU4FWqNRt8AQyc6H4U79LPp2ZMfVTE1dhMH7QuvtpNukQ0MLIqvfrVifMT86lirKsgC/gk1rBkhcGIAMXozWK72t2vz/75i1Na2FxGPfMTcfzAOyaLF/aK9ZLuO/ggjEUKBMAyo/orIt0fq/wTJrocub915YCJTx0XHSdW3EcxPETTsMnoR85DfLx+0O++lTK+GFC1j4/fO2bSEMvE/rlWqFCUh3aoEpAPq64DbeJXn9eGBACCXY2W10udqWWwO6tl0CG2pkGa9ew4z6EdbAd0nsdnPGkUODJA9Sv3ou0I/B5axYt3nHduTdy3nUORj3+Qr5q1OiArBZtFkb5tTkJ4ewnuu5vwuzveOZLMxC39hn/fTt/L0bRbvFlOCF3wk1twPRp8wML/s3rqBxpgtZA+3dy+9jLfSIeZ8I8iI09fnat6/cFfR/D/pmHCyxCDgnv39UALqkITnT0Ibs4aq4aTJ8BOAP+CZh9ILg/oHeQ+htEjDmgKDhDNgxmpuB+bE/mdtJjDGE03+w+oZ//xXQfIx+FNCjWPlbaL/hPNwBo49hF3jg0jPwPQXtFcyM8M0fnLOXX17xzSp+6eWS71Hyioe/uHs2n+QhFx/m256Cz0v4/MY1D/jlHy55zSuW+Vuy+ccH4PIrt3wD7U5ofoLmFiQnkLqBS/fhJh0Da4HhDuhZb1dwgJ9X83/6x5dfnnDJr1wrw44aJ99hZR9GKWBujmHVBbBzzZwcx8wbzEQCbmIAwwVMF3BcMMcjdN9iuXXyR4G8xslKW1V3r+sR3I/8jm9YQFr27ZZi5vAWDcqn/40K3M6aW2/gUhpwx5kP+JTrl+ysOZYmHTIEjMW4+/LcmkII3E9gTggE4cOboKj4BMONlmB5MWXgpauwNIUWuBi6I0Rg7u4ShMhLguLFn2D4JJVghaZ4frzPc9N1emttqY1usX7pZvkzerOoEKW19wnrRgzjHXcmH3onv4GvTG0Y1yUiTE7/LwEbeR5zL/MDfPiG3fqzuL7BZit10PXG15rr6ie+9BeY2YRKa9U8oGdVq5QNnSXKRhGpGnxEnfq9CDPdbV+sQUX72hwq5dVY6s7ChtELwzMPX0tn9EHdhHU+e5EqdEmyUe/xEKDcGqvHeYs0KpWIZg2gR1kVhXEJ2FD86nUKW86oSnR82KAnrCVSSmQlQcuF+oo2GVXKEaIsK0VF5bNQpM+gGov2sfIahSrzwJj4l/jjCRsHV4BAQYKFCBVmnnA8/EpASERMQipCpCjRYsRSUlHTSKSVJFmKVGnSZchs0NEzMDLJki1Hrjz5gOdDhVTaMC3bcT0fhGAExXCCpGiG5XhBlGRF1XTDtFhtdofT5fZ4ffVXfaDpHjGzeLpaE/XI0zUqUqVAQi3bcVl85dAVnOJtDCLZQSMvAUuzR+cnlwjjO28v3Tnnwj8Jmpa6HHUobqKvAQAA) format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+/* Layout: a long-form journal feature. A narrow reading column for argument, wide figure plates
+   (numbered like a paper's figures) that break out of it, and one interactive "operating point" moment. */
+:root {
+  --paper: #F3F4F0;      /* page: cool, faintly green off-white */
+  --plate: #E9ECE6;      /* figure plates; equals the animation background */
+  --surface: #F9FAF7;    /* cards inside plates */
+  --faint: #D6DBD3;
+  --ink: #121A21;        /* blue-black */
+  --ink-soft: #2B343C;
+  --muted: #5D6871;
+  --rule: #CDD2CA;
+  --accent: #B3262E;     /* arterial red: used for the committee's disagreements and AI marks */
+  --amber: #B87806;      /* uncertainty, everywhere on the page */
+  --amber-text: #8A5A00;
+  --on-ink: #F3F4F0;
+
+  --f-display: "Serif de Muestra", "Newsreader", Georgia, "Times New Roman", serif; /* the supplied face; Newsreader only fills glyphs it lacks (%, ·, –, κ) */
+  --f-body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif; /* small labels: sans, no monospace */
+
+  --col: 41rem;
+  --wide: 76rem;
+  --gutter-l: max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0F1418; --plate: #151B20; --surface: #1B2328; --faint: #28323A;
+    --ink: #E6EAE5; --ink-soft: #C9D0CB; --muted: #93A0A8; --rule: #2B353C;
+    --accent: #EE5A5F; --amber: #E3A63B; --amber-text: #E8B65A; --on-ink: #0F1418;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0F1418; --plate: #151B20; --surface: #1B2328; --faint: #28323A;
+  --ink: #E6EAE5; --ink-soft: #C9D0CB; --muted: #93A0A8; --rule: #2B353C;
+  --accent: #EE5A5F; --amber: #E3A63B; --amber-text: #E8B65A; --on-ink: #0F1418;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { font-synthesis: none; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--paper); color: var(--ink-soft);
+  font: 400 1.0625rem/1.62 var(--f-body);
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--paper); }
+a { color: inherit; text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); text-underline-offset: 3px; }
+a:hover { text-decoration-color: currentColor; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+::selection { background: color-mix(in srgb, var(--amber) 35%, transparent); }
+
+.wrap { padding-left: var(--gutter-l); padding-right: var(--gutter-r); }
+.wide { max-width: var(--wide); margin-inline: auto; }
+.col { max-width: var(--col); margin-inline: auto; }
+
+/* ---------- type ---------- */
+.mono-label { font: 500 0.75rem/1.3 var(--f-mono); letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); }
+h1, h2, h3 { font-family: var(--f-display); color: var(--ink); font-weight: 400; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.9rem, 8.2vw, 7.25rem); line-height: 0.98; letter-spacing: -0.012em; font-variation-settings: "opsz" 72; }
+h1 { font-family: "Newsreader", Georgia, "Times New Roman", serif; }
+h1 em { font-style: italic; color: var(--accent); }
+h2 { font-size: clamp(2rem, 4.6vw, 3.6rem); line-height: 1.04; letter-spacing: -0.018em; font-variation-settings: "opsz" 60; }
+h2 em { font-style: normal; color: var(--accent); }
+h3 { font-size: clamp(1.45rem, 2.4vw, 1.9rem); line-height: 1.15; letter-spacing: -0.01em; font-weight: 500; }
+p { margin: 0; }
+.prose { display: grid; gap: 1.1em; }
+.prose p { text-wrap: pretty; }
+.lede { font-size: clamp(1.15rem, 1.7vw, 1.35rem); line-height: 1.5; color: var(--ink-soft); }
+.num { font-family: var(--f-display); font-variant-numeric: lining-nums tabular-nums; }
+.kappa { font-family: var(--f-display); font-style: italic; }
+
+/* ---------- masthead ---------- */
+.mast { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); }
+.mast .wide { display: flex; align-items: center; gap: 1.5rem; height: 60px; }
+.brand { display: inline-flex; align-items: center; gap: 0.55rem; text-decoration: none; color: var(--ink); }
+.brand svg { width: 30px; height: 20px; flex: none; }
+.brand b { font: 400 1.45rem/1 var(--f-display); letter-spacing: 0; }
+.mast nav { display: flex; gap: 1.4rem; margin-left: auto; }
+.mast nav a { font: 500 0.875rem/1 var(--f-body); text-decoration: none; color: var(--muted); }
+.mast nav a:hover { color: var(--ink); }
+.btn { display: inline-flex; align-items: center; gap: 0.5rem; font: 500 0.9rem/1 var(--f-body); padding: 0.72rem 1.05rem; border-radius: 999px; text-decoration: none; border: 1px solid var(--ink); color: var(--ink); background: transparent; cursor: pointer; transition: background .15s, color .15s; white-space: nowrap; }
+.btn:hover { background: var(--ink); color: var(--on-ink); }
+.btn.solid { background: var(--ink); color: var(--on-ink); }
+.btn.solid:hover { background: transparent; color: var(--ink); }
+.mast .btn { padding: 0.55rem 0.9rem; font-size: 0.85rem; }
+@media (max-width: 860px) { .mast nav { display: none; } .mast .btn { margin-left: auto; } }
+
+/* ---------- hero ---------- */
+.hero { padding-block: clamp(2.5rem, 7vw, 6rem) 0; }
+.hero .eyebrow { margin-bottom: 1.6rem; display: flex; align-items: center; gap: 0.7rem; }
+.hero .eyebrow::before { content: ""; width: 26px; height: 1px; background: var(--muted); }
+.hero-sub { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 2.5rem 4rem; margin-top: clamp(1.8rem, 4vw, 3rem); align-items: end; }
+.hero-sub .cta { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: flex-end; }
+@media (max-width: 760px) { .hero-sub { grid-template-columns: minmax(0, 1fr); } .hero-sub .cta { justify-content: flex-start; } }
+
+/* ---------- figures ---------- */
+figure { margin: 0; }
+.plate { background: var(--plate); border-radius: 4px; overflow: hidden; }
+.plate .frame { position: relative; aspect-ratio: 16 / 9; max-width: 100%; background: var(--plate); }
+.plate.hero-plate .frame { aspect-ratio: 1920 / 820; }
+.plate video, .plate img.poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; }
+.figcap { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 0.4rem 1.1rem; align-items: start; padding: 0.95rem 0 0; font-size: 0.92rem; line-height: 1.5; color: var(--muted); }
+.figcap .fig-n { font: 500 0.75rem/1.6 var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); white-space: nowrap; }
+.figcap .ctrls { display: flex; gap: 0.35rem; }
+.icon-btn { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--rule); background: transparent; color: var(--ink); display: grid; place-items: center; cursor: pointer; padding: 0; }
+.icon-btn:hover { border-color: var(--ink); }
+.icon-btn svg { width: 14px; height: 14px; }
+@media (max-width: 560px) { .figcap { grid-template-columns: minmax(0, 1fr) auto; } .figcap .fig-n { grid-column: 1 / -1; } }
+.play-overlay { position: absolute; inset: auto auto 14px 14px; display: none; }
+.reduced .play-overlay { display: block; }
+
+.fig-block { margin-block: clamp(2rem, 5vw, 3.5rem); }
+@media (max-width: 640px) {
+  .fig-block .plate { margin-left: calc(-1 * var(--gutter-l)); margin-right: calc(-1 * var(--gutter-r)); border-radius: 0; }
+}
+
+/* ---------- sections ---------- */
+section.chapter { padding-block: clamp(4rem, 10vw, 8rem) 0; }
+.chapter-head { display: grid; gap: 1.2rem; margin-bottom: clamp(1.6rem, 3vw, 2.4rem); }
+.chapter-head .mono-label { color: var(--accent); }
+
+/* ---------- key figures ---------- */
+.figures-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; margin-top: clamp(2.2rem, 5vw, 3.5rem); }
+.stat { display: grid; gap: 0.45rem; align-content: start; padding-top: 1rem; border-top: 1px solid var(--ink); }
+.stat .num { font-size: clamp(2.6rem, 5vw, 3.9rem); line-height: 0.95; color: var(--ink); letter-spacing: -0.02em; }
+.stat .num small { font-size: 0.5em; color: var(--muted); letter-spacing: 0; }
+.stat .num.pair { white-space: nowrap; font-size: clamp(2.2rem, 3.6vw, 3.1rem); line-height: 1.15; }
+.stat p { font-size: 0.95rem; line-height: 1.45; color: var(--ink-soft); }
+.stat .src { font: 500 0.78rem/1.4 var(--f-body); letter-spacing: 0.01em; color: var(--muted); }
+@media (max-width: 900px) { .figures-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 440px) { .figures-strip { grid-template-columns: minmax(0, 1fr); gap: 1.4rem; } }
+
+/* ---------- pain ledger ---------- */
+.ledger { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-block: 1px solid var(--rule); }
+.ledger > div { padding: 1.4rem 1.4rem 1.6rem 0; display: grid; gap: 0.5rem; align-content: start; }
+.ledger > div + div { padding-left: 1.4rem; border-left: 1px solid var(--rule); }
+.ledger h4 { margin: 0; font: 500 1.25rem/1.2 var(--f-display); color: var(--ink); }
+.ledger p { font-size: 0.93rem; line-height: 1.5; }
+.ledger .num-inline { font-family: var(--f-display); font-size: 1.15em; color: var(--accent); white-space: nowrap; }
+@media (max-width: 900px) {
+  .ledger { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ledger > div:nth-child(3) { padding-left: 0; border-left: 0; }
+  .ledger > div:nth-child(n+3) { border-top: 1px solid var(--rule); }
+}
+@media (max-width: 520px) {
+  .ledger { grid-template-columns: minmax(0, 1fr); }
+  .ledger > div, .ledger > div + div { padding: 1.2rem 0; border-left: 0; }
+  .ledger > div + div { border-top: 1px solid var(--rule); }
+}
+
+/* ---------- readers list ---------- */
+.readers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; margin-block: 1.8rem 0.4rem; }
+.reader { padding: 1.3rem 1.3rem 1.4rem; background: var(--plate); border-radius: 4px; display: grid; gap: 0.6rem; align-content: start; }
+.reader .tag { font: 500 0.72rem/1.3 var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.reader h4 { margin: 0; font: 500 1.2rem/1.25 var(--f-display); color: var(--ink); }
+.reader p { font-size: 0.95rem; line-height: 1.5; }
+@media (max-width: 620px) { .readers { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- studies ---------- */
+.studies { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.study { border: 1px solid var(--rule); border-radius: 4px; padding: 1.5rem; display: grid; gap: 1rem; align-content: start; background: var(--surface); }
+.study .top { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; flex-wrap: wrap; }
+.study h3 { font-size: clamp(1.6rem, 2.6vw, 2.1rem); }
+.study dl { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.45rem 1.2rem; margin: 0; font-size: 0.93rem; }
+.study dt { font: 500 0.72rem/1.9 var(--f-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.study dd { margin: 0; color: var(--ink-soft); }
+@media (max-width: 760px) { .studies { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- operating point ---------- */
+.op { background: var(--plate); border-radius: 4px; padding: clamp(1.2rem, 3vw, 2.2rem); display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); gap: clamp(1.5rem, 4vw, 3rem); }
+@media (max-width: 860px) { .op { grid-template-columns: minmax(0, 1fr); } }
+.op-choices { display: grid; gap: 0.5rem; margin-top: 1rem; }
+.op-choice { position: relative; display: grid; grid-template-columns: 18px minmax(0, 1fr) auto; gap: 0.8rem; align-items: center; padding: 0.8rem 0.95rem; border: 1px solid var(--rule); border-radius: 4px; background: var(--surface); cursor: pointer; transition: border-color .15s; }
+.op-choice:hover { border-color: var(--muted); }
+.op-choice input { position: absolute; opacity: 0; pointer-events: none; }
+.op-choice .dot { width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid var(--muted); display: grid; place-items: center; }
+.op-choice .dot::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--ink); transform: scale(0); transition: transform .15s; }
+.op-choice:has(input:checked) { border-color: var(--ink); }
+.op-choice:has(input:checked) .dot { border-color: var(--ink); }
+.op-choice:has(input:checked) .dot::after { transform: scale(1); }
+.op-choice:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+.op-choice .t { font-size: 0.95rem; line-height: 1.35; color: var(--ink); }
+.op-choice .t small { display: block; color: var(--muted); font-size: 0.82rem; margin-top: 2px; }
+.op-choice .r { font: 500 0.8rem/1 var(--f-mono); color: var(--muted); white-space: nowrap; }
+.op-read { display: grid; gap: 1.2rem; align-content: start; }
+.op-nums { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.op-nums .num { font-size: clamp(2.6rem, 5vw, 3.6rem); line-height: 1; color: var(--ink); letter-spacing: -0.02em; }
+.op-nums p { font-size: 0.88rem; color: var(--muted); margin-top: 0.3rem; }
+.op-bar { display: flex; height: 12px; border-radius: 3px; overflow: hidden; gap: 2px; background: var(--plate); }
+.op-bar span { display: block; height: 100%; transition: flex-basis .45s cubic-bezier(.2,.7,.2,1); }
+.op-bar .ai { background: var(--ink); }
+.op-bar .hu { background: var(--amber); }
+.op-legend { display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; font-size: 0.82rem; color: var(--muted); }
+.op-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+.chart-wrap { position: relative; }
+.chart-wrap svg { width: 100%; height: auto; display: block; overflow: visible; }
+.chart-wrap .tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--on-ink); font: 500 0.75rem/1.35 var(--f-mono); padding: 0.4rem 0.55rem; border-radius: 3px; white-space: nowrap; transform: translate(-50%, calc(-100% - 12px)); opacity: 0; transition: opacity .12s; }
+.chart-title { font: 500 0.95rem/1.3 var(--f-body); color: var(--ink); }
+.chart-sub { font-size: 0.82rem; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { .op-bar span { transition: none; } }
+
+/* ---------- table ---------- */
+.tbl-wrap { overflow-x: auto; border-top: 1px solid var(--ink); }
+table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 0.95rem; }
+th, td { text-align: left; padding: 0.8rem 0.9rem 0.8rem 0; border-bottom: 1px solid var(--rule); vertical-align: baseline; }
+th { font: 500 0.72rem/1.4 var(--f-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+td.n { font-family: var(--f-display); font-size: 1.25rem; color: var(--ink); font-variant-numeric: tabular-nums lining-nums; }
+td.n.hi { color: var(--ink); font-weight: 500; }
+td .sub { display: block; font-size: 0.8rem; color: var(--muted); }
+.mace th:first-child, .mace td:first-child { width: 30%; }
+.tbl-note { font-size: 0.85rem; color: var(--muted); margin-top: 0.8rem; }
+
+/* ---------- timeline ---------- */
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; position: relative; }
+.timeline::before { content: ""; position: absolute; left: 0; right: 0; top: 7px; height: 1px; background: var(--rule); }
+.timeline li { position: relative; padding: 1.8rem 1.2rem 0 0; display: grid; gap: 0.45rem; align-content: start; }
+.timeline li::before { content: ""; position: absolute; top: 0; left: 0; width: 15px; height: 15px; border-radius: 50%; background: var(--ink); box-shadow: 0 0 0 4px var(--paper); }
+.timeline li.next::before { background: var(--paper); border: 1.5px dashed var(--amber); width: 15px; height: 15px; }
+.timeline .when { font: 500 0.72rem/1.4 var(--f-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.timeline h4 { margin: 0; font: 500 1.15rem/1.2 var(--f-display); color: var(--ink); }
+.timeline p { font-size: 0.88rem; line-height: 1.5; }
+@media (max-width: 900px) {
+  .timeline { grid-template-columns: minmax(0, 1fr); gap: 1.6rem; padding-left: 1.6rem; }
+  .timeline::before { left: 7px; right: auto; top: 0; bottom: 0; width: 1px; height: auto; }
+  .timeline li { padding: 0; }
+  .timeline li::before { left: -1.6rem; top: 3px; }
+}
+
+/* ---------- anjana steps ---------- */
+.steps { list-style: none; margin: 0 auto; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--ink); }
+.steps li { padding: 1.1rem 1.4rem 0 0; display: grid; gap: 0.45rem; align-content: start; }
+.steps li + li { padding-left: 1.4rem; border-left: 1px solid var(--rule); }
+.steps h4 { margin: 0; font: 500 1.2rem/1.25 var(--f-display); color: var(--ink); }
+.steps p { font-size: 0.93rem; line-height: 1.5; }
+@media (max-width: 760px) { .steps { grid-template-columns: minmax(0, 1fr); } .steps li, .steps li + li { padding: 1rem 0; border-left: 0; } .steps li + li { border-top: 1px solid var(--rule); } }
+
+/* ---------- journals ---------- */
+.journals { margin-top: 2.4rem; display: grid; gap: 1rem; }
+.jrow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem 2rem; padding-top: 1.1rem; border-top: 1px solid var(--rule); }
+.journal { display: grid; gap: 0.35rem; align-content: start; text-decoration: none; color: var(--ink); }
+.journal .jn { font: 400 1.3rem/1.2 var(--f-display); transition: color .15s; }
+.journal .jn i { font-style: normal; }
+.journal:hover .jn { color: var(--accent); }
+.journal .jm { font: 400 0.82rem/1.4 var(--f-body); color: var(--muted); }
+@media (max-width: 900px) { .jrow { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .jrow { grid-template-columns: minmax(0, 1fr); } }
+.paper-link { text-decoration: none; }
+.paper-link:hover { color: var(--accent); }
+
+/* ---------- lab ---------- */
+.people { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; margin-top: 2.2rem; }
+.person { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1rem; align-items: start; padding: 1.4rem; background: var(--plate); border-radius: 4px; }
+.person h4 { margin: 0.3rem 0 0.5rem; font: 500 1.25rem/1.2 var(--f-display); color: var(--ink); }
+.person p:last-child { font-size: 0.92rem; line-height: 1.5; }
+.mono-ini { width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid var(--ink); display: grid; place-items: center; font: 500 0.82rem/1 var(--f-mono); letter-spacing: 0.06em; color: var(--ink); background: var(--surface); }
+@media (max-width: 900px) { .people { grid-template-columns: minmax(0, 1fr); } }
+.trials { margin-top: clamp(2.5rem, 6vw, 4rem); }
+.trials-label { margin-bottom: 1rem; }
+.marquee { overflow: hidden; border-block: 1px solid var(--rule); padding-block: 1.3rem; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.track { display: flex; width: max-content; animation: marquee 48s linear infinite; }
+.marquee:hover .track { animation-play-state: paused; }
+.set { display: flex; align-items: center; flex: none; }
+.trial { display: grid; gap: 0.25rem; padding-inline: 2.2rem; white-space: nowrap; }
+.trial b { font: 400 clamp(1.7rem, 3vw, 2.4rem)/1 var(--f-display); color: var(--ink); letter-spacing: -0.01em; }
+.trial span { font: 400 0.74rem/1.3 var(--f-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.sep { width: 26px; height: 16px; flex: none; background: radial-gradient(circle at 9px 8px, transparent 6px, var(--muted) 6.6px, transparent 7.4px), radial-gradient(circle at 17px 8px, transparent 6px, var(--muted) 6.6px, transparent 7.4px); opacity: 0.6; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .track { animation: none; width: auto; flex-wrap: wrap; justify-content: center; row-gap: 1.2rem; }
+  .set[aria-hidden="true"] { display: none; }
+  .set { flex-wrap: wrap; justify-content: center; row-gap: 1.2rem; }
+  .marquee { -webkit-mask-image: none; mask-image: none; }
+}
+.trials-note { font-size: 0.82rem; color: var(--muted); margin-top: 0.8rem; }
+
+/* ---------- fits ---------- */
+.fits th:first-child, .fits td:first-child { width: 22%; }
+.fits td { font-size: 0.97rem; color: var(--ink-soft); }
+.fits td:first-child { font: 500 0.72rem/1.6 var(--f-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.fits th { font: 500 1.1rem/1.3 var(--f-display); text-transform: none; letter-spacing: 0; color: var(--ink); }
+.fits th small { display: block; font: 400 0.8rem/1.4 var(--f-body); color: var(--muted); }
+
+/* ---------- next ---------- */
+.next-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-top: 1px solid var(--rule); }
+.next-list li { display: grid; grid-template-columns: minmax(0, 12rem) minmax(0, 1fr); gap: 0.4rem 2rem; padding: 1.1rem 0; border-bottom: 1px solid var(--rule); }
+.next-list b { font: 500 1.1rem/1.35 var(--f-display); color: var(--ink); }
+.next-list p { font-size: 0.97rem; }
+@media (max-width: 620px) { .next-list li { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- research ---------- */
+.pubs { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.2rem; counter-reset: pub; }
+.pubs li { display: grid; grid-template-columns: 2.2rem minmax(0, 1fr); gap: 0.2rem 0.6rem; counter-increment: pub; font-size: 0.95rem; line-height: 1.5; }
+.pubs li::before { content: counter(pub); font: 500 0.8rem/1.9 var(--f-mono); color: var(--muted); }
+.pubs .ttl { font: 500 1.08rem/1.35 var(--f-display); color: var(--ink); display: block; }
+.pubs .meta { color: var(--muted); font-size: 0.88rem; }
+
+/* ---------- contact ---------- */
+.contact { margin-top: clamp(4rem, 10vw, 8rem); background: var(--ink); color: var(--on-ink); }
+.contact .wide { padding-block: clamp(3rem, 8vw, 6rem); display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 2rem 4rem; align-items: end; }
+.contact h2 { color: var(--on-ink); }
+.contact .contact-lede { font-size: clamp(1.2rem, 1.8vw, 1.45rem); line-height: 1.45; }
+.contact p { color: color-mix(in srgb, var(--on-ink) 78%, transparent); }
+.contact .mono-label { color: color-mix(in srgb, var(--on-ink) 65%, transparent); }
+.contact .addr { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.8rem; }
+.contact .addr code { font: 500 1.05rem/1.3 var(--f-mono); color: var(--on-ink); user-select: all; padding: 0.55rem 0.75rem; border: 1px solid color-mix(in srgb, var(--on-ink) 35%, transparent); border-radius: 3px; }
+.contact .btn { border-color: var(--on-ink); color: var(--on-ink); }
+.contact .btn:hover { background: var(--on-ink); color: var(--ink); }
+@media (max-width: 760px) { .contact .wide { grid-template-columns: minmax(0, 1fr); } }
+footer { padding-block: 2rem 2.5rem; font-size: 0.82rem; color: var(--muted); }
+footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
+</style>
+
+<header class="mast wrap">
+  <div class="wide">
+    <a class="brand" href="#top" aria-label="Anjana home">
+      <svg viewBox="0 0 30 20" aria-hidden="true"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="20" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M15 3.1a8.5 8.5 0 0 1 0 13.8a8.5 8.5 0 0 1 0-13.8z" fill="var(--amber)"/></svg>
+      <b>Anjana</b>
+    </a>
+    <nav aria-label="Sections">
+      <a href="#problem">The problem</a>
+      <a href="#method">How it works</a>
+      <a href="#evidence">Evidence</a>
+      <a href="#copilot">Anjana</a>
+      <a href="#lab">The lab</a>
+    </nav>
+    <a class="btn" href="#contact">Talk to us</a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- ================= HERO ================= -->
+  <section class="hero wrap">
+    <div class="wide">
+      <h1>Every cardiovascular trial ends in a <em>reading room.</em></h1>
+      <div class="hero-sub">
+        <p class="lede">Before a trial can report its result, physicians on a clinical events committee read every reported hospitalization, heart attack, stroke and death, one dossier at a time. Anjana is an AI copilot that reads alongside them. Its methods have been validated against gold-standard committees in two global outcome trials.</p>
+        <div class="cta">
+          <a class="btn solid" href="#method">See how it works</a>
+          <a class="btn" href="#evidence">Read the evidence</a>
+        </div>
+      </div>
+
+      <figure class="fig-block plate-fig" style="margin-bottom:0">
+        <div class="plate hero-plate" data-fig="hero" data-autoplay="always">
+          <div class="frame">
+            <img class="poster" alt="Diagram: dossiers flow into two overlapping circles representing two independent AI readers, then split into three lanes: confident event, confident no event, and uncertain cases routed to a human reviewer." src="" loading="eager">
+            <video muted playsinline loop preload="none" aria-hidden="true"></video>
+          </div>
+        </div>
+        <figcaption class="figcap">
+          <span class="fig-n">Overview</span>
+          <span>Dossiers enter. Two independent AI readers assess each one. When they agree, the decision is recorded with its evidence; when they disagree, the case goes to a human adjudicator.</span>
+          <span class="ctrls"><button class="icon-btn" data-act="expand" aria-label="View full screen"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M1.8 5.2V1.8h3.4M8.8 1.8h3.4v3.4M12.2 8.8v3.4H8.8M5.2 12.2H1.8V8.8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button><button class="icon-btn" data-act="toggle" aria-label="Pause animation"><svg viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button></span>
+        </figcaption>
+      </figure>
+
+      <div class="figures-strip" aria-label="Key results">
+        <div class="stat">
+          <span class="num">84%</span>
+          <p>fewer committee reviews when only the cases the AI flags as uncertain go to physicians.</p>
+          <span class="src">DELIVER · 1,597 events</span>
+        </div>
+        <div class="stat">
+          <span class="num">91%</span>
+          <p>agreement with the full physician committee under that same hybrid strategy.</p>
+          <span class="src">DELIVER · κ 0.73</span>
+        </div>
+        <div class="stat">
+          <span class="num pair">0.76 <small>vs</small> 0.77</span>
+          <p>hazard ratio for dapagliflozin with AI-adjudicated versus committee-adjudicated events.</p>
+          <span class="src">DELIVER · HF hospitalization</span>
+        </div>
+        <div class="stat">
+          <span class="num">≈5¢</span>
+          <p>estimated cost to run the published model on one dossier.</p>
+          <span class="src">Circ Heart Fail 2025</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROBLEM ================= -->
+  <section class="chapter wrap" id="problem">
+    <div class="col chapter-head">
+      <p class="mono-label">The problem</p>
+      <h2>The gold standard is a committee of physicians, <em>reading.</em></h2>
+    </div>
+    <div class="col prose">
+      <p>A cardiovascular outcome trial is only as reliable as its event count. When a site reports a possible heart-failure hospitalization or myocardial infarction, the patient's records are collected, redacted and translated into a dossier. Two physicians on a central clinical events committee review it independently against standardized, FDA-endorsed endpoint definitions. If they disagree, the case goes to a committee meeting and the chair breaks the tie.</p>
+      <p>The process is rigorous, and it is the reason trial endpoints are trusted. It is also manual, and its cost grows with every event the trial accrues.</p>
+    </div>
+
+    <figure class="wide fig-block">
+      <div class="plate" data-fig="fig1">
+        <div class="frame">
+          <img class="poster" alt="Fig. 1: A trial site reports an event; a redacted, translated dossier is read by Physician A and Physician B; when they disagree, a committee meeting decides. 1,597 potential heart-failure hospitalizations in DELIVER each went through this process. Two committees reading the same dossiers agree at kappa of about 0.60." src="" loading="lazy">
+          <video muted playsinline preload="none" aria-hidden="true"></video>
+        </div>
+      </div>
+      <figcaption class="figcap">
+        <span class="fig-n">Fig. 1</span>
+        <span>How events are adjudicated today. Every dossier is read twice; every disagreement goes to committee. Agreement statistics are published estimates for heart-failure hospitalization in global trials; the squares are illustrative.</span>
+        <span class="ctrls">
+          <button class="icon-btn" data-act="replay" aria-label="Replay figure 1"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 2.2a4.8 4.8 0 1 1-4.5 3.1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.6 1.8v3.9h3.9" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+          <button class="icon-btn" data-act="expand" aria-label="View full screen"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M1.8 5.2V1.8h3.4M8.8 1.8h3.4v3.4M12.2 8.8v3.4H8.8M5.2 12.2H1.8V8.8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+          <button class="icon-btn" data-act="toggle" aria-label="Pause figure 1"><svg viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
+        </span>
+      </figcaption>
+    </figure>
+
+    <div class="wide ledger" role="list">
+      <div role="listitem">
+        <h4>Slow</h4>
+        <p>Trial closeout waits until the last dossier has been read twice and every disagreement has been discussed in committee.</p>
+      </div>
+      <div role="listitem">
+        <h4>Costly</h4>
+        <p>Trials supporting approval of new cardiovascular drugs cost more than <span class="num-inline">$35,000</span> per participant. Physician review is one of the costs that scales with event count.</p>
+      </div>
+      <div role="listitem">
+        <h4>Imperfectly reproducible</h4>
+        <p>Two reviewers on one committee agree at <span class="num-inline"><span class="kappa">κ</span> 0.72</span> on heart-failure hospitalization. Two different committees agree at <span class="num-inline"><span class="kappa">κ</span> 0.60</span>.</p>
+      </div>
+      <div role="listitem">
+        <h4>Hard to audit</h4>
+        <p>A verdict is recorded as an outcome. The reasoning that produced it is rarely captured in a form a regulator or sponsor can check.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= METHOD ================= -->
+  <section class="chapter wrap" id="method">
+    <div class="col chapter-head">
+      <p class="mono-label">How it works</p>
+      <h2>Two independent readers, as in a committee.</h2>
+    </div>
+    <div class="col prose">
+      <p>We did not try to replace the committee's judgment with a single model. We rebuilt its structure. Each dossier is read by two AI systems that work in different ways.</p>
+    </div>
+    <div class="col readers">
+      <div class="reader">
+        <span class="tag">Reader 1 · reasoning language model</span>
+        <h4>Applies the definition and quotes the record</h4>
+        <p>Given the FDA / SCTI endpoint definition and the dossier text, it checks each criterion, quotes the sentences that satisfy it, and explains its decision.</p>
+      </div>
+      <div class="reader">
+        <span class="tag">Reader 2 · trained classifier</span>
+        <h4>Has learned from committee decisions</h4>
+        <p>A Clinical Longformer model fine-tuned on thousands of events adjudicated by physician committees in completed trials. It scores how likely a committee would be to confirm the event.</p>
+      </div>
+    </div>
+    <div class="col prose" style="margin-top:1.4rem">
+      <p>When both readers agree with confidence, the decision stands with its evidence attached. When they disagree, the event is flagged as uncertain and routed to a human adjudicator. Disagreement between independent readers is also how a committee finds its hard cases.</p>
+    </div>
+
+    <figure class="wide fig-block">
+      <div class="plate" data-fig="fig2">
+        <div class="frame">
+          <img class="poster" alt="Fig. 2: The committee structure with Physician A and Physician B replaced by a reasoning model and a trained classifier. If they agree, the AI adjudicates with quoted evidence; if not, the case is routed to a human adjudicator." src="" loading="lazy">
+          <video muted playsinline preload="none" aria-hidden="true"></video>
+        </div>
+      </div>
+      <figcaption class="figcap">
+        <span class="fig-n">Fig. 2</span>
+        <span>The committee's logic, with two AI readers. Agreement produces a confident decision; disagreement is the uncertainty signal that brings in a person.</span>
+        <span class="ctrls">
+          <button class="icon-btn" data-act="replay" aria-label="Replay figure 2"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 2.2a4.8 4.8 0 1 1-4.5 3.1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.6 1.8v3.9h3.9" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+          <button class="icon-btn" data-act="expand" aria-label="View full screen"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M1.8 5.2V1.8h3.4M8.8 1.8h3.4v3.4M12.2 8.8v3.4H8.8M5.2 12.2H1.8V8.8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+          <button class="icon-btn" data-act="toggle" aria-label="Pause figure 2"><svg viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
+        </span>
+      </figcaption>
+    </figure>
+
+    <div class="col chapter-head" style="margin-top:clamp(2.5rem,6vw,4.5rem)">
+      <h3>Every decision shows its work.</h3>
+    </div>
+    <div class="col prose">
+      <p>For each criterion in the definition (primary diagnosis, length of stay, symptoms, objective signs, treatment) the model quotes the sentence in the record that satisfies it. A reviewer can check a decision by reading five highlighted lines instead of forty pages. Across DELIVER, the model documented dyspnea in 86% of dossiers, peripheral edema in 66% and intravenous loop diuretics in 78%.</p>
+    </div>
+
+    <figure class="wide fig-block">
+      <div class="plate" data-fig="fig3">
+        <div class="frame">
+          <img class="poster" alt="Fig. 3: A synthetic discharge summary beside the five FDA/SCTI criteria for heart-failure hospitalization. Each criterion is checked and linked to the highlighted sentence that satisfies it, ending in a decision of HF hospitalization." src="" loading="lazy">
+          <video muted playsinline preload="none" aria-hidden="true"></video>
+        </div>
+      </div>
+      <figcaption class="figcap">
+        <span class="fig-n">Fig. 3</span>
+        <span>Criterion-level evidence for a heart-failure hospitalization. The record shown is a synthetic example; in the study, details of real cases were changed to protect confidentiality.</span>
+        <span class="ctrls">
+          <button class="icon-btn" data-act="replay" aria-label="Replay figure 3"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 2.2a4.8 4.8 0 1 1-4.5 3.1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.6 1.8v3.9h3.9" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+          <button class="icon-btn" data-act="expand" aria-label="View full screen"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M1.8 5.2V1.8h3.4M8.8 1.8h3.4v3.4M12.2 8.8v3.4H8.8M5.2 12.2H1.8V8.8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+          <button class="icon-btn" data-act="toggle" aria-label="Pause figure 3"><svg viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
+        </span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- ================= EVIDENCE ================= -->
+  <section class="chapter wrap" id="evidence">
+    <div class="col chapter-head">
+      <p class="mono-label">The evidence</p>
+      <h2>Validated where adjudication is <em>hardest.</em></h2>
+    </div>
+    <div class="col prose">
+      <p>The models were trained on committee-adjudicated events from completed trials and tested on trials they had never seen. Both test trials were global, with translated records of uneven quality from many countries. Sites submitted only suspected events, so obvious non-events never reached the committee or the models. What remained were the hard cases.</p>
+    </div>
+
+    <div class="wide journals" aria-label="Published in">
+      <p class="mono-label">Published in</p>
+      <div class="jrow">
+        <a class="journal" href="https://doi.org/10.1161/CIRCHEARTFAILURE.124.012514" target="_blank" rel="noopener"><span class="jn">Circulation: <i>Heart Failure</i></span><span class="jm">2025 · HF-NLP in DELIVER ↗</span></a>
+        <a class="journal" href="https://doi.org/10.1016/j.jacc.2025.10.055" target="_blank" rel="noopener"><span class="jn">JACC</span><span class="jm">2025 · Auto-MACE in PARADISE-MI ↗</span></a>
+        <a class="journal" href="https://doi.org/10.1001/jamacardio.2023.4859" target="_blank" rel="noopener"><span class="jn">JAMA <i>Cardiology</i></span><span class="jm">2024 · NLP in INVESTED ↗</span></a>
+        <a class="journal" href="https://doi.org/10.1016/j.jchf.2023.02.012" target="_blank" rel="noopener"><span class="jn">JACC: <i>Heart Failure</i></span><span class="jm">2023 · NLP in health records ↗</span></a>
+      </div>
+    </div>
+
+    <div class="wide studies" style="margin-top:2rem">
+      <article class="study">
+        <div class="top"><span class="mono-label">Heart-failure hospitalization</span><a class="mono-label paper-link" href="https://doi.org/10.1161/CIRCHEARTFAILURE.124.012514" target="_blank" rel="noopener">Circ Heart Fail 2025 ↗</a></div>
+        <h3>DELIVER</h3>
+        <dl>
+          <dt>Trial</dt><dd>Dapagliflozin vs placebo, 6,063 patients with HF and mildly reduced or preserved ejection fraction</dd>
+          <dt>Tested on</dt><dd>1,597 site-reported potential HF hospitalizations</dd>
+          <dt>Trained on</dt><dd>INVESTED, PARAGON-HF and PARADISE-MI (7,150 adjudicated hospitalizations)</dd>
+          <dt>Readers</dt><dd>GPT-4o with the SCTI definition · Clinical Longformer</dd>
+        </dl>
+      </article>
+      <article class="study">
+        <div class="top"><span class="mono-label">CV death · MI · stroke</span><a class="mono-label paper-link" href="https://doi.org/10.1016/j.jacc.2025.10.055" target="_blank" rel="noopener">JACC 2025 ↗</a></div>
+        <h3>PARADISE-MI</h3>
+        <dl>
+          <dt>Trial</dt><dd>Sacubitril/valsartan vs ramipril, 5,661 patients after myocardial infarction</dd>
+          <dt>Tested on</dt><dd>455 deaths, 659 potential MIs and 167 potential strokes</dd>
+          <dt>Trained on</dt><dd>Over 4,000 adjudicated events from five global trials</dd>
+          <dt>Readers</dt><dd>OpenAI o1-mini with SCTI definitions · Clinical Longformer</dd>
+        </dl>
+      </article>
+    </div>
+
+    <div class="col chapter-head" style="margin-top:clamp(2.5rem,6vw,4.5rem)">
+      <h3>Confidence tracks the committee.</h3>
+    </div>
+    <div class="col prose">
+      <p>Combining the two readers gives every event a score from −2 (confident not HF) to +2 (confident HF). The higher the score, the more often the physician committee had confirmed the event: 17% at the bottom of the scale, 96% at the top. The middle of the scale is where the work is, and the model knows it.</p>
+    </div>
+
+    <figure class="wide fig-block">
+      <div class="plate" data-fig="fig4">
+        <div class="frame">
+          <img class="poster" alt="Fig. 4: 1,597 potential HF hospitalizations from DELIVER sorted into five AI score categories. The share confirmed by the committee rises from 17% to 32%, 66%, 85% and 96%. The uncertain middle group, 16% of events, is routed to a human adjudicator, giving 84% fewer committee reviews and 91% agreement with the full committee." src="" loading="lazy">
+          <video muted playsinline preload="none" aria-hidden="true"></video>
+        </div>
+      </div>
+      <figcaption class="figcap">
+        <span class="fig-n">Fig. 4</span>
+        <span>Triage in DELIVER. Each dot is about 1% of events (≈16 dossiers); category sizes are rounded. Filled dots were confirmed as HF hospitalizations by the committee.</span>
+        <span class="ctrls">
+          <button class="icon-btn" data-act="replay" aria-label="Replay figure 4"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 2.2a4.8 4.8 0 1 1-4.5 3.1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.6 1.8v3.9h3.9" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+          <button class="icon-btn" data-act="expand" aria-label="View full screen"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M1.8 5.2V1.8h3.4M8.8 1.8h3.4v3.4M12.2 8.8v3.4H8.8M5.2 12.2H1.8V8.8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+          <button class="icon-btn" data-act="toggle" aria-label="Pause figure 4"><svg viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
+        </span>
+      </figcaption>
+    </figure>
+
+    <div class="col chapter-head">
+      <h3>The sponsor chooses the operating point.</h3>
+    </div>
+    <div class="col prose" style="margin-bottom:1.6rem">
+      <p>Because every event carries a confidence score, the amount of physician review becomes a setting rather than a fixed cost. These are the strategies evaluated in DELIVER.</p>
+    </div>
+
+    <div class="wide op" id="op">
+      <div>
+        <p class="mono-label">Strategy · DELIVER, 1,597 events</p>
+        <div class="op-choices" role="radiogroup" aria-label="Adjudication strategy">
+          <label class="op-choice"><input type="radio" name="op" id="op-0" value="0"><span class="dot"></span><span class="t">AI adjudicates everything<small>No physician review</small></span><span class="r">0%</span></label>
+          <label class="op-choice"><input type="radio" name="op" id="op-1" value="1" checked><span class="dot"></span><span class="t">Physicians review uncertain events<small>Score 0 only</small></span><span class="r">16%</span></label>
+          <label class="op-choice"><input type="radio" name="op" id="op-2" value="2"><span class="dot"></span><span class="t">AI rules in likely events; physicians review the rest<small>Scores −2, −1 and 0 reviewed</small></span><span class="r">33%</span></label>
+          <label class="op-choice"><input type="radio" name="op" id="op-3" value="3"><span class="dot"></span><span class="t">AI decides only its most confident events<small>Scores −1, 0 and +1 reviewed</small></span><span class="r">47%</span></label>
+          <label class="op-choice"><input type="radio" name="op" id="op-4" value="4"><span class="dot"></span><span class="t">Full committee review<small>Today's standard, the reference</small></span><span class="r">100%</span></label>
+        </div>
+      </div>
+      <div class="op-read" aria-live="polite">
+        <div class="op-nums">
+          <div><span class="num" id="op-review">16%</span><p>of events reviewed by physicians</p></div>
+          <div><span class="num" id="op-agree">91%</span><p id="op-agree-sub">agreement with the full committee · κ 0.73</p></div>
+        </div>
+        <div>
+          <div class="op-bar" aria-hidden="true"><span class="ai" id="op-bar-ai" style="flex-basis:84%"></span><span class="hu" id="op-bar-hu" style="flex-basis:16%"></span></div>
+          <div class="op-legend" style="margin-top:0.55rem"><span><i style="background:var(--ink)"></i>Adjudicated by AI</span><span><i style="background:var(--amber)"></i>Reviewed by physicians</span></div>
+        </div>
+        <div class="chart-wrap" id="op-chart">
+          <p class="chart-title">More review buys more agreement, with diminishing returns</p>
+          <p class="chart-sub">Agreement with the full committee vs share of events reviewed by physicians</p>
+          <svg viewBox="0 0 520 250" role="img" aria-label="Line chart of agreement versus physician review share: 0% review gives 83% agreement, 16% gives 91%, 33% gives 95%, 47% gives 97%, 100% is the committee reference."></svg>
+          <div class="tip" id="op-tip"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col chapter-head" style="margin-top:clamp(2.5rem,6vw,4.5rem)">
+      <h3>The same approach extends to MACE.</h3>
+    </div>
+    <div class="col prose" style="margin-bottom:1.4rem">
+      <p>In PARADISE-MI, Auto-MACE applied the two-reader design to cardiovascular death, myocardial infarction and stroke. Where the readers agreed, the AI matched the committee 88–97% of the time. Sending only the uncertain events to physicians raised agreement to 89–98%.</p>
+    </div>
+    <div class="col">
+      <div class="tbl-wrap">
+        <table class="mace">
+          <thead><tr><th>Endpoint</th><th>Events</th><th>AI confident</th><th>Agreement when confident</th><th>AI + physician review of uncertain</th></tr></thead>
+          <tbody>
+            <tr><td>Cardiovascular death<span class="sub">CV, non-CV or unknown</span></td><td class="n">455</td><td class="n">69%</td><td class="n">97%</td><td class="n hi">98%</td></tr>
+            <tr><td>Myocardial infarction</td><td class="n">659</td><td class="n">46%</td><td class="n">89%</td><td class="n hi">95%</td></tr>
+            <tr><td>Stroke</td><td class="n">167</td><td class="n">81%</td><td class="n">88%</td><td class="n hi">89%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tbl-note">With no physician review at all, agreement was 86% for deaths, 76% for MIs and 84% for strokes. Text-extraction problems with lab tables and checkbox forms contributed to MI errors.</p>
+    </div>
+
+    <div class="col chapter-head" style="margin-top:clamp(2.5rem,6vw,4.5rem)">
+      <h3>The trial result does not move.</h3>
+    </div>
+    <div class="col prose">
+      <p>The question a sponsor cares about is whether AI adjudication would change the trial's answer. Re-running both primary analyses with AI-adjudicated events gave nearly identical treatment-effect estimates.</p>
+    </div>
+
+    <figure class="wide fig-block">
+      <div class="plate" data-fig="fig5">
+        <div class="frame">
+          <img class="poster" alt="Fig. 5: Forest plot. DELIVER heart-failure hospitalization: committee hazard ratio 0.77 (0.67 to 0.89), AI 0.76 (0.66 to 0.88). PARADISE-MI MACE: committee 0.90 (0.77 to 1.05), Auto-MACE 0.91 (0.78 to 1.07), AI plus human review 0.92 (0.79 to 1.07)." src="" loading="lazy">
+          <video muted playsinline preload="none" aria-hidden="true"></video>
+        </div>
+      </div>
+      <figcaption class="figcap">
+        <span class="fig-n">Fig. 5</span>
+        <span>Hazard ratios with 95% confidence intervals, using each trial's prespecified Cox model. DELIVER: time to first HF hospitalization. PARADISE-MI: time to first MACE.</span>
+        <span class="ctrls">
+          <button class="icon-btn" data-act="replay" aria-label="Replay figure 5"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 2.2a4.8 4.8 0 1 1-4.5 3.1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.6 1.8v3.9h3.9" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+          <button class="icon-btn" data-act="expand" aria-label="View full screen"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M1.8 5.2V1.8h3.4M8.8 1.8h3.4v3.4M12.2 8.8v3.4H8.8M5.2 12.2H1.8V8.8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+          <button class="icon-btn" data-act="toggle" aria-label="Pause figure 5"><svg viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
+        </span>
+      </figcaption>
+    </figure>
+
+    <div class="wide" style="margin-top:clamp(3rem,7vw,5rem)">
+      <p class="mono-label" style="margin-bottom:1.6rem">Track record</p>
+      <ol class="timeline">
+        <li><span class="when">JACC: HF · 2023</span><h4>One health system</h4><p>An NLP model trained on Mass General Brigham records identified HF hospitalizations more accurately than diagnosis codes.</p></li>
+        <li><span class="when">JAMA Cardiol · 2024</span><h4>A multicenter trial</h4><p>In INVESTED, the model agreed with the committee 87% of the time out of the box; 93% after fine-tuning, against 94% between the committee's own reviewers.</p></li>
+        <li><span class="when">Circ Heart Fail · 2025</span><h4>A global HF trial</h4><p>HF-NLP in DELIVER: 83% agreement alone, 91% with physician review of uncertain events, and the same treatment effect.</p></li>
+        <li><span class="when">JACC · 2025</span><h4>MACE</h4><p>Auto-MACE in PARADISE-MI extends the two-reader design to CV death, MI and stroke.</p></li>
+        <li class="next"><span class="when">In development</span><h4>Anjana</h4><p>The research systems become a working tool for committees and sponsors.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================= ANJANA ================= -->
+  <section class="chapter wrap" id="copilot">
+    <div class="col chapter-head">
+      <p class="mono-label">Anjana</p>
+      <h2>A cockpit for the people who <em>adjudicate.</em></h2>
+    </div>
+    <div class="col prose">
+      <p>Anjana turns the research into a working tool for clinical events committees. Adjudicators keep the final word. They open a queue the AI has already read, see the source dossier beside the AI's recommendation, check the evidence for and against each criterion, then confirm or override and sign.</p>
+    </div>
+
+    <figure class="wide fig-block">
+      <div class="plate" data-fig="fig6">
+        <div class="frame">
+          <img class="poster" alt="Fig. 6: A sketch of the Anjana application. A queue of events with AI recommendations; a cockpit with the redacted source dossier on the left and the AI recommendation, Reject HF hospitalization, with criteria and evidence counts on the right; a decision form signed by the adjudicator." src="" loading="lazy">
+          <video muted playsinline preload="none" aria-hidden="true"></video>
+        </div>
+      </div>
+      <figcaption class="figcap">
+        <span class="fig-n">Fig. 6</span>
+        <span>A sketch of Anjana's adjudicator workflow, drawn from the working application. The case and identifiers shown are synthetic.</span>
+        <span class="ctrls">
+          <button class="icon-btn" data-act="replay" aria-label="Replay figure 6"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 2.2a4.8 4.8 0 1 1-4.5 3.1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1.6 1.8v3.9h3.9" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+          <button class="icon-btn" data-act="expand" aria-label="View full screen"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M1.8 5.2V1.8h3.4M8.8 1.8h3.4v3.4M12.2 8.8v3.4H8.8M5.2 12.2H1.8V8.8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+          <button class="icon-btn" data-act="toggle" aria-label="Pause figure 6"><svg viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg></button>
+        </span>
+      </figcaption>
+    </figure>
+
+    <ol class="wide steps">
+      <li><span class="mono-label">Queue</span><h4>Every case arrives pre-read</h4><p>Each event in the adjudicator's queue carries the AI's recommendation. Uncertain cases stand out.</p></li>
+      <li><span class="mono-label">Cockpit</span><h4>Evidence beside the source</h4><p>The redacted dossier sits next to the recommendation, and each criterion links to the sentences for and against it.</p></li>
+      <li><span class="mono-label">Decision</span><h4>The adjudicator signs</h4><p>Confirm or override, complete the committee's form, sign, and move to the next case.</p></li>
+    </ol>
+
+    <div class="col chapter-head" style="margin-top:clamp(3rem,7vw,5rem)">
+      <h3>Where it applies.</h3>
+    </div>
+    <div class="col prose" style="margin-bottom:1.4rem">
+      <p>Pivotal trials keep their committees and spend physician time only where it matters. Pragmatic trials that enroll whole health systems or countries cannot afford chart review at all and fall back on diagnosis codes; automated adjudication can bring committee-grade endpoints to studies that never had them.</p>
+    </div>
+    <div class="wide">
+      <div class="tbl-wrap">
+        <table class="fits">
+          <thead><tr><th></th><th>Pivotal trials<small>Phase II and III</small></th><th>Large-scale studies<small>Phase IV, pragmatic trials, real-world evidence</small></th></tr></thead>
+          <tbody>
+            <tr><td>Endpoints today</td><td>Physician committee adjudication</td><td>Diagnosis codes or all-cause outcomes</td></tr>
+            <tr><td>With Anjana</td><td>AI adjudication with physician review of uncertain events</td><td>Automated adjudication of health-record data</td></tr>
+            <tr><td>What changes</td><td>Faster and cheaper closeout; more reproducible; every decision auditable</td><td>More accurate than codes; efficient human oversight</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col chapter-head" style="margin-top:clamp(3rem,7vw,5rem)">
+      <h3>What comes next.</h3>
+    </div>
+    <div class="col">
+      <ul class="next-list">
+        <li><b>Prospective use</b><p>Our results re-adjudicate completed trials. Running the hybrid workflow live will measure real savings in time and cost.</p></li>
+        <li><b>Beyond text</b><p>Lab tables and ECG images were not read by the models. Multimodal inputs should most improve myocardial-infarction adjudication.</p></li>
+        <li><b>Untranslated records</b><p>Dossiers were translated by humans before review. Reading source-language records directly would remove a costly step.</p></li>
+        <li><b>Upstream steps</b><p>Event identification, record collection and date confirmation are still manual and are natural next targets.</p></li>
+        <li><b>Regulatory pathway</b><p>A validation framework agreed with the FDA and EMA is the route to AI-adjudicated endpoints in pivotal trials.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= THE LAB ================= -->
+  <section class="chapter wrap" id="lab">
+    <div class="col chapter-head">
+      <p class="mono-label">The lab</p>
+      <h2>Built where the trials are <em>adjudicated.</em></h2>
+    </div>
+    <div class="col prose">
+      <p>Anjana grew out of the Cardiovascular Division at Brigham and Women's Hospital, part of Mass General Brigham, and Harvard Medical School. The group led by Scott Solomon runs the hospital's Cardiac Imaging Core Laboratory and Clinical Trials Endpoints Center, and its physician committees have adjudicated outcomes for large global cardiovascular trials. Those committee decisions are what Anjana's models learned from.</p>
+    </div>
+
+    <div class="wide people">
+      <article class="person">
+        <span class="mono-ini" aria-hidden="true">SS</span>
+        <div><p class="mono-label">Senior investigator</p><h4>Scott D. Solomon, MD</h4><p>Edward D. Frohlich Distinguished Chair and Professor of Medicine, Harvard Medical School. Leads the Cardiac Imaging Core Laboratory and the Clinical Trials Endpoints Center at Brigham and Women's Hospital.</p></div>
+      </article>
+      <article class="person">
+        <span class="mono-ini" aria-hidden="true">JC</span>
+        <div><p class="mono-label">Senior investigator</p><h4>Jonathan W. Cunningham, MD, MPH</h4><p>Cardiologist at Brigham and Women's Hospital and Harvard Medical School. Senior author of the HF-NLP and Auto-MACE studies.</p></div>
+      </article>
+      <article class="person">
+        <span class="mono-ini" aria-hidden="true">PM</span>
+        <div><p class="mono-label">Lead researcher</p><h4>Pablo M. Martí Castellote, PhD</h4><p>Brigham and Women's Hospital and the Broad Institute of MIT and Harvard. First author of the HF-NLP and Auto-MACE studies.</p></div>
+      </article>
+    </div>
+
+    <div class="trials" aria-label="Global outcome trials led or adjudicated by the Brigham group">
+      <p class="wide mono-label trials-label">Global outcome trials led or adjudicated by the Brigham group</p>
+      <div class="marquee">
+        <div class="track">
+          <div class="set"><span class="trial"><b>PARAGON-HF</b><span>Novartis · sacubitril/valsartan</span></span><i class="sep" aria-hidden="true"></i><span class="trial"><b>PARADISE-MI</b><span>Novartis · sacubitril/valsartan</span></span><i class="sep" aria-hidden="true"></i><span class="trial"><b>DELIVER</b><span>AstraZeneca · dapagliflozin</span></span><i class="sep" aria-hidden="true"></i><span class="trial"><b>FINEARTS-HF</b><span>Bayer · finerenone</span></span><i class="sep" aria-hidden="true"></i><span class="trial"><b>INVESTED</b><span>NHLBI · influenza vaccine</span></span><i class="sep" aria-hidden="true"></i><span class="trial"><b>PRO2TECT</b><span>Akebia · vadadustat</span></span><i class="sep" aria-hidden="true"></i><span class="trial"><b>INNO2VATE</b><span>Akebia · vadadustat</span></span><i class="sep" aria-hidden="true"></i></div><div class="set" aria-hidden="true"><span class="trial" aria-hidden="true"><b>PARAGON-HF</b><span>Novartis · sacubitril/valsartan</span></span><i class="sep" aria-hidden="true"></i><span class="trial" aria-hidden="true"><b>PARADISE-MI</b><span>Novartis · sacubitril/valsartan</span></span><i class="sep" aria-hidden="true"></i><span class="trial" aria-hidden="true"><b>DELIVER</b><span>AstraZeneca · dapagliflozin</span></span><i class="sep" aria-hidden="true"></i><span class="trial" aria-hidden="true"><b>FINEARTS-HF</b><span>Bayer · finerenone</span></span><i class="sep" aria-hidden="true"></i><span class="trial" aria-hidden="true"><b>INVESTED</b><span>NHLBI · influenza vaccine</span></span><i class="sep" aria-hidden="true"></i><span class="trial" aria-hidden="true"><b>PRO2TECT</b><span>Akebia · vadadustat</span></span><i class="sep" aria-hidden="true"></i><span class="trial" aria-hidden="true"><b>INNO2VATE</b><span>Akebia · vadadustat</span></span><i class="sep" aria-hidden="true"></i></div>
+        </div>
+      </div>
+      <p class="wide trials-note">Sponsor names identify each trial's funder and do not imply endorsement of Anjana.</p>
+    </div>
+
+    <div class="col" style="margin-top:clamp(3rem,7vw,4.5rem)">
+      <p class="mono-label" style="margin-bottom:1.4rem">Publications</p>
+      <ol class="pubs">
+        <li><div><a class="ttl" href="https://doi.org/10.1016/j.jacc.2025.10.055" target="_blank" rel="noopener">Using Artificial Intelligence to Adjudicate Major Adverse Cardiovascular Events in Clinical Trials</a><span class="meta">Marti-Castellote PM, Badrouchi S, Claggett B, et al. Journal of the American College of Cardiology. 2025.</span></div></li>
+        <li><div><a class="ttl" href="https://doi.org/10.1161/CIRCHEARTFAILURE.124.012514" target="_blank" rel="noopener">Natural Language Processing to Adjudicate Heart Failure Hospitalizations in Global Clinical Trials</a><span class="meta">Marti-Castellote PM, Reeder C, Claggett B, et al. Circulation: Heart Failure. 2025;18:e012514.</span></div></li>
+        <li><div><a class="ttl" href="https://doi.org/10.1001/jamacardio.2023.4859" target="_blank" rel="noopener">Natural Language Processing for Adjudication of Heart Failure in a Multicenter Clinical Trial</a><span class="meta">Cunningham JW, Singh P, Reeder C, et al. JAMA Cardiology. 2024;9:174–181.</span></div></li>
+        <li><div><a class="ttl" href="https://doi.org/10.1016/j.jchf.2023.02.012" target="_blank" rel="noopener">Natural Language Processing for Adjudication of Heart Failure in the Electronic Health Record</a><span class="meta">Cunningham JW, Singh P, Reeder C, et al. JACC: Heart Failure. 2023;11:852–854.</span></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="contact wrap" id="contact">
+    <div class="wide">
+      <div class="prose">
+        <p class="mono-label">Partners and investors</p>
+        <h2>We are building.</h2>
+        <p class="contact-lede">If you run trials, adjudicate them or invest in the infrastructure behind them, we would like to talk.</p>
+      </div>
+      <div>
+        <p class="mono-label">Write to us</p>
+        <div class="addr"><code id="addr">hello@anjana.example</code><button class="btn" id="copy-addr" type="button">Copy address</button></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="wide">
+    <span>Anjana takes its name from the anjanas, the benevolent spirits of Cantabrian mythology. Figures re-draw published results from DELIVER and PARADISE-MI; records shown are synthetic.</span>
+    <span>© 2026 Anjana</span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  /* ---------------- theme-aware animated figures ---------------- */
+  const root = document.documentElement;
+  const mq = window.matchMedia('(prefers-color-scheme: dark)');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const theme = () => root.dataset.theme === 'dark' ? 'dark' : root.dataset.theme === 'light' ? 'light' : (mq.matches ? 'dark' : 'light');
+  const plates = [...document.querySelectorAll('.plate[data-fig]')];
+
+  function setSources(p, force) {
+    const id = p.dataset.fig, th = theme();
+    if (p.dataset.th === th && !force) return;
+    p.dataset.th = th;
+    const img = p.querySelector('img.poster'), v = p.querySelector('video');
+    img.src = `media/${id}-${th}.jpg`;
+    v.poster = `media/${id}-${th}.jpg`;
+    if (p.dataset.loaded) {
+      const wasPlaying = !v.paused;
+      v.src = `media/${id}-${th}.mp4`;
+      if (wasPlaying) v.play().catch(() => {});
+    }
+  }
+  function load(p) {
+    if (p.dataset.loaded) return;
+    p.dataset.loaded = '1';
+    const v = p.querySelector('video');
+    v.src = `media/${p.dataset.fig}-${p.dataset.th}.mp4`;
+    v.addEventListener('playing', () => { p.querySelector('img.poster').style.visibility = 'hidden'; }, { once: false });
+  }
+  function setToggle(p, playing) {
+    const fig = p.closest('figure'); if (!fig) return;
+    const b = fig.querySelector('[data-act="toggle"]'); if (!b) return;
+    b.innerHTML = playing
+      ? '<svg viewBox="0 0 14 14" aria-hidden="true"><rect x="3" y="2" width="3" height="10" fill="currentColor"/><rect x="8" y="2" width="3" height="10" fill="currentColor"/></svg>'
+      : '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2.2l8 4.8-8 4.8z" fill="currentColor"/></svg>';
+    b.setAttribute('aria-label', (playing ? 'Pause ' : 'Play ') + (p.dataset.fig === 'hero' ? 'animation' : 'figure ' + p.dataset.fig.replace('fig', '')));
+  }
+  plates.forEach(p => {
+    setSources(p, true);
+    const v = p.querySelector('video');
+    v.addEventListener('play', () => setToggle(p, true));
+    v.addEventListener('pause', () => setToggle(p, false));
+    v.addEventListener('ended', () => setToggle(p, false));
+    setToggle(p, false);
+    const fig = p.closest('figure');
+    fig.querySelectorAll('[data-act]').forEach(btn => btn.addEventListener('click', () => {
+      load(p);
+      p.dataset.user = '1';
+      if (btn.dataset.act === 'expand') {
+        try {
+          if (v.requestFullscreen) { v.requestFullscreen().then(() => v.play().catch(() => {})).catch(() => { if (v.webkitEnterFullscreen) v.webkitEnterFullscreen(); }); }
+          else if (v.webkitEnterFullscreen) { v.webkitEnterFullscreen(); v.play().catch(() => {}); }
+        } catch (_) {}
+        return;
+      }
+      if (btn.dataset.act === 'replay') { v.currentTime = 0; v.play().catch(() => {}); }
+      else if (v.paused) { v.play().catch(() => {}); } else { v.pause(); p.dataset.userPaused = '1'; }
+      if (btn.dataset.act !== 'toggle' || !v.paused) delete p.dataset.userPaused;
+    }));
+  });
+  const onTheme = () => plates.forEach(p => setSources(p));
+  mq.addEventListener ? mq.addEventListener('change', onTheme) : mq.addListener(onTheme);
+  new MutationObserver(onTheme).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+
+  if ('IntersectionObserver' in window) {
+    const near = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { load(e.target); near.unobserve(e.target); } }), { rootMargin: '400px 0px' });
+    const vis = new IntersectionObserver(es => es.forEach(e => {
+      const p = e.target, v = p.querySelector('video');
+      if (reduce.matches) return;
+      if (e.isIntersecting && e.intersectionRatio >= 0.45) {
+        if (p.dataset.userPaused) return;
+        load(p);
+        if (!p.dataset.started && p.dataset.fig !== 'hero') { p.dataset.started = '1'; try { v.currentTime = 0; } catch (_) {} }
+        v.play().catch(() => {});
+      } else if (!v.paused) { v.pause(); }
+    }), { threshold: [0, 0.45, 0.8] });
+    plates.forEach(p => { near.observe(p); vis.observe(p); });
+  } else {
+    plates.forEach(load);
+  }
+  // narrative figures hold their last frame, then restart after a pause
+  plates.filter(p => p.dataset.fig !== 'hero').forEach(p => {
+    const v = p.querySelector('video');
+    v.addEventListener('ended', () => {
+      setTimeout(() => {
+        const r = p.getBoundingClientRect();
+        if (!p.dataset.userPaused && !reduce.matches && r.top < innerHeight * 0.75 && r.bottom > innerHeight * 0.25) { v.currentTime = 0; v.play().catch(() => {}); }
+      }, 4000);
+    });
+  });
+
+  /* ---------------- operating point ---------------- */
+  const OP = [
+    { review: 0,   agree: 83,  sub: 'agreement with the full committee · κ 0.52' },
+    { review: 16,  agree: 91,  sub: 'agreement with the full committee · κ 0.73' },
+    { review: 33,  agree: 95,  sub: 'agreement with the full committee' },
+    { review: 47,  agree: 97,  sub: 'agreement with the full committee · κ 0.92' },
+    { review: 100, agree: 100, sub: 'the committee is the reference' },
+  ];
+  const svg = document.querySelector('#op-chart svg');
+  const tip = document.getElementById('op-tip');
+  const W = 520, H = 250, m = { l: 44, r: 16, t: 14, b: 40 };
+  const x = v => m.l + v / 100 * (W - m.l - m.r);
+  const y = v => m.t + (100 - v) / 50 * (H - m.t - m.b);
+  const NS = 'http://www.w3.org/2000/svg';
+  const el = (n, a, parent = svg) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); parent.appendChild(e); return e; };
+  [50, 60, 70, 80, 90, 100].forEach(v => {
+    el('line', { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), stroke: 'var(--rule)', 'stroke-width': 1 });
+    const t = el('text', { x: m.l - 10, y: y(v) + 4, 'text-anchor': 'end', fill: 'var(--muted)', 'font-family': 'var(--f-mono)', 'font-size': 11 }); t.textContent = v + '%';
+  });
+  [0, 25, 50, 75, 100].forEach(v => {
+    const t = el('text', { x: x(v), y: H - m.b + 20, 'text-anchor': v === 0 ? 'start' : v === 100 ? 'end' : 'middle', fill: 'var(--muted)', 'font-family': 'var(--f-mono)', 'font-size': 11 }); t.textContent = v + '%';
+  });
+  const xl = el('text', { x: (m.l + W - m.r) / 2, y: H - 4, 'text-anchor': 'middle', fill: 'var(--muted)', 'font-family': 'var(--f-body)', 'font-size': 11.5 }); xl.textContent = 'Events reviewed by physicians';
+  el('path', { d: OP.map((p, i) => (i ? 'L' : 'M') + x(p.review) + ' ' + y(p.agree)).join(' '), fill: 'none', stroke: 'var(--ink)', 'stroke-width': 2, 'stroke-linejoin': 'round' });
+  const dots = OP.map((p, i) => {
+    const g = el('g', { cursor: 'pointer' });
+    el('circle', { cx: x(p.review), cy: y(p.agree), r: 16, fill: 'transparent' }, g);
+    const c = el('circle', { cx: x(p.review), cy: y(p.agree), r: 5, fill: 'var(--paper)', stroke: 'var(--ink)', 'stroke-width': 2 }, g);
+    g.addEventListener('mouseenter', () => {
+      tip.textContent = i === 4 ? 'Committee · reference' : `${p.review}% reviewed → ${p.agree}% agreement`;
+      const r = svg.getBoundingClientRect(), s = r.width / W;
+      tip.style.left = (x(p.review) * s) + 'px'; tip.style.top = (svg.offsetTop + y(p.agree) * s) + 'px'; tip.style.opacity = 1;
+    });
+    g.addEventListener('mouseleave', () => tip.style.opacity = 0);
+    g.addEventListener('click', () => { const inp = document.getElementById('op-' + i); inp.checked = true; setOp(i); });
+    return c;
+  });
+  const lbl = el('text', { 'font-family': 'var(--f-mono)', 'font-size': 11.5, fill: 'var(--ink)' });
+  function setOp(i) {
+    const p = OP[i];
+    document.getElementById('op-review').textContent = p.review + '%';
+    document.getElementById('op-agree').textContent = i === 4 ? '—' : p.agree + '%';
+    document.getElementById('op-agree-sub').textContent = p.sub;
+    document.getElementById('op-bar-ai').style.flexBasis = (100 - p.review) + '%';
+    document.getElementById('op-bar-hu').style.flexBasis = p.review + '%';
+    dots.forEach((c, j) => { c.setAttribute('r', j === i ? 8 : 5); c.setAttribute('fill', j === i ? 'var(--amber)' : 'var(--paper)'); c.setAttribute('stroke', j === i ? 'var(--paper)' : 'var(--ink)'); });
+    const off = [[12, 4, 'start'], [-12, -10, 'end'], [-12, -10, 'end'], [-12, -10, 'end'], [-12, 20, 'end']][i];
+    lbl.setAttribute('x', x(p.review) + off[0]);
+    lbl.setAttribute('y', y(p.agree) + off[1]);
+    lbl.setAttribute('text-anchor', off[2]);
+    lbl.textContent = i === 4 ? 'committee' : `${p.agree}%`;
+    svg.appendChild(lbl);
+  }
+  document.querySelectorAll('input[name="op"]').forEach(inp => inp.addEventListener('change', () => setOp(+inp.value)));
+  setOp(+document.querySelector('input[name="op"]:checked').value);
+
+  /* ---------------- copy address ---------------- */
+  const cb = document.getElementById('copy-addr');
+  cb.addEventListener('click', () => {
+    const t = document.getElementById('addr').textContent;
+    const done = () => { cb.textContent = 'Copied'; setTimeout(() => cb.textContent = 'Copy address', 1600); };
+    try {
+      navigator.clipboard.writeText(t).then(done, () => { selectAddr(); cb.textContent = 'Press ⌘C / Ctrl+C'; });
+    } catch (_) { selectAddr(); cb.textContent = 'Press ⌘C / Ctrl+C'; }
+  });
+  function selectAddr() { const r = document.createRange(); r.selectNodeContents(document.getElementById('addr')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+
+  if (reduce.matches) document.body.classList.add('reduced');
+})();
+</script>
+</body>
+</html>
