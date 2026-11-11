@@ -4,7 +4,7 @@ Checked 10 November 2026. Sections 5 (*Why now*) and 6 (*Beyond cardiovascular*)
 
 ## Section 5 · Why now
 
-**Thesis, stated as a thesis on the page:** AI multiplies the molecules entering trials, and each one that reaches an outcome trial still needs its events adjudicated. Anjana's market grows with the number of outcome trials and with the number of events in each.
+**Thesis, stated as a thesis on the page:** AI multiplies the molecules entering trials, and each one needs endpoints that sponsors and regulators trust. Committee adjudication is the gold standard, but its cost keeps many trials from using it. Anjana makes committee-grade review cheaper, so its market grows with the number of outcome trials, the events in each, and the share of trials that can afford adjudication. This matches the hero's positioning ("Make adjudication affordable, and it becomes the default").
 
 | Claim on the page | Source | Verified against | Boundary |
 |---|---|---|---|
