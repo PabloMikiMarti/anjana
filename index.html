@@ -129,6 +129,27 @@ p { margin: 0; }
 /* ---------- hero ---------- */
 .hero { padding-block: clamp(2.5rem, 7vw, 5.5rem) var(--sp-section); min-height: calc(100svh - 61px); }
 .hero .fig-block { margin-bottom: 0; }
+.hero-title { text-wrap: wrap; }
+.hero-title .nowrap { white-space: nowrap; }
+.hero-title .br-narrow { display: none; }
+@media (max-width: 760px) { .hero-title .br-narrow { display: inline; } .hero-title .br-wide { display: none; } }
+/* rotating word: letters roll through a soft top/bottom mask; width eases on the same curve so the comma glides */
+.rotator { --ease-out: cubic-bezier(.16, 1, .3, 1); --ease-in: cubic-bezier(.6, 0, .8, .15);
+  display: inline-grid; vertical-align: baseline; white-space: nowrap;
+  box-sizing: content-box; padding: .32em .3em; margin: -.32em -.3em;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 .3em, #000 calc(100% - .3em), transparent 100%), linear-gradient(to right, #000 calc(100% - .3em), transparent 100%);
+          mask-image: linear-gradient(to bottom, transparent 0, #000 .3em, #000 calc(100% - .3em), transparent 100%), linear-gradient(to right, #000 calc(100% - .3em), transparent 100%);
+  -webkit-mask-composite: source-in; mask-composite: intersect;
+  transition: width .8s var(--ease-out) .16s; }
+.rot-word { grid-area: 1 / 1; justify-self: start; white-space: nowrap; }
+.rot-word .ch { display: inline-block; opacity: 0; transform: translateY(.62em); color: var(--muted); will-change: transform, opacity; }
+.rot-word.is-current .ch { opacity: 1; transform: none; color: var(--ink);
+  transition: transform .95s var(--ease-out), opacity .7s var(--ease-out), color 1.4s cubic-bezier(.4, 0, .2, 1);
+  transition-delay: 200ms, 200ms, 420ms; }
+.rot-word.is-out .ch { opacity: 0; transform: translateY(-.62em); color: var(--ink);
+  transition: transform .45s var(--ease-in), opacity .2s cubic-bezier(.3, .6, .4, 1); }
+.rot-word.no-anim .ch { transition: none; }
+@media (prefers-reduced-motion: reduce) { .rotator, .rot-word .ch { transition: none !important; } }
 .hero .eyebrow { margin-bottom: 1.6rem; display: flex; align-items: center; gap: 0.7rem; }
 .hero .eyebrow::before { content: ""; width: 26px; height: 1px; background: var(--muted); }
 .hero-sub { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 2.5rem 4rem; margin-top: clamp(1.8rem, 4vw, 3rem); align-items: end; }
@@ -437,7 +458,7 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <!-- ================= HERO ================= -->
   <section class="hero wrap">
     <div class="wide">
-      <h1>Make adjudication affordable, and it becomes the <em>default.</em></h1>
+      <h1 class="hero-title" aria-label="Making adjudication scalable, reliable, affordable, fast and auditable, so it becomes the default."><span aria-hidden="true">Making adjudication<br> <span class="nowrap"><span class="rotator" data-words="scalable reliable affordable fast auditable" data-start="2"><span class="rot-word is-current">affordable</span></span>,</span><br class="br-narrow"> so it<br class="br-wide"> becomes the <em>default.</em></span></h1>
       <div class="hero-sub">
         <p class="lede">Committee adjudication gives outcome trials their most trusted endpoints, but it means physicians reading every reported hospitalization, heart attack, stroke and death, one dossier at a time. Many trials cannot afford that and rely on site-reported or all-cause events instead. Anjana is an AI copilot that reads each dossier first and sends physicians only the cases that need them. Its methods have been validated against gold-standard committees in two global outcome trials.</p>
         <div class="cta">
@@ -1280,6 +1301,49 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
     } catch (_) { selectAddr(); cb.textContent = 'Press ⌘C / Ctrl+C'; }
   });
   function selectAddr() { const r = document.createRange(); r.selectNodeContents(document.getElementById('addr')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+
+  /* ---------------- hero rotating word ---------------- */
+  (function () {
+    const rot = document.querySelector('.rotator');
+    if (!rot) return;
+    const words = rot.dataset.words.split(' ');
+    let i = +rot.dataset.start || 0;
+    // split into letters, keeping the "ff" ligature whole
+    const build = (w, el) => {
+      el.textContent = '';
+      (w.match(/ff|./g) || []).forEach((c, k) => {
+        const ch = document.createElement('span');
+        ch.className = 'ch'; ch.textContent = c;
+        ch.style.setProperty('--i', k);
+        el.appendChild(ch);
+      });
+      return el;
+    };
+    const first = rot.querySelector('.rot-word');
+    const els = words.map((w, k) => {
+      if (k === i) return build(w, first);
+      const e = document.createElement('span');
+      e.className = 'rot-word'; rot.appendChild(e); return build(w, e);
+    });
+    // the width eases after the old letters clear (see CSS delay), so the comma never clips them
+    const fit = () => { rot.style.width = els[i].offsetWidth + 'px'; };
+    fit();
+    if (document.fonts) document.fonts.ready.then(() => fit());
+    addEventListener('resize', () => fit());
+    if (reduce.matches) return;
+    setInterval(() => {
+      if (document.hidden) return;
+      const out = els[i];
+      i = (i + 1) % els.length;
+      out.classList.replace('is-current', 'is-out');
+      els[i].classList.add('is-current');
+      fit();
+      setTimeout(() => {
+        out.classList.add('no-anim'); out.classList.remove('is-out');
+        void out.offsetWidth; out.classList.remove('no-anim');
+      }, 1000);
+    }, 3200);
+  })();
 
   if (reduce.matches) document.body.classList.add('reduced');
 })();
