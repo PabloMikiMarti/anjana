@@ -3,7 +3,7 @@
 # then writes web-encoded MP4s and final-frame JPEG posters to ../media/.
 #
 #   ./render_all.sh                      # every scene
-#   ./render_all.sh Triage Forest      # only the named scenes
+#   ./render_all.sh AIPipeline SpecialtyReuse   # only the named scenes
 #
 # Scenes run one at a time: parallel runs can collide on Manim's text cache.
 # Requires Manim (requirements.txt), Cairo, Pango and ffmpeg.
@@ -20,6 +20,8 @@ ALL=(
   "Triage:scenes:fig4"
   "Forest:scenes:fig5"
   "App:scenes:fig6"
+  "AIPipeline:investor_scenes:fig7"
+  "SpecialtyReuse:investor_scenes:fig8"
 )
 
 want() { [ $# -eq 0 ] && return 0; local s; for s in "${@:2}"; do [ "$s" = "$1" ] && return 0; done; return 1; }
