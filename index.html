@@ -130,13 +130,28 @@ p { margin: 0; }
 .hero { padding-block: clamp(2.5rem, 7vw, 5.5rem) var(--sp-section); min-height: calc(100svh - 61px); }
 .hero { position: relative; overflow: hidden; isolation: isolate; }
 .hero > .wide { position: relative; z-index: 1; }
-.hero-art { position: absolute; opacity: var(--art-o, 1); will-change: transform; overflow: visible; z-index: 0; pointer-events: none; user-select: none;
-  top: 3rem; right: -9%; width: min(52vw, 700px); height: auto;
-  -webkit-mask-image: linear-gradient(to left, #000 45%, transparent 92%), linear-gradient(to bottom, #000 60%, transparent 98%);
-  -webkit-mask-composite: source-in; mask-image: linear-gradient(to left, #000 45%, transparent 92%), linear-gradient(to bottom, #000 60%, transparent 98%); mask-composite: intersect; }
-@media (max-width: 760px) { .hero-art { top: 1.5rem; right: -30%; width: 88vw; } }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .hero-art { --art-o: .22; filter: invert(1) hue-rotate(180deg) saturate(.4); } }
-:root[data-theme="dark"] .hero-art { --art-o: .22; filter: invert(1) hue-rotate(180deg) saturate(.4); }
+.hero-art { --art-vfade: linear-gradient(to bottom, transparent 4%, #000 16%, #000 48%, transparent 74%); --s-a: #FBF8F1; --s-b: #EEE7D8; --s-edge: #E0D6C3; --s-line: #E2D9C7; --s-grid: #DCD2C0; --s-grid2: #CFC2AB; --s-trace: #4E4C48; --s-tab-a: #EFD9AA; --s-tab-b: #E1C48B; --s-tab-edge: #D2B477; --s-shadow: 90 74 46;
+  position: absolute; z-index: 0; pointer-events: none; user-select: none; -webkit-user-select: none;
+  top: calc(2rem - 9.5vw); right: calc(-6% - 9vw); width: min(70vw, 960px); aspect-ratio: 1000 / 1100;
+  -webkit-mask-image: linear-gradient(to left, #000 52%, transparent 86%), var(--art-vfade); -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to left, #000 52%, transparent 86%), var(--art-vfade); mask-composite: intersect; }
+.hero-art-in { position: absolute; inset: 0; will-change: transform, opacity; }
+.hero-art .sheet { position: absolute; left: 31%; top: 17.273%; width: 50%; height: 60%; border-radius: 1.2% / .9%;
+  background: linear-gradient(135deg, var(--s-a), var(--s-b)); box-shadow: inset 0 0 0 1px var(--s-edge), -8px 12px 26px rgb(var(--s-shadow) / .13), -1px 2px 4px rgb(var(--s-shadow) / .08);
+  transform-origin: 50% 50%; will-change: transform; backface-visibility: hidden; }
+.hero-art .tab { position: absolute; left: 26%; top: -4.6%; width: 17.2%; height: 5%; border-radius: 8px 8px 0 0; background: linear-gradient(var(--s-tab-a), var(--s-tab-b)); box-shadow: inset 0 0 0 1px var(--s-tab-edge); }
+.hero-art .top svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.hero-art .ln rect, .hero-art .ln2 rect { fill: var(--s-line); }
+.hero-art .g1 { fill: none; stroke: var(--s-grid); stroke-width: .6; }
+.hero-art .g2, .hero-art .grid-edge { fill: none; stroke: var(--s-grid2); stroke-width: 1; }
+.hero-art .grid-edge { fill: url(#hd-gridL); }
+.hero-art .ecg { fill: none; stroke: var(--s-trace); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 2.2s cubic-bezier(.45, 0, .2, 1) .35s; }
+.hero-art.is-drawn .ecg { stroke-dashoffset: 0; }
+.hero-art .hl { position: absolute; left: 8.4%; top: 61.5%; width: 47.2%; height: 2%; border-radius: 2px; background: var(--amber); opacity: .18; transform-origin: 0 50%; will-change: transform; }
+@media (max-width: 760px) { .hero-art { --art-vfade: linear-gradient(to bottom, transparent 4%, #000 16%, #000 56%, transparent 86%); top: calc(1.25rem - 19.7vw); right: calc(-34% - 18.3vw); width: 140vw; opacity: .85; } }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .hero-art { --art-vfade: linear-gradient(to bottom, transparent 4%, #000 16%, #000 48%, transparent 74%); --s-a: #222B31; --s-b: #1C2429; --s-edge: #2E3940; --s-line: #303B42; --s-grid: #2C363D; --s-grid2: #37434B; --s-trace: #9AA6AD; --s-tab-a: #5A4A2A; --s-tab-b: #4A3D24; --s-tab-edge: #6A5733; --s-shadow: 0 0 0; opacity: .7; } }
+:root[data-theme="dark"] .hero-art { --art-vfade: linear-gradient(to bottom, transparent 4%, #000 16%, #000 48%, transparent 74%); --s-a: #222B31; --s-b: #1C2429; --s-edge: #2E3940; --s-line: #303B42; --s-grid: #2C363D; --s-grid2: #37434B; --s-trace: #9AA6AD; --s-tab-a: #5A4A2A; --s-tab-b: #4A3D24; --s-tab-edge: #6A5733; --s-shadow: 0 0 0; opacity: .7; }
+@media (prefers-reduced-motion: reduce) { .hero-art .ecg { transition: none; stroke-dashoffset: 0; } }
 .hero .fig-block { margin-bottom: 0; }
 .hero-title { text-wrap: wrap; }
 .hero-title .nowrap { white-space: nowrap; }
@@ -486,40 +501,15 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
 <main id="top">
   <!-- ================= HERO ================= -->
   <section class="hero wrap">
-    <svg class="hero-art" viewBox="0 0 640 760" aria-hidden="true" focusable="false">
-      <defs>
-        <filter id="hd-sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="-10" dy="14" stdDeviation="14" flood-color="#5a4a2e" flood-opacity=".16"/></filter>
-        <linearGradient id="hd-pg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBF8F1"/><stop offset="1" stop-color="#EFE8DA"/></linearGradient>
-        <linearGradient id="hd-tab" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EFD9AA"/><stop offset="1" stop-color="#E2C68E"/></linearGradient>
-        <pattern id="hd-grid" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M12 0H0V12" fill="none" stroke="#D8CDBA" stroke-width=".6"/></pattern>
-        <pattern id="hd-gridL" width="60" height="60" patternUnits="userSpaceOnUse"><rect width="60" height="60" fill="url(#hd-grid)"/><path d="M60 0H0V60" fill="none" stroke="#CDBFA7" stroke-width="1"/></pattern>
-      </defs>
-      <g transform="translate(330 380)">
-      <g class="sheet" data-rot="34" data-tx="0" data-ty="0" data-dr="12" data-dy="40" transform="rotate(34) translate(0 0)">
-        <rect x="-250" y="-330" width="500" height="660" rx="6" fill="url(#hd-pg)" stroke="#E2D8C6" filter="url(#hd-sh)"/>
-      </g>
-      <g class="sheet" data-rot="30" data-tx="6" data-ty="-4" data-dr="8" data-dy="26" transform="rotate(30) translate(6 -4)">
-        <rect x="-250" y="-330" width="500" height="660" rx="6" fill="url(#hd-pg)" stroke="#E2D8C6" filter="url(#hd-sh)"/>
-      </g>
-      <g class="sheet" data-rot="27" data-tx="2" data-ty="-8" data-dr="4" data-dy="12" transform="rotate(27) translate(2 -8)">
-        <path d="M-120 -330 v-24 a8 8 0 0 1 8 -8 h70 a8 8 0 0 1 8 8 v24 z" fill="url(#hd-tab)" stroke="#D3B67C"/>
-        <rect x="-250" y="-330" width="500" height="660" rx="6" fill="url(#hd-pg)" stroke="#E2D8C6" filter="url(#hd-sh)"/>
-      </g>
-      <g class="sheet" data-rot="24" data-tx="-2" data-ty="-12" data-dr="-2" data-dy="-20" transform="rotate(24) translate(-2 -12)">
-        <rect x="-250" y="-330" width="500" height="660" rx="6" fill="url(#hd-pg)" stroke="#E2D8C6" filter="url(#hd-sh)"/>
-      </g>
-      <g class="sheet top" data-rot="21" data-tx="-6" data-ty="-16" data-dr="-9" data-dy="-70" transform="rotate(21) translate(-6 -16)">
-        <rect x="-250" y="-330" width="500" height="660" rx="6" fill="url(#hd-pg)" stroke="#DCD1BD" filter="url(#hd-sh)"/>
-        <g fill="#DED4C2"><rect x="-205" y="-290" width="150" height="7" rx="3.5"/><rect x="-205" y="-272" width="95" height="5" rx="2.5"/><rect x="120" y="-290" width="85" height="7" rx="3.5"/></g>
-        <g transform="translate(-210 -235)">
-          <rect width="420" height="190" fill="url(#hd-gridL)" stroke="#CDBFA7"/>
-          <path class="ecg" fill="none" stroke="#55534F" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" d="M0 110 H24 q6 -8 12 0 H52 l5 6 l9 -74 l9 92 l6 -24 H100 q14 -14 26 0 H160 q6 -8 12 0 H188 l5 6 l9 -74 l9 92 l6 -24 H236 q14 -14 26 0 H296 q6 -8 12 0 H324 l5 6 l9 -74 l9 92 l6 -24 H372 q14 -14 26 0 H420"/>
-        </g>
-        <g fill="#E3DAC9"><rect x="-205" y="-10" width="410" height="5" rx="2.5"/><rect x="-205" y="8" width="380" height="5" rx="2.5"/><rect x="-205" y="26" width="400" height="5" rx="2.5"/><rect x="-205" y="44" width="250" height="5" rx="2.5"/><rect x="-205" y="80" width="410" height="5" rx="2.5"/><rect x="-205" y="98" width="360" height="5" rx="2.5"/><rect x="-205" y="116" width="395" height="5" rx="2.5"/><rect x="-205" y="134" width="210" height="5" rx="2.5"/></g>
-        <rect class="hl" x="-208" y="76" width="236" height="13" rx="2" fill="#B87806" opacity=".16"/>
-      </g>
-      </g>
-    </svg>
+    <div class="hero-art" aria-hidden="true">
+      <div class="hero-art-in">
+        <div class="sheet" data-rot="34" data-tx="0.00" data-ty="0.00" data-dr="14" data-dy="6" style="transform:rotate(34deg) translate(0.00%,0.00%)"></div>
+        <div class="sheet" data-rot="30" data-tx="1.20" data-ty="-0.61" data-dr="9" data-dy="4" style="transform:rotate(30deg) translate(1.20%,-0.61%)"></div>
+        <div class="sheet" data-rot="27" data-tx="0.40" data-ty="-1.21" data-dr="4" data-dy="2" style="transform:rotate(27deg) translate(0.40%,-1.21%)"><i class="tab"></i></div>
+        <div class="sheet" data-rot="24" data-tx="-0.40" data-ty="-1.82" data-dr="-2" data-dy="-3" style="transform:rotate(24deg) translate(-0.40%,-1.82%)"></div>
+        <div class="sheet top" data-rot="21" data-tx="-1.20" data-ty="-2.42" data-dr="-10" data-dy="-11" style="transform:rotate(21deg) translate(-1.20%,-2.42%)"><svg viewBox="0 0 500 660" preserveAspectRatio="none"><g class="ln"><rect x="45" y="40" width="150" height="7" rx="3.5"/><rect x="45" y="58" width="95" height="5" rx="2.5"/><rect x="370" y="40" width="85" height="7" rx="3.5"/></g><g transform="translate(40 95)"><rect width="420" height="190" fill="url(#hd-gridL)" class="grid-edge"/><path class="ecg" pathLength="1" d="M0 110 H24 q6 -8 12 0 H52 l5 6 l9 -74 l9 92 l6 -24 H100 q14 -14 26 0 H160 q6 -8 12 0 H188 l5 6 l9 -74 l9 92 l6 -24 H236 q14 -14 26 0 H296 q6 -8 12 0 H324 l5 6 l9 -74 l9 92 l6 -24 H372 q14 -14 26 0 H420"/></g><g class="ln2"><rect x="45" y="320" width="410" height="5" rx="2.5"/><rect x="45" y="338" width="380" height="5" rx="2.5"/><rect x="45" y="356" width="400" height="5" rx="2.5"/><rect x="45" y="374" width="250" height="5" rx="2.5"/><rect x="45" y="410" width="410" height="5" rx="2.5"/><rect x="45" y="428" width="360" height="5" rx="2.5"/><rect x="45" y="446" width="395" height="5" rx="2.5"/><rect x="45" y="464" width="210" height="5" rx="2.5"/></g><defs><pattern id="hd-grid" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M12 0H0V12" class="g1"/></pattern><pattern id="hd-gridL" width="60" height="60" patternUnits="userSpaceOnUse"><rect width="60" height="60" fill="url(#hd-grid)"/><path d="M60 0H0V60" class="g2"/></pattern></defs></svg><i class="hl"></i></div>
+      </div>
+    </div>
     <div class="wide">
       <h1 class="hero-title" aria-label="Making adjudication scalable, reliable, affordable, fast and auditable, so it becomes the default."><span aria-hidden="true">Making adjudication<br> <span class="nowrap"><span class="rotator" data-words="scalable reliable affordable fast auditable" data-start="2"><span class="rot-word is-current">affordable</span></span>,</span><br class="br-narrow"> so it<br class="br-wide"> becomes the <em>default.</em></span></h1>
       <div class="hero-sub">
@@ -1233,28 +1223,35 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
   /* ---------------- hero dossier: pages fan out on scroll ---------------- */
   (() => {
     const art = document.querySelector('.hero-art'); if (!art) return;
-    const hero = art.closest('.hero');
-    const sheets = [...art.querySelectorAll('.sheet')].map(g => ({ g, d: Object.fromEntries(['rot','tx','ty','dr','dy'].map(k => [k, +g.dataset[k]])) }));
-    const hl = art.querySelector('.hl'), ecg = art.querySelector('.ecg');
+    const inner = art.querySelector('.hero-art-in');
+    const hl = art.querySelector('.hl');
+    const sheets = [...art.querySelectorAll('.sheet')].map(el => {
+      const d = el.dataset; return { el, r: +d.rot, x: +d.tx, y: +d.ty, dr: +d.dr, dy: +d.dy };
+    });
     const still = matchMedia('(prefers-reduced-motion: reduce)');
-    if (ecg && !still.matches) {
-      const L = ecg.getTotalLength(); ecg.style.strokeDasharray = L; ecg.style.strokeDashoffset = L;
-      requestAnimationFrame(() => { ecg.style.transition = 'stroke-dashoffset 2.4s cubic-bezier(.4,0,.2,1) .3s'; ecg.style.strokeDashoffset = 0; });
+    requestAnimationFrame(() => requestAnimationFrame(() => art.classList.add('is-drawn')));
+    let span = 1, target = 0, cur = 0, raf = 0;
+    const measure = () => { span = Math.max(240, art.offsetHeight * 0.7); };
+    const ease = t => t * t * (3 - 2 * t);
+    const read = () => { target = still.matches ? 0 : Math.min(1, Math.max(0, scrollY / span)); };
+    function paint(p) {
+      const e = ease(p);
+      for (const s of sheets) s.el.style.transform = `rotate(${(s.r + s.dr * e).toFixed(3)}deg) translate3d(${s.x}%, ${(s.y + s.dy * e).toFixed(3)}%, 0)`;
+      if (hl) hl.style.transform = `scaleX(${(1 + 0.737 * e).toFixed(4)})`;
+      inner.style.transform = `translate3d(0, ${(e * span * 0.18).toFixed(2)}px, 0)`;
+      inner.style.opacity = (1 - 0.35 * e).toFixed(3);
     }
-    let ticking = false;
-    const ease = t => 1 - Math.pow(1 - t, 3);
-    function draw() {
-      ticking = false;
-      const span = Math.max(260, art.getBoundingClientRect().height * 0.75);
-      const p = still.matches ? 0 : ease(Math.min(1, Math.max(0, scrollY / span)));
-      for (const { g, d } of sheets) g.setAttribute('transform', `rotate(${d.rot + d.dr * p}) translate(${d.tx} ${d.ty + d.dy * p})`);
-      if (hl) hl.setAttribute('width', 236 + 174 * p);
-      art.style.transform = still.matches ? '' : `translate3d(0, ${Math.min(scrollY, span) * 0.22}px, 0)`;
-      art.style.opacity = `calc(var(--art-o, 1) * ${still.matches ? 1 : 1 - 0.45 * p})`;
+    function tick() {
+      cur += (target - cur) * 0.2;
+      if (Math.abs(target - cur) < 0.0005) cur = target;
+      paint(cur);
+      raf = cur === target ? 0 : requestAnimationFrame(tick);
     }
-    addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(draw); } }, { passive: true });
-    still.addEventListener?.('change', draw);
-    draw();
+    const kick = () => { read(); if (!raf) raf = requestAnimationFrame(tick); };
+    measure(); read(); cur = target; paint(cur);
+    addEventListener('scroll', kick, { passive: true });
+    addEventListener('resize', () => { measure(); kick(); }, { passive: true });
+    still.addEventListener?.('change', kick);
   })();
 </script>
 </body>
