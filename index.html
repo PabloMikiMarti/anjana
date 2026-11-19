@@ -460,7 +460,7 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
     <div class="wide">
       <h1 class="hero-title" aria-label="Making adjudication scalable, reliable, affordable, fast and auditable, so it becomes the default."><span aria-hidden="true">Making adjudication<br> <span class="nowrap"><span class="rotator" data-words="scalable reliable affordable fast auditable" data-start="2"><span class="rot-word is-current">affordable</span></span>,</span><br class="br-narrow"> so it<br class="br-wide"> becomes the <em>default.</em></span></h1>
       <div class="hero-sub">
-        <p class="lede">Committee adjudication gives outcome trials their most trusted endpoints, but it means physicians reading every reported hospitalization, heart attack, stroke and death, one dossier at a time. Many trials cannot afford that and rely on site-reported or all-cause events instead. Anjana is an AI copilot that reads each dossier first and sends physicians only the cases that need them. Its methods have been validated against gold-standard committees in two global outcome trials.</p>
+        <p class="lede">Anjana is an AI copilot for clinical events committees. It reads every dossier first and sends physicians only the cases that need them.</p>
         <div class="cta">
           <a class="btn solid" href="#method">See how it works</a>
           <a class="btn" href="#evidence">Read the evidence</a>
@@ -493,6 +493,29 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
         </div>
       </div>
 
+      <div class="figures-strip" aria-label="Key results">
+        <div class="stat">
+          <span class="num">84%</span>
+          <p>fewer committee reviews.</p>
+          <span class="src">DELIVER · 1,597 events</span>
+        </div>
+        <div class="stat">
+          <span class="num">91%</span>
+          <p>agreement with the full physician committee.</p>
+          <span class="src">DELIVER · κ 0.73</span>
+        </div>
+        <div class="stat">
+          <span class="num pair">0.76 <small>vs</small> 0.77</span>
+          <p>same trial result: AI vs committee hazard ratio.</p>
+          <span class="src">DELIVER · HF hospitalization</span>
+        </div>
+        <div class="stat">
+          <span class="num">Cents</span>
+          <p>per dossier, instead of physician hours.</p>
+          <span class="src">Circ Heart Fail 2025</span>
+        </div>
+      </div>
+
       <figure class="fig-block plate-fig">
         <div class="plate hero-plate" data-fig="hero" data-autoplay="always">
           <div class="frame">
@@ -506,29 +529,6 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <span class="ctrls"><button class="icon-btn" data-act="expand" aria-label="View full screen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 4H4v4.5M15.5 4H20v4.5M20 15.5V20h-4.5M8.5 20H4v-4.5"/></svg></button><button class="icon-btn" data-act="toggle" aria-label="Pause animation"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5v13M15 5.5v13" style="stroke-width:2.25"/></svg></button></span>
         </figcaption>
       </figure>
-
-      <div class="figures-strip" aria-label="Key results">
-        <div class="stat">
-          <span class="num">84%</span>
-          <p>fewer committee reviews when only the cases the AI flags as uncertain go to physicians.</p>
-          <span class="src">DELIVER · 1,597 events</span>
-        </div>
-        <div class="stat">
-          <span class="num">91%</span>
-          <p>agreement with the full physician committee under that same hybrid strategy.</p>
-          <span class="src">DELIVER · κ 0.73</span>
-        </div>
-        <div class="stat">
-          <span class="num pair">0.76 <small>vs</small> 0.77</span>
-          <p>hazard ratio for dapagliflozin with AI-adjudicated versus committee-adjudicated events.</p>
-          <span class="src">DELIVER · HF hospitalization</span>
-        </div>
-        <div class="stat">
-          <span class="num">≈5¢</span>
-          <p>estimated cost to run the published model on one dossier.</p>
-          <span class="src">Circ Heart Fail 2025</span>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -538,12 +538,8 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <p class="mono-label">1 · The problem</p>
       <h2>The gold standard is a committee of physicians, <em>reading.</em></h2>
     </div>
-    <div class="col chapter-head">
-      <h3>1.1 How committees review events</h3>
-    </div>
     <div class="col prose">
-      <p>A cardiovascular outcome trial is only as reliable as its event count. When a site reports a possible heart-failure hospitalization or myocardial infarction, the patient's records are collected, redacted and translated into a dossier. Two physicians on a central clinical events committee review it independently against standardized, FDA-endorsed endpoint definitions. If they disagree, the case goes to a committee meeting and the chair breaks the tie.</p>
-      <p>The process is rigorous, and it is the reason trial endpoints are trusted. It is also manual, and its cost grows with every event the trial accrues.</p>
+      <p>Two physicians read every reported event. Every disagreement goes to committee. It is rigorous, and it does not scale.</p>
     </div>
 
     <figure class="wide fig-block">
@@ -564,25 +560,22 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
       </figcaption>
     </figure>
 
-    <div class="col chapter-head">
-      <h3>1.2 Limits of committee review</h3>
-    </div>
     <div class="wide ledger" role="list">
       <div role="listitem">
         <h4>Slow</h4>
-        <p>Trial closeout waits until the last dossier has been read twice and every disagreement has been discussed in committee.</p>
+        <p>Closeout waits for the last dossier.</p>
       </div>
       <div role="listitem">
         <h4>Costly</h4>
-        <p>Trials supporting approval of new cardiovascular drugs cost more than <span class="num-inline">$35,000</span> per participant. Physician review is one of the costs that scales with event count.</p>
+        <p>Physician time grows with every event.</p>
       </div>
       <div role="listitem">
         <h4>Imperfectly reproducible</h4>
-        <p>Two reviewers on one committee agree at <span class="num-inline"><span class="kappa">κ</span> 0.72</span> on heart-failure hospitalization. Two different committees agree at <span class="num-inline"><span class="kappa">κ</span> 0.60</span>.</p>
+        <p>Two committees agree at only <span class="num-inline"><span class="kappa">κ</span> 0.60</span>.</p>
       </div>
       <div role="listitem">
         <h4>Hard to audit</h4>
-        <p>A verdict is recorded as an outcome. The reasoning that produced it is rarely captured in a form a regulator or sponsor can check.</p>
+        <p>The verdict is kept, the reasoning is not.</p>
       </div>
     </div>
   </section>
@@ -593,26 +586,20 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <p class="mono-label">2 · How it works</p>
       <h2>Two independent readers, as in a committee.</h2>
     </div>
-    <div class="col prose">
-      <p>We did not try to replace the committee's judgment with a single model. We rebuilt its structure. Each dossier is read by two AI systems that work in different ways.</p>
-    </div>
-    <div class="col chapter-head sub">
-      <h3>2.1 Two complementary readers</h3>
-    </div>
     <div class="col readers">
       <div class="reader">
-        <span class="tag">Reader 1 · reasoning language model</span>
-        <h4>Applies the definition and quotes the record</h4>
-        <p>Given the FDA / SCTI endpoint definition and the dossier text, it checks each criterion, quotes the sentences that satisfy it, and explains its decision.</p>
+        <span class="tag">Reader 1</span>
+        <h4>Applies the endpoint definition</h4>
+        <p>Checks each criterion and quotes the record.</p>
       </div>
       <div class="reader">
-        <span class="tag">Reader 2 · trained classifier</span>
-        <h4>Has learned from committee decisions</h4>
-        <p>A Clinical Longformer model fine-tuned on thousands of events adjudicated by physician committees in completed trials. It scores how likely a committee would be to confirm the event.</p>
+        <span class="tag">Reader 2</span>
+        <h4>Learned from physician committees</h4>
+        <p>Predicts what the committee would decide.</p>
       </div>
     </div>
     <div class="col prose mt-gap">
-      <p>When both readers agree with confidence, the decision stands with its evidence attached. When they disagree, the event is flagged as uncertain and routed to a human adjudicator. Disagreement between independent readers is also how a committee finds its hard cases.</p>
+      <p>When they agree, the decision stands with its evidence. When they disagree, a physician decides.</p>
     </div>
 
     <figure class="wide fig-block">
@@ -634,10 +621,10 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
     </figure>
 
     <div class="col chapter-head sub">
-      <h3>2.2 Every decision shows its work.</h3>
+      <h3>Every decision shows its work.</h3>
     </div>
     <div class="col prose">
-      <p>For each criterion in the definition (primary diagnosis, length of stay, symptoms, objective signs, treatment) the model quotes the sentence in the record that satisfies it. A reviewer can check a decision by reading five highlighted lines instead of forty pages. Across DELIVER, the model documented dyspnea in 86% of dossiers, peripheral edema in 66% and intravenous loop diuretics in 78%.</p>
+      <p>Five highlighted lines to check instead of forty pages.</p>
     </div>
 
     <figure class="wide fig-block">
@@ -666,7 +653,7 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <h2>Validated where adjudication is <em>hardest.</em></h2>
     </div>
     <div class="col prose">
-      <p>The models were trained on committee-adjudicated events from completed trials and tested on trials they had never seen. Both test trials were global, with translated records of uneven quality from many countries. Sites submitted only suspected events, so obvious non-events never reached the committee or the models. What remained were the hard cases.</p>
+      <p>Tested against gold-standard committees in two global outcome trials the models had never seen.</p>
     </div>
 
     <div class="wide journals" aria-label="Published in">
@@ -679,37 +666,30 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
       </div>
     </div>
 
-    <div class="col chapter-head sub">
-      <h3>3.1 Validation trials</h3>
-    </div>
     <div class="wide studies mt-gap">
       <article class="study">
         <div class="top"><span class="mono-label">Heart-failure hospitalization</span><a class="mono-label paper-link" href="https://doi.org/10.1161/CIRCHEARTFAILURE.124.012514" target="_blank" rel="noopener">Circ Heart Fail 2025 ↗</a></div>
         <h4>DELIVER</h4>
         <dl>
-          <dt>Trial</dt><dd>Dapagliflozin vs placebo, 6,063 patients with HF and mildly reduced or preserved ejection fraction</dd>
-          <dt>Tested on</dt><dd>1,597 site-reported potential HF hospitalizations</dd>
-          <dt>Trained on</dt><dd>INVESTED, PARAGON-HF and PARADISE-MI (7,150 adjudicated hospitalizations)</dd>
-          <dt>Readers</dt><dd>GPT-4o with the SCTI definition · Clinical Longformer</dd>
+          <dt>Trial</dt><dd>Dapagliflozin vs placebo, 6,063 patients</dd>
+          <dt>Tested on</dt><dd>1,597 potential HF hospitalizations</dd>
         </dl>
       </article>
       <article class="study">
         <div class="top"><span class="mono-label">CV death · MI · stroke</span><a class="mono-label paper-link" href="https://doi.org/10.1016/j.jacc.2025.10.055" target="_blank" rel="noopener">JACC 2025 ↗</a></div>
         <h4>PARADISE-MI</h4>
         <dl>
-          <dt>Trial</dt><dd>Sacubitril/valsartan vs ramipril, 5,661 patients after myocardial infarction</dd>
-          <dt>Tested on</dt><dd>455 deaths, 659 potential MIs and 167 potential strokes</dd>
-          <dt>Trained on</dt><dd>Over 4,000 adjudicated events from five global trials</dd>
-          <dt>Readers</dt><dd>OpenAI o1-mini with SCTI definitions · Clinical Longformer</dd>
+          <dt>Trial</dt><dd>Sacubitril/valsartan vs ramipril, 5,661 patients</dd>
+          <dt>Tested on</dt><dd>1,281 deaths, MIs and strokes</dd>
         </dl>
       </article>
     </div>
 
     <div class="col chapter-head sub">
-      <h3>3.2 Confidence tracks the committee.</h3>
+      <h3>Confidence tracks the committee.</h3>
     </div>
     <div class="col prose">
-      <p>Combining the two readers gives every event a score from −2 (confident not HF) to +2 (confident HF). The higher the score, the more often the physician committee had confirmed the event: 17% at the bottom of the scale, 96% at the top. The middle of the scale is where the work is, and the model knows it.</p>
+      <p>The AI knows which cases are hard. Those are the ones physicians see.</p>
     </div>
 
     <figure class="wide fig-block">
@@ -731,10 +711,7 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
     </figure>
 
     <div class="col chapter-head">
-      <h3>3.3 The sponsor chooses the operating point.</h3>
-    </div>
-    <div class="col prose mb-gap">
-      <p>Because every event carries a confidence score, the amount of physician review becomes a setting rather than a fixed cost. These are the strategies evaluated in DELIVER.</p>
+      <h3>The sponsor chooses how much review.</h3>
     </div>
 
     <div class="wide op" id="op">
@@ -742,10 +719,10 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <p class="mono-label">Strategy · DELIVER, 1,597 events</p>
         <div class="op-choices" role="radiogroup" aria-label="Adjudication strategy">
           <label class="op-choice"><input type="radio" name="op" id="op-0" value="0"><span class="dot"></span><span class="t">AI adjudicates everything<small>No physician review</small></span><span class="r">0%</span></label>
-          <label class="op-choice"><input type="radio" name="op" id="op-1" value="1" checked><span class="dot"></span><span class="t">Physicians review uncertain events<small>Score 0 only</small></span><span class="r">16%</span></label>
-          <label class="op-choice"><input type="radio" name="op" id="op-2" value="2"><span class="dot"></span><span class="t">AI rules in likely events; physicians review the rest<small>Scores −2, −1 and 0 reviewed</small></span><span class="r">33%</span></label>
-          <label class="op-choice"><input type="radio" name="op" id="op-3" value="3"><span class="dot"></span><span class="t">AI decides only its most confident events<small>Scores −1, 0 and +1 reviewed</small></span><span class="r">47%</span></label>
-          <label class="op-choice"><input type="radio" name="op" id="op-4" value="4"><span class="dot"></span><span class="t">Full committee review<small>Today's standard, the reference</small></span><span class="r">100%</span></label>
+          <label class="op-choice"><input type="radio" name="op" id="op-1" value="1" checked><span class="dot"></span><span class="t">Physicians review uncertain events<small>Uncertain events only</small></span><span class="r">16%</span></label>
+          <label class="op-choice"><input type="radio" name="op" id="op-2" value="2"><span class="dot"></span><span class="t">AI rules in likely events; physicians review the rest</span><span class="r">33%</span></label>
+          <label class="op-choice"><input type="radio" name="op" id="op-3" value="3"><span class="dot"></span><span class="t">AI decides only its most confident events</span><span class="r">47%</span></label>
+          <label class="op-choice"><input type="radio" name="op" id="op-4" value="4"><span class="dot"></span><span class="t">Full committee review<small>Today's standard</small></span><span class="r">100%</span></label>
         </div>
       </div>
       <div class="op-read" aria-live="polite">
@@ -767,10 +744,7 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
     </div>
 
     <div class="col chapter-head sub">
-      <h3>3.4 The same approach extends to MACE.</h3>
-    </div>
-    <div class="col prose mb-gap">
-      <p>In PARADISE-MI, Auto-MACE applied the two-reader design to cardiovascular death, myocardial infarction and stroke. Where the readers agreed, the AI matched the committee 88–97% of the time. Sending only the uncertain events to physicians raised agreement to 89–98%.</p>
+      <h3>The same approach extends to MACE.</h3>
     </div>
     <div class="col">
       <div class="tbl-wrap">
@@ -783,14 +757,10 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
           </tbody>
         </table>
       </div>
-      <p class="tbl-note">With no physician review at all, agreement was 86% for deaths, 76% for MIs and 84% for strokes. Text-extraction problems with lab tables and checkbox forms contributed to MI errors.</p>
     </div>
 
     <div class="col chapter-head sub">
-      <h3>3.5 The trial result does not move.</h3>
-    </div>
-    <div class="col prose">
-      <p>The question a sponsor cares about is whether AI adjudication would change the trial's answer. Re-running both primary analyses with AI-adjudicated events gave nearly identical treatment-effect estimates.</p>
+      <h3>The trial result does not move.</h3>
     </div>
 
     <figure class="wide fig-block">
@@ -810,17 +780,6 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
         </span>
       </figcaption>
     </figure>
-
-    <div class="wide mt-block">
-      <h3 class="mb-gap">3.6 Track record</h3>
-      <ol class="timeline">
-        <li><span class="when">JACC: HF · 2023</span><h4>One health system</h4><p>An NLP model trained on Mass General Brigham records identified HF hospitalizations more accurately than diagnosis codes.</p></li>
-        <li><span class="when">JAMA Cardiol · 2024</span><h4>A multicenter trial</h4><p>In INVESTED, the model agreed with the committee 87% of the time out of the box; 93% after fine-tuning, against 94% between the committee's own reviewers.</p></li>
-        <li><span class="when">Circ Heart Fail · 2025</span><h4>A global HF trial</h4><p>HF-NLP in DELIVER: 83% agreement alone, 91% with physician review of uncertain events, and the same treatment effect.</p></li>
-        <li><span class="when">JACC · 2025</span><h4>MACE</h4><p>Auto-MACE in PARADISE-MI extends the two-reader design to CV death, MI and stroke.</p></li>
-        <li class="next"><span class="when">In development</span><h4>Anjana</h4><p>The research systems become a working tool for committees and sponsors.</p></li>
-      </ol>
-    </div>
   </section>
 
   <!-- ================= ANJANA ================= -->
@@ -829,11 +788,8 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <p class="mono-label">4 · Anjana</p>
       <h2>A cockpit for the people who <em>adjudicate.</em></h2>
     </div>
-    <div class="col chapter-head">
-      <h3>4.1 The adjudicator workflow</h3>
-    </div>
     <div class="col prose">
-      <p>Anjana turns the research into a working tool for clinical events committees. Adjudicators keep the final word. They open a queue the AI has already read, see the source dossier beside the AI's recommendation, check the evidence for and against each criterion, then confirm or override and sign.</p>
+      <p>Adjudicators keep the final word. The reading is already done.</p>
     </div>
 
     <figure class="wide fig-block">
@@ -855,16 +811,13 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
     </figure>
 
     <ol class="wide steps">
-      <li><span class="mono-label">Queue</span><h4>Every case arrives pre-read</h4><p>Each event in the adjudicator's queue carries the AI's recommendation. Uncertain cases stand out.</p></li>
-      <li><span class="mono-label">Cockpit</span><h4>Evidence beside the source</h4><p>The redacted dossier sits next to the recommendation, and each criterion links to the sentences for and against it.</p></li>
-      <li><span class="mono-label">Decision</span><h4>The adjudicator signs</h4><p>Confirm or override, complete the committee's form, sign, and move to the next case.</p></li>
+      <li><span class="mono-label">Queue</span><h4>Every case arrives pre-read</h4><p>Uncertain cases stand out.</p></li>
+      <li><span class="mono-label">Cockpit</span><h4>Evidence beside the source</h4><p>Each criterion links to the record.</p></li>
+      <li><span class="mono-label">Decision</span><h4>The adjudicator signs</h4><p>Confirm or override, then the next case.</p></li>
     </ol>
 
     <div class="col chapter-head sub">
-      <h3>4.2 Where it applies.</h3>
-    </div>
-    <div class="col prose mb-gap">
-      <p>Pivotal trials keep their committees and spend physician time only where it matters. Pragmatic trials that enroll whole health systems or countries cannot afford chart review at all and fall back on diagnosis codes; automated adjudication can bring committee-grade endpoints to studies that never had them.</p>
+      <h3>Where it applies.</h3>
     </div>
     <div class="wide">
       <div class="tbl-wrap">
@@ -878,19 +831,6 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
         </table>
       </div>
     </div>
-
-    <div class="col chapter-head sub">
-      <h3>4.3 What comes next.</h3>
-    </div>
-    <div class="col">
-      <ul class="next-list">
-        <li><b>Prospective use</b><p>Our results re-adjudicate completed trials. Running the hybrid workflow live will measure real savings in time and cost.</p></li>
-        <li><b>Beyond text</b><p>Lab tables and ECG images were not read by the models. Multimodal inputs should most improve myocardial-infarction adjudication.</p></li>
-        <li><b>Untranslated records</b><p>Dossiers were translated by humans before review. Reading source-language records directly would remove a costly step.</p></li>
-        <li><b>Upstream steps</b><p>Event identification, record collection and date confirmation are still manual and are natural next targets.</p></li>
-        <li><b>Regulatory pathway</b><p>A validation framework agreed with the FDA and EMA is the route to AI-adjudicated endpoints in pivotal trials.</p></li>
-      </ul>
-    </div>
   </section>
 
   <!-- ================= WHY NOW ================= -->
@@ -899,42 +839,30 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <p class="mono-label">5 · Why now</p>
       <h2>AI is filling the pipeline.<br>Every new trial needs endpoints it can <em>trust.</em></h2>
     </div>
-    <div class="col chapter-head">
-      <h3>5.1 AI-discovered drugs are reaching patients, fast.</h3>
-    </div>
-    <div class="col prose">
-      <p>Drug discovery is changing faster than drug development. In 2022, an analysis of 20 AI-native biotechnology companies counted about 15 AI-derived assets in clinical development, from a pipeline growing about 36% a year. <a class="cite" href="#growth-source-1" aria-label="Source 1">[1]</a> By December 2025, an industry-wide census counted 117 AI-enabled drugs, from 63 companies, that had entered interventional trials. <a class="cite" href="#growth-source-2" aria-label="Source 2">[2]</a></p>
-      <p>The early molecules are surviving. In the first analysis of their clinical record, 80–90% of AI-discovered molecules succeeded in Phase I, against 52% for the industry across 2011–2020. <a class="cite" href="#growth-source-3" aria-label="Source 3">[3]</a> <a class="cite" href="#growth-source-4" aria-label="Source 4">[4]</a> Rentosertib shows the pace. Generative AI found both its target and its molecule, and it reached a preclinical candidate in about 18 months. <a class="cite" href="#growth-source-5" aria-label="Source 5">[5]</a> It completed a randomized Phase IIa in 2025 and began a 320-patient Phase III in July 2026. <a class="cite" href="#growth-source-6" aria-label="Source 6">[6]</a> <a class="cite" href="#growth-source-7" aria-label="Source 7">[7]</a></p>
-    </div>
     <div class="wide opportunity-proof">
       <article class="stat">
         <p class="num">15 → 117</p>
         <h4>AI-enabled drugs in human trials</h4>
-        <p>About 15 in early 2022. By December 2025, 117 from 63 companies. These are two independent counts with different definitions.</p>
-        <a class="src" href="https://doi.org/10.1200/JCO.2026.44.16_suppl.11072" target="_blank" rel="noopener">Jayatunga et al. 2022 · Haque et al. 2026 ↗</a>
+        <p>Early 2022 to December 2025; two independent counts.</p>
+        <a class="src" href="https://doi.org/10.1200/JCO.2026.44.16_suppl.11072" target="_blank" rel="noopener">Jayatunga 2022 · Haque 2026 ↗</a>
       </article>
       <article class="stat">
         <p class="num">80–90%</p>
         <h4>Phase I success for AI-discovered molecules</h4>
-        <p>Against 52% for the industry. In Phase II, their success rate of about 40% matched the historical average.</p>
-        <a class="src" href="https://doi.org/10.1016/j.drudis.2024.104009" target="_blank" rel="noopener">Jayatunga et al. · Drug Discovery Today, 2024 ↗</a>
+        <p>Against 52% for the industry.</p>
+        <a class="src" href="https://doi.org/10.1016/j.drudis.2024.104009" target="_blank" rel="noopener">Jayatunga et al. 2024 ↗</a>
       </article>
       <article class="stat">
-        <p class="num">18 <small>months</small></p>
-        <h4>From a new target to a drug candidate</h4>
-        <p>Rentosertib, for idiopathic pulmonary fibrosis. Its Phase III began in July 2026.</p>
-        <a class="src" href="https://doi.org/10.1038/s41587-024-02143-0" target="_blank" rel="noopener">Ren et al. · Nature Biotechnology, 2025 ↗</a>
+        <p class="num">9,000+</p>
+        <h4>Events in ten outcome trials</h4>
+        <p>Each one read by physicians.</p>
+        <a class="src" href="https://doi.org/10.1016/j.jacbts.2023.12.005" target="_blank" rel="noopener">Davidson et al. 2024 ↗</a>
       </article>
     </div>
-    <div class="col chapter-head sub">
-      <h3>5.2 More drugs in, more events to adjudicate.</h3>
+    <div class="col prose mt-block">
+      <p><strong>More drugs in, more events to adjudicate.</strong> Anjana makes committee-grade review affordable for every outcome trial.</p>
     </div>
-    <div class="col prose">
-      <p>AI compresses discovery, but not the evidence a drug needs to reach patients. Molecules that survive early trials move into outcome trials, the largest studies in drug development. Cardiovascular outcome trials commonly enroll tens of thousands of participants. Ten of them together accrued more than 9,000 events among 95,038 patients. <a class="cite" href="#growth-source-8" aria-label="Source 8">[8]</a> Where a committee adjudicates, physicians read every one of those events.</p>
-      <p>That reading already carries a measurable cost. Across nine stroke trials, adjudication cost more than £100,000 in a third of them, about £2,300 for each event the committee corrected. <a class="cite" href="#growth-source-9" aria-label="Source 9">[9]</a> Meanwhile, the route to the clinic is getting shorter. In April 2025, the FDA announced a plan to make animal testing the exception, naming AI-based computational models of toxicity among the replacements. <a class="cite" href="#growth-source-10" aria-label="Source 10">[10]</a> Capital is following: almost $10 billion in AI and machine-learning deals were announced in 2024. <a class="cite" href="#growth-source-11" aria-label="Source 11">[11]</a></p>
-      <p><strong>Our thesis:</strong> AI multiplies the molecules entering trials, and each one needs endpoints that sponsors and regulators trust. Committee adjudication is the gold standard, but its cost keeps many trials from using it. Anjana makes committee-grade review cheaper, so its market grows with the number of outcome trials, the events in each, and the share of trials that can now afford adjudication.</p>
-      <p class="evidence-note">What the evidence does not yet show: AI-discovered drugs have not outperformed in Phase II, and none has completed Phase III. The case rests on the volume of drugs entering the clinic, not on higher late-stage success.</p>
-    </div>
+
     <figure class="wide fig-block">
       <div class="plate" data-fig="fig7">
         <div class="frame">
@@ -979,68 +907,32 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <p class="mono-label">6 · Beyond cardiovascular</p>
       <h2>One engine.<br>Every specialty that counts <em>events.</em></h2>
     </div>
-    <div class="col chapter-head">
-      <h3>6.1 Adjudication is not unique to cardiology.</h3>
-    </div>
     <div class="col prose">
-      <p>Cardiovascular trials are where we start, not where the market ends. When a trial's result depends on clinical events, sponsors pay physicians to adjudicate them. Large published trials in lung, kidney and metabolic disease already do.</p>
+      <p>Cardiology is where we start. Lung, kidney and metabolic trials adjudicate events too.</p>
     </div>
     <div class="wide specialty-grid">
       <article>
         <p class="mono-label">Pulmonary · ETHOS</p>
         <p class="num">8,509 <small>patients</small></p>
         <h4>Cause-of-death review</h4>
-        <p>In this trial in chronic obstructive pulmonary disease, an independent clinical endpoint committee adjudicated causes of death when records were available. <a class="cite" href="#expansion-source-1" aria-label="Expansion source 1">[1]</a></p>
-        <p class="specialty-next">Extension: evidence-linked review of respiratory and cardiovascular deaths.</p>
+        <p>Deaths adjudicated by an independent committee. <a class="cite" href="#expansion-source-1" aria-label="Expansion source 1">[1]</a></p>
       </article>
       <article>
         <p class="mono-label">Renal · EMPA-KIDNEY</p>
         <p class="num">6,609 <small>patients</small></p>
         <h4>Kidney and safety events</h4>
-        <p>Blinded clinicians adjudicated deaths and selected clinical and safety events, including acute kidney injury, against prespecified definitions and site source documents. <a class="cite" href="#expansion-source-2" aria-label="Expansion source 2">[2]</a></p>
-        <p class="specialty-next">Extension: read dossier text alongside kidney-function measurements.</p>
+        <p>Deaths, kidney injury and safety events adjudicated. <a class="cite" href="#expansion-source-2" aria-label="Expansion source 2">[2]</a></p>
       </article>
       <article>
         <p class="mono-label">Metabolic · SELECT</p>
         <p class="num">17,604 <small>patients</small></p>
         <h4>MACE in obesity</h4>
-        <p>The primary endpoint was cardiovascular death, myocardial infarction or stroke, which Anjana's MACE readers already read. Every component of the kidney composite was adjudicated independently. <a class="cite" href="#expansion-source-3" aria-label="Expansion source 3">[3]</a> <a class="cite" href="#expansion-source-4" aria-label="Expansion source 4">[4]</a></p>
-        <p class="specialty-next">Extension: the validated MACE readers, in a new population.</p>
+        <p>The same endpoints Anjana already reads. <a class="cite" href="#expansion-source-3" aria-label="Expansion source 3">[3]</a></p>
       </article>
     </div>
     <div class="col prose mt-block">
-      <p>The pipeline behind these trials is full. Cardiovascular, kidney and metabolic outcome trials now under way include tirzepatide in obesity (SURMOUNT-MMO) and in chronic kidney disease (TREASURE-CKD), and phase III kidney trials of vicadrostat, baxdrostat and finerenone. <a class="cite" href="#expansion-source-5" aria-label="Expansion source 5">[5]</a></p>
+      <p class="evidence-note">Proposed extensions. Each new endpoint is validated against specialist committees before use. These trials show published committee adjudication, not Anjana results.</p>
     </div>
-    <figure class="wide fig-block">
-      <div class="plate" data-fig="fig8">
-        <div class="frame">
-          <img class="poster" alt="Fig. 8: An endpoint definition card feeds Anjana's five-module engine. The card cycles from heart-failure hospitalization and cardiovascular death, MI and stroke, which are validated, to cause of death in COPD, acute kidney injury and kidney failure, and MACE in obesity, which are proposed. Intake, quoted evidence and physician sign-off are shared; the reasoning model takes a new definition and the classifier is retrained." src="" loading="lazy">
-          <video muted playsinline preload="none" aria-hidden="true"></video>
-        </div>
-      </div>
-      <figcaption class="figcap">
-        <span class="fig-n">Fig. 8</span>
-        <span>The endpoint definition is an input. A new definition and a retrained classifier take the same engine to a new specialty. Cardiovascular endpoints are validated. Pulmonary, renal and metabolic endpoints are proposed, and each would need its own validation. ETHOS, EMPA-KIDNEY and SELECT show published committee adjudication, not Anjana results.</span>
-        <span class="ctrls">
-          <button class="icon-btn" data-act="replay" aria-label="Replay figure 8"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.75 12a8.25 8.25 0 1 0 2.42-5.83L3.75 8.6"/><path d="M3.75 3.75V8.6H8.6"/></svg></button>
-          <button class="icon-btn" data-act="expand" aria-label="View full screen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 4H4v4.5M15.5 4H20v4.5M20 15.5V20h-4.5M8.5 20H4v-4.5"/></svg></button>
-          <button class="icon-btn" data-act="toggle" aria-label="Pause figure 8"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5v13M15 5.5v13" style="stroke-width:2.25"/></svg></button>
-        </span>
-      </figcaption>
-    </figure>
-
-    <div class="col chapter-head sub">
-      <h3>6.2 A close variant of the same tool.</h3>
-    </div>
-    <div class="col prose">
-      <p>Anjana's first reader receives the endpoint definition as text, alongside the dossier. A new endpoint therefore starts as a new definition, not a new model. The same approach has already moved from heart-failure hospitalization in DELIVER to cardiovascular death, myocardial infarction and stroke in PARADISE-MI (section 3.4).</p>
-      <p>Dossier intake, criterion-level evidence, uncertainty routing and physician sign-off carry over unchanged. Two things change for each specialty: the definitions, and the second reader, which is retrained on committee-adjudicated events from that field. Each new endpoint is validated against specialist committees before it is used. For investors, each specialty adds outcome trials to the same product without a new platform.</p>
-    </div>
-    <ol class="wide steps">
-      <li><span class="mono-label">Define</span><h4>Write the endpoint</h4><p>Agree the clinical criteria with specialists, and identify the text, laboratory results and images each decision needs.</p></li>
-      <li><span class="mono-label">Retrain and validate</span><h4>Test against the committee</h4><p>Retrain the classifier on adjudicated events from the specialty. Compare with committee decisions on trials the model has never seen.</p></li>
-      <li><span class="mono-label">Deploy</span><h4>Start with human oversight</h4><p>Measure agreement, reviewer time and cost in live trials, with physicians signing every decision.</p></li>
-    </ol>
     <div class="col opportunity-sources mt-block">
       <details>
         <summary>Sources for section 6</summary>
@@ -1062,12 +954,9 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <h2>Built where the trials are <em>adjudicated.</em></h2>
     </div>
     <div class="col prose">
-      <p>Anjana grew out of the Cardiovascular Division at Brigham and Women's Hospital, part of Mass General Brigham, and Harvard Medical School. The group led by Scott Solomon runs the hospital's Cardiac Imaging Core Laboratory and Clinical Trials Endpoints Center, and its physician committees have adjudicated outcomes for large global cardiovascular trials. Those committee decisions are what Anjana's models learned from.</p>
+      <p>Anjana comes from the Brigham and Women's Hospital Clinical Trials Endpoints Center, Mass General Brigham and Harvard Medical School, whose committees have adjudicated large global cardiovascular trials.</p>
     </div>
 
-    <div class="col chapter-head sub">
-      <h3>7.1 The team</h3>
-    </div>
     <div class="wide people">
       <article class="person">
         <span class="mono-ini" aria-hidden="true">SS</span>
@@ -1081,16 +970,6 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <span class="mono-ini" aria-hidden="true">PM</span>
         <div><p class="mono-label">Lead researcher · PhD</p><h4>Pablo M. Martí Castellote</h4><p>Brigham and Women's Hospital and the Broad Institute of MIT and Harvard. First author of the HF-NLP and Auto-MACE studies.</p></div>
       </article>
-    </div>
-
-    <div class="col mt-block">
-      <h3 class="mb-gap">7.2 Publications</h3>
-      <ol class="pubs">
-        <li><div><a class="ttl" href="https://doi.org/10.1016/j.jacc.2025.10.055" target="_blank" rel="noopener">Using Artificial Intelligence to Adjudicate Major Adverse Cardiovascular Events in Clinical Trials</a><span class="meta">Marti-Castellote PM, Badrouchi S, Claggett B, et al. Journal of the American College of Cardiology. 2025.</span></div></li>
-        <li><div><a class="ttl" href="https://doi.org/10.1161/CIRCHEARTFAILURE.124.012514" target="_blank" rel="noopener">Natural Language Processing to Adjudicate Heart Failure Hospitalizations in Global Clinical Trials</a><span class="meta">Marti-Castellote PM, Reeder C, Claggett B, et al. Circulation: Heart Failure. 2025;18:e012514.</span></div></li>
-        <li><div><a class="ttl" href="https://doi.org/10.1001/jamacardio.2023.4859" target="_blank" rel="noopener">Natural Language Processing for Adjudication of Heart Failure in a Multicenter Clinical Trial</a><span class="meta">Cunningham JW, Singh P, Reeder C, et al. JAMA Cardiology. 2024;9:174–181.</span></div></li>
-        <li><div><a class="ttl" href="https://doi.org/10.1016/j.jchf.2023.02.012" target="_blank" rel="noopener">Natural Language Processing for Adjudication of Heart Failure in the Electronic Health Record</a><span class="meta">Cunningham JW, Singh P, Reeder C, et al. JACC: Heart Failure. 2023;11:852–854.</span></div></li>
-      </ol>
     </div>
   </section>
 
@@ -1112,7 +991,7 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
 
 <footer class="wrap">
   <div class="wide">
-    <span>Anjana takes its name from the anjanas, the benevolent spirits of Cantabrian mythology. Figures 1–6 re-draw the adjudication workflow and published results from DELIVER and PARADISE-MI; records shown are synthetic. Figures 7–8 illustrate the growth thesis and proposed specialty expansion, not forecasts or new clinical validation. Sponsor names identify each trial's funder and do not imply endorsement of Anjana.</span>
+    <span>Anjana takes its name from the anjanas, the benevolent spirits of Cantabrian mythology. Figures re-draw published results from DELIVER and PARADISE-MI; records shown are synthetic. Fig. 7 illustrates the growth thesis, not a forecast. Sponsor names identify each trial's funder and do not imply endorsement of Anjana.</span>
     <span>© 2026 Anjana</span>
   </div>
 </footer>
