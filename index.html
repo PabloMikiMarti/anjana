@@ -128,6 +128,15 @@ p { margin: 0; }
 
 /* ---------- hero ---------- */
 .hero { padding-block: clamp(2.5rem, 7vw, 5.5rem) var(--sp-section); min-height: calc(100svh - 61px); }
+.hero { position: relative; overflow: hidden; isolation: isolate; }
+.hero > .wide { position: relative; z-index: 1; }
+.hero-art { position: absolute; z-index: 0; pointer-events: none; user-select: none;
+  top: 3rem; right: -9%; width: min(52vw, 700px); height: auto;
+  -webkit-mask-image: linear-gradient(to left, #000 45%, transparent 92%), linear-gradient(to bottom, #000 60%, transparent 98%);
+  -webkit-mask-composite: source-in; mask-image: linear-gradient(to left, #000 45%, transparent 92%), linear-gradient(to bottom, #000 60%, transparent 98%); mask-composite: intersect; }
+@media (max-width: 760px) { .hero-art { top: 1.5rem; right: -30%; width: 88vw; } }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .hero-art { opacity: .22; filter: invert(1) hue-rotate(180deg) saturate(.4); } }
+:root[data-theme="dark"] .hero-art { opacity: .22; filter: invert(1) hue-rotate(180deg) saturate(.4); }
 .hero .fig-block { margin-bottom: 0; }
 .hero-title { text-wrap: wrap; }
 .hero-title .nowrap { white-space: nowrap; }
@@ -477,6 +486,7 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
 <main id="top">
   <!-- ================= HERO ================= -->
   <section class="hero wrap">
+    <img class="hero-art" src="media/hero-dossier.svg" alt="" aria-hidden="true">
     <div class="wide">
       <h1 class="hero-title" aria-label="Making adjudication scalable, reliable, affordable, fast and auditable, so it becomes the default."><span aria-hidden="true">Making adjudication<br> <span class="nowrap"><span class="rotator" data-words="scalable reliable affordable fast auditable" data-start="2"><span class="rot-word is-current">affordable</span></span>,</span><br class="br-narrow"> so it<br class="br-wide"> becomes the <em>default.</em></span></h1>
       <div class="hero-sub">
