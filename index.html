@@ -134,12 +134,11 @@ p { margin: 0; }
 .hero > .wide { position: relative; z-index: 1; }
 .hero-art { position: absolute; z-index: 0; pointer-events: none; top: 18px; right: -128px; width: 420px; aspect-ratio: 420 / 520;
   -webkit-mask-image: linear-gradient(to right, transparent 6%, #000 52%), linear-gradient(200deg, #000 40%, transparent 78%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, transparent 6%, #000 52%), linear-gradient(200deg, #000 40%, transparent 78%); mask-composite: intersect; }
-.hero-title { text-shadow: 0 0 14px var(--paper), 0 0 4px var(--paper); }
-.hero-art svg { display: block; width: 100%; height: 100%; overflow: visible; }
-/* scroll: the stack drifts up slower than the page and the sheets fan apart (--p: 0 at top, 1 one hero-height down) */
-.hero-art { --p: 0; transform: translate3d(0, calc(var(--p) * 60px), 0) rotate(calc(var(--p) * 2deg)); transform-origin: 60% 30%; will-change: transform; }
-.hero-art .sheet { transform-box: view-box; transform-origin: 140px 120px; transform: translate(calc(var(--p) * var(--k) * -5px), calc(var(--p) * var(--k) * 7px)) rotate(calc(var(--p) * var(--k) * 4deg)); }
-@media (prefers-reduced-motion: reduce) { .hero-art, .hero-art .sheet { transform: none !important; } }
+.hero-art svg { display: block; width: 100%; height: 100%; }
+/* scroll: each sheet layer is its own GPU layer, moved by transform only (no repaint); JS sets the transforms */
+.hero-art .ha-defs { position: absolute; width: 0; height: 0; }
+.hero-art .ha-layer { position: absolute; inset: 0; overflow: hidden; transform-origin: 33.33% 23.08%; will-change: transform; backface-visibility: hidden; }
+.hero-art { transform-origin: 60% 30%; will-change: transform; }
 @media (min-width: 761px) { .hero-art { width: min(44vw, 620px); right: max(-200px, -12vw); top: -40px; -webkit-mask-image: linear-gradient(to right, transparent 6%, #000 52%), linear-gradient(205deg, #000 36%, transparent 70%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, transparent 6%, #000 52%), linear-gradient(205deg, #000 36%, transparent 70%); mask-composite: intersect; } }
 .hero-art { --sheet-1: #FBF8F0; --sheet-2: #F3EDDF; --sheet-3: #EEE6D4; --sheet-edge: #DDD3BE; --sheet-lit: #FFFDF8;
   --tab: #E7CF97; --tab-edge: #D2B677; --grid: #C9CEC4; --grid-major: #B6BDB2; --trace: #3A434B; --sheet-shadow: rgba(60, 48, 20, 0.16); }
@@ -169,14 +168,13 @@ p { margin: 0; }
   -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 .3em, #000 calc(100% - .3em), transparent 100%), linear-gradient(to right, #000 calc(100% - .3em), transparent 100%);
           mask-image: linear-gradient(to bottom, transparent 0, #000 .3em, #000 calc(100% - .3em), transparent 100%), linear-gradient(to right, #000 calc(100% - .3em), transparent 100%);
   -webkit-mask-composite: source-in; mask-composite: intersect;
-  transition: width .8s var(--ease-out) .16s; }
+  transition: width .55s var(--ease-out) .16s; }
 .rot-word { grid-area: 1 / 1; justify-self: start; white-space: nowrap; }
-.rot-word .ch { display: inline-block; opacity: 0; transform: translateY(.62em); color: var(--muted); will-change: transform, opacity; }
-.rot-word.is-current .ch { opacity: 1; transform: none; color: var(--ink);
-  transition: transform .95s var(--ease-out), opacity .7s var(--ease-out), color 1.4s cubic-bezier(.4, 0, .2, 1);
-  transition-delay: 200ms, 200ms, 420ms; }
-.rot-word.is-out .ch { opacity: 0; transform: translateY(-.62em); color: var(--ink);
-  transition: transform .45s var(--ease-in), opacity .2s cubic-bezier(.3, .6, .4, 1); }
+.rot-word .ch { display: inline-block; opacity: 0; transform: translate3d(0, .55em, 0); }
+.rot-word.is-current .ch { opacity: 1; transform: translate3d(0, 0, 0);
+  transition: transform .55s var(--ease-out) .12s, opacity .35s var(--ease-out) .12s; }
+.rot-word.is-out .ch { opacity: 0; transform: translate3d(0, -.55em, 0);
+  transition: transform .3s var(--ease-in), opacity .2s linear .05s; }
 .rot-word.no-anim .ch { transition: none; }
 @media (prefers-reduced-motion: reduce) { .rotator, .rot-word .ch { transition: none !important; } }
 .hero .eyebrow { margin-bottom: 1.6rem; display: flex; align-items: center; gap: 0.7rem; }
@@ -507,30 +505,26 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <!-- ================= HERO ================= -->
   <section class="hero wrap">
     <div class="hero-art" aria-hidden="true">
-      <svg viewBox="0 0 420 520" focusable="false">
-        <defs>
+      <svg class="ha-defs" width="0" height="0" focusable="false">
+          <defs>
           <linearGradient id="ha-lit" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--sheet-lit)"/><stop offset="1" stop-color="var(--sheet-1)"/></linearGradient>
           <filter id="ha-sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow class="sh" dx="-3" dy="5" stdDeviation="5"/></filter>
           <clipPath id="ha-clip"><rect x="0" y="0" width="430" height="560" rx="3"/></clipPath>
         </defs>
-        <g filter="url(#ha-sh)" stroke-width="0.8">
-          <g class="sheet" style="--k:2"><rect class="s3" width="430" height="560" rx="3" transform="translate(116 140) rotate(-10)"/></g>
-          <g class="sheet" style="--k:1.4"><rect class="s2" width="430" height="560" rx="3" transform="translate(124 130) rotate(-14)"/></g>
-          <g class="sheet" style="--k:0.8"><g transform="translate(132 122) rotate(-18)">
+      </svg>
+      <svg class="ha-layer" data-k="1.6" viewBox="0 0 420 520" focusable="false"><g filter="url(#ha-sh)" stroke-width="0.8"><rect class="s3" width="430" height="560" rx="3" transform="translate(116 140) rotate(-10)"/><rect class="s2" width="430" height="560" rx="3" transform="translate(124 130) rotate(-14)"/></g></svg>
+      <svg class="ha-layer" data-k="0.6" viewBox="0 0 420 520" focusable="false"><g filter="url(#ha-sh)" stroke-width="0.8"><g transform="translate(132 122) rotate(-18)">
             <path class="tab" d="M14 2 V-16 q0 -6 6 -6 H86 q6 0 8 6 L100 2 Z"/>
             <rect class="folder" width="430" height="560" rx="3"/>
-          </g></g>
-          <g class="sheet" style="--k:0.3"><rect class="s3" width="430" height="560" rx="3" transform="translate(140 117) rotate(-21)"/></g>
-          <g class="sheet" style="--k:-0.5"><g transform="translate(148 112) rotate(-24)">
+          </g><rect class="s3" width="430" height="560" rx="3" transform="translate(140 117) rotate(-21)"/></g></svg>
+      <svg class="ha-layer" data-k="-0.5" viewBox="0 0 420 520" focusable="false"><g filter="url(#ha-sh)" stroke-width="0.8"><g transform="translate(148 112) rotate(-24)">
             <rect class="s1" width="430" height="560" rx="3"/>
             <g clip-path="url(#ha-clip)">
               <path class="g-min" d="M80 30V210 M90 30V210 M100 30V210 M110 30V210 M130 30V210 M140 30V210 M150 30V210 M160 30V210 M180 30V210 M190 30V210 M200 30V210 M210 30V210 M230 30V210 M240 30V210 M250 30V210 M260 30V210 M280 30V210 M290 30V210 M300 30V210 M310 30V210 M330 30V210 M340 30V210 M350 30V210 M70 40H350 M70 50H350 M70 60H350 M70 70H350 M70 90H350 M70 100H350 M70 110H350 M70 120H350 M70 140H350 M70 150H350 M70 160H350 M70 170H350 M70 190H350 M70 200H350 M70 210H350"/>
               <path class="g-maj" d="M70 30V210 M120 30V210 M170 30V210 M220 30V210 M270 30V210 M320 30V210 M70 30H350 M70 80H350 M70 130H350 M70 180H350"/>
               <path class="ecg" d="M78 125 H92 q6 -7 12 0 h8 l4 5 l5 -46 l6 56 l4 -15 h10 q9 -13 18 0 H171 H185 q6 -7 12 0 h8 l4 5 l5 -46 l6 56 l4 -15 h10 q9 -13 18 0 H264 H278 q6 -7 12 0 h8 l4 5 l5 -46 l6 56 l4 -15 h10 q9 -13 18 0 H357 H342"/>
             </g>
-          </g></g>
-        </g>
-      </svg>
+          </g></g></svg>
     </div>
     <div class="wide">
       <h1 class="hero-title" aria-label="Making adjudication scalable, reliable, affordable, fast and auditable, so it becomes the default."><span aria-hidden="true">Making adjudication<br> <span class="nowrap"><span class="rotator" data-words="scalable reliable affordable fast auditable" data-start="2"><span class="rot-word is-current">affordable</span></span>,</span><br class="br-narrow"> so it<br class="br-wide"> becomes the <em>default.</em></span></h1>
@@ -1197,23 +1191,28 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
   function selectAddr() { const r = document.createRange(); r.selectNodeContents(document.getElementById('addr')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
 
   /* ---------------- hero art: scroll-linked fan ---------------- */
+  // Transform-only, one write per frame, mapped straight from scroll so it tracks the finger with no lag.
   (() => {
     const art = document.querySelector('.hero-art');
     const hero = document.querySelector('.hero');
-    if (!art || !hero || !window.matchMedia) return;
-    const rm = window.matchMedia('(prefers-reduced-motion: reduce)');
-    let cur = rm.matches ? 0 : 0.45, target = 0, raf = 0; // starts slightly fanned so the stack settles in on load
-    const measure = () => { target = Math.min(1, Math.max(0, window.scrollY / Math.max(1, hero.offsetHeight * 0.8))); };
-    const tick = () => {
-      cur += (target - cur) * 0.12;
-      if (Math.abs(target - cur) < 0.001) cur = target;
-      art.style.setProperty('--p', cur.toFixed(4));
-      raf = cur === target ? 0 : requestAnimationFrame(tick);
+    if (!art || !hero) return;
+    const layers = [...art.querySelectorAll('.ha-layer')].map(el => ({ el, k: +el.dataset.k }));
+    let range = 1, last = -1, raf = 0;
+    const measure = () => { range = Math.max(1, hero.offsetHeight * 0.8); };
+    const draw = () => {
+      raf = 0;
+      const p = reduce.matches ? 0 : Math.min(1, Math.max(0, window.scrollY / range));
+      if (p === last) return;
+      last = p;
+      art.style.transform = `translate3d(0, ${(p * 60).toFixed(2)}px, 0) rotate(${(p * 2).toFixed(3)}deg)`;
+      for (const { el, k } of layers) {
+        el.style.transform = `translate3d(${(-5 * k * p).toFixed(2)}px, ${(7 * k * p).toFixed(2)}px, 0) rotate(${(4 * k * p).toFixed(3)}deg)`;
+      }
     };
-    const onScroll = () => { if (rm.matches) return; measure(); if (!raf) raf = requestAnimationFrame(tick); };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
-    onScroll();
+    const request = () => { if (!raf) raf = requestAnimationFrame(draw); };
+    measure(); draw();
+    window.addEventListener('scroll', request, { passive: true });
+    window.addEventListener('resize', () => { measure(); last = -1; request(); }, { passive: true });
   })();
 
   /* ---------------- hero rotating word ---------------- */
@@ -1255,7 +1254,7 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
       setTimeout(() => {
         out.classList.add('no-anim'); out.classList.remove('is-out');
         void out.offsetWidth; out.classList.remove('no-anim');
-      }, 1000);
+      }, 450);
     }, 3200);
   })();
 
