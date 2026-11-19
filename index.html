@@ -129,6 +129,30 @@ p { margin: 0; }
 /* ---------- hero ---------- */
 .hero { padding-block: clamp(2.5rem, 7vw, 5.5rem) var(--sp-section); min-height: calc(100svh - 61px); }
 .hero .fig-block { margin-bottom: 0; }
+/* hero art: a stack of dossiers behind the headline, top right */
+.hero { position: relative; overflow-x: clip; }
+.hero > .wide { position: relative; z-index: 1; }
+.hero-art { position: absolute; z-index: 0; pointer-events: none; top: 18px; right: -96px; width: 420px; aspect-ratio: 420 / 520;
+  -webkit-mask-image: linear-gradient(200deg, #000 42%, transparent 82%); mask-image: linear-gradient(200deg, #000 42%, transparent 82%); }
+.hero-art svg { display: block; width: 100%; height: 100%; overflow: visible; }
+@media (min-width: 761px) { .hero-art { width: min(44vw, 620px); right: max(-200px, -12vw); top: -40px; -webkit-mask-image: linear-gradient(205deg, #000 36%, transparent 70%); mask-image: linear-gradient(205deg, #000 36%, transparent 70%); } }
+.hero-art { --sheet-1: #FBF8F0; --sheet-2: #F3EDDF; --sheet-3: #EEE6D4; --sheet-edge: #DDD3BE; --sheet-lit: #FFFDF8;
+  --tab: #E7CF97; --tab-edge: #D2B677; --grid: #C9CEC4; --grid-major: #B6BDB2; --trace: #3A434B; --sheet-shadow: rgba(60, 48, 20, 0.16); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .hero-art { --sheet-1: #222A30; --sheet-2: #1D2429; --sheet-3: #1A2025; --sheet-edge: #333E45; --sheet-lit: #283037;
+    --tab: #5E4B26; --tab-edge: #77612F; --grid: #2E383F; --grid-major: #3A464E; --trace: #A9B4BA; --sheet-shadow: rgba(0, 0, 0, 0.45); }
+}
+:root[data-theme="dark"] .hero-art { --sheet-1: #222A30; --sheet-2: #1D2429; --sheet-3: #1A2025; --sheet-edge: #333E45; --sheet-lit: #283037;
+  --tab: #5E4B26; --tab-edge: #77612F; --grid: #2E383F; --grid-major: #3A464E; --trace: #A9B4BA; --sheet-shadow: rgba(0, 0, 0, 0.45); }
+.hero-art .s1 { fill: url(#ha-lit); stroke: var(--sheet-edge); }
+.hero-art .s2 { fill: var(--sheet-2); stroke: var(--sheet-edge); }
+.hero-art .s3 { fill: var(--sheet-3); stroke: var(--sheet-edge); }
+.hero-art .tab { fill: var(--tab); stroke: var(--tab-edge); }
+.hero-art .folder { fill: var(--sheet-2); stroke: var(--sheet-edge); }
+.hero-art .g-min { stroke: var(--grid); stroke-width: 0.4; opacity: 0.7; }
+.hero-art .g-maj { stroke: var(--grid-major); stroke-width: 0.7; opacity: 0.8; }
+.hero-art .ecg { fill: none; stroke: var(--trace); stroke-width: 1.1; opacity: 0.85; stroke-linejoin: round; stroke-linecap: round; }
+.hero-art .sh { flood-color: var(--sheet-shadow); }
 .hero-title { text-wrap: wrap; }
 .hero-title .nowrap { white-space: nowrap; }
 .hero-title .br-narrow { display: none; }
@@ -477,6 +501,32 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
 <main id="top">
   <!-- ================= HERO ================= -->
   <section class="hero wrap">
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 420 520" focusable="false">
+        <defs>
+          <linearGradient id="ha-lit" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--sheet-lit)"/><stop offset="1" stop-color="var(--sheet-1)"/></linearGradient>
+          <filter id="ha-sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow class="sh" dx="-3" dy="5" stdDeviation="5"/></filter>
+          <clipPath id="ha-clip"><rect x="0" y="0" width="430" height="560" rx="3"/></clipPath>
+        </defs>
+        <g filter="url(#ha-sh)" stroke-width="0.8">
+          <rect class="s3" width="430" height="560" rx="3" transform="translate(116 140) rotate(-10)"/>
+          <rect class="s2" width="430" height="560" rx="3" transform="translate(124 130) rotate(-14)"/>
+          <g transform="translate(132 122) rotate(-18)">
+            <path class="tab" d="M14 2 V-16 q0 -6 6 -6 H86 q6 0 8 6 L100 2 Z"/>
+            <rect class="folder" width="430" height="560" rx="3"/>
+          </g>
+          <rect class="s3" width="430" height="560" rx="3" transform="translate(140 117) rotate(-21)"/>
+          <g transform="translate(148 112) rotate(-24)">
+            <rect class="s1" width="430" height="560" rx="3"/>
+            <g clip-path="url(#ha-clip)">
+              <path class="g-min" d="M80 30V210 M90 30V210 M100 30V210 M110 30V210 M130 30V210 M140 30V210 M150 30V210 M160 30V210 M180 30V210 M190 30V210 M200 30V210 M210 30V210 M230 30V210 M240 30V210 M250 30V210 M260 30V210 M280 30V210 M290 30V210 M300 30V210 M310 30V210 M330 30V210 M340 30V210 M350 30V210 M70 40H350 M70 50H350 M70 60H350 M70 70H350 M70 90H350 M70 100H350 M70 110H350 M70 120H350 M70 140H350 M70 150H350 M70 160H350 M70 170H350 M70 190H350 M70 200H350 M70 210H350"/>
+              <path class="g-maj" d="M70 30V210 M120 30V210 M170 30V210 M220 30V210 M270 30V210 M320 30V210 M70 30H350 M70 80H350 M70 130H350 M70 180H350"/>
+              <path class="ecg" d="M78 125 H92 q6 -7 12 0 h8 l4 5 l5 -46 l6 56 l4 -15 h10 q9 -13 18 0 H171 H185 q6 -7 12 0 h8 l4 5 l5 -46 l6 56 l4 -15 h10 q9 -13 18 0 H264 H278 q6 -7 12 0 h8 l4 5 l5 -46 l6 56 l4 -15 h10 q9 -13 18 0 H357 H342"/>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
     <div class="wide">
       <h1 class="hero-title" aria-label="Making adjudication scalable, reliable, affordable, fast and auditable, so it becomes the default."><span aria-hidden="true">Making adjudication<br> <span class="nowrap"><span class="rotator" data-words="scalable reliable affordable fast auditable" data-start="2"><span class="rot-word is-current">affordable</span></span>,</span><br class="br-narrow"> so it<br class="br-wide"> becomes the <em>default.</em></span></h1>
       <div class="hero-sub">
