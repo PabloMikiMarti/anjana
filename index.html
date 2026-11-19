@@ -221,7 +221,25 @@ section.chapter.band-alt { background: var(--band); }
 .stat p { font-size: 0.95rem; line-height: 1.45; color: var(--ink-soft); }
 .stat .src { font: 500 0.78rem/1.4 var(--f-body); letter-spacing: 0.01em; color: var(--muted); }
 @media (max-width: 900px) { .figures-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 440px) { .figures-strip { grid-template-columns: minmax(0, 1fr); gap: 1.4rem; } }
+.stat .viz { display: flex; height: 6px; width: 100%; margin: 0.15rem 0 0.1rem; }
+.stat .viz.bar i { display: block; height: 100%; }
+.stat .viz.bar .ai { background: var(--ink); }
+.stat .viz.bar .hu { background: var(--amber); }
+.stat .viz.bar .track { background: var(--rule); }
+.stat .viz.forest { height: 14px; overflow: visible; }
+.stat .viz.forest .ax { stroke: var(--rule); stroke-width: 1; }
+.stat .viz.forest .one { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 2 2; }
+.stat .viz.forest .ci { stroke: var(--ink); stroke-width: 1.2; }
+.stat .viz.forest .ai { fill: var(--accent); }
+.stat .viz.forest .cm { fill: var(--ink); }
+@media (max-width: 560px) {
+  .figures-strip { gap: 1.3rem 1.1rem; }
+  .stat { gap: 0.3rem; padding-top: 0.7rem; }
+  .stat .num { font-size: 2.15rem; }
+  .stat .num.pair { font-size: 1.55rem; line-height: 1.38; }
+  .stat p { font-size: 0.84rem; line-height: 1.3; }
+  .stat .src { font-size: 0.68rem; }
+}
 
 /* ---------- pain ledger ---------- */
 .ledger { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-block: 1px solid var(--rule); }
@@ -498,24 +516,29 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <div class="figures-strip" aria-label="Key results">
         <div class="stat">
           <span class="num">84%</span>
-          <p>fewer committee reviews.</p>
+          <span class="viz bar" aria-hidden="true"><i class="ai" style="flex-basis:84%"></i><i class="hu" style="flex-basis:16%"></i></span>
+          <p>fewer physician reviews</p>
           <span class="src">DELIVER · 1,597 events</span>
         </div>
         <div class="stat">
           <span class="num">91%</span>
-          <p>agreement with the full physician committee.</p>
+          <span class="viz bar" aria-hidden="true"><i class="ai" style="flex-basis:91%"></i><i class="track" style="flex-basis:9%"></i></span>
+          <p>agreement with the committee</p>
           <span class="src">DELIVER · κ 0.73</span>
         </div>
         <div class="stat">
           <span class="num pair">0.76 <small>vs</small> 0.77</span>
-          <p>same trial result: AI vs committee hazard ratio.</p>
-          <span class="src">DELIVER · HF hospitalization</span>
+          <svg class="viz forest" viewBox="0 0 120 14" preserveAspectRatio="xMinYMid meet" aria-hidden="true"><line class="ax" x1="0" y1="7" x2="120" y2="7"/><line class="one" x1="96" y1="1" x2="96" y2="13"/><line class="ci" x1="14.4" y1="4" x2="67.2" y2="4"/><circle class="ai" cx="38.4" cy="4" r="2.6"/><line class="ci" x1="16.8" y1="10" x2="69.6" y2="10"/><rect class="cm" x="38.4" y="7.6" width="4.8" height="4.8"/></svg>
+          <p>same trial result, AI vs committee</p>
+          <span class="src">DELIVER · hazard ratio</span>
         </div>
         <div class="stat">
           <span class="num">Cents</span>
-          <p>per dossier, instead of physician hours.</p>
+          <span class="viz bar" aria-hidden="true"><i class="ai" style="flex-basis:3%"></i><i class="track" style="flex-basis:97%"></i></span>
+          <p>per dossier, not physician hours</p>
           <span class="src">Circ Heart Fail 2025</span>
         </div>
+      </div>
       </div>
 
       <figure class="fig-block plate-fig">
