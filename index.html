@@ -427,6 +427,8 @@ td .sub { display: block; font-size: 0.8rem; color: var(--muted); }
 @media (max-width: 760px) { .contact .wide { grid-template-columns: minmax(0, 1fr); } }
 footer { padding-block: 2rem 2.5rem; font-size: 0.82rem; color: var(--muted); }
 footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
+.ext{width:.72em;height:.72em;vertical-align:.02em;margin-left:.1em;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.arr{width:.9em;height:.45em;vertical-align:.18em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 </style>
 
 <header class="mast wrap">
@@ -538,9 +540,6 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <p class="mono-label">1 · The problem</p>
       <h2>The gold standard is a committee of physicians, <em>reading.</em></h2>
     </div>
-    <div class="col prose">
-      <p>Two physicians read every reported event. Every disagreement goes to committee. It is rigorous, and it does not scale.</p>
-    </div>
 
     <figure class="wide fig-block">
       <div class="plate" data-fig="fig1">
@@ -621,10 +620,7 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
     </figure>
 
     <div class="col chapter-head sub">
-      <h3>Every decision shows its work.</h3>
-    </div>
-    <div class="col prose">
-      <p>Five highlighted lines to check instead of forty pages.</p>
+      <h3>Every decision shows its work: five highlighted lines instead of forty pages.</h3>
     </div>
 
     <figure class="wide fig-block">
@@ -653,43 +649,21 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <h2>Validated where adjudication is <em>hardest.</em></h2>
     </div>
     <div class="col prose">
-      <p>Tested against gold-standard committees in two global outcome trials the models had never seen.</p>
+      <p>Tested against physician committees in DELIVER (1,597 HF hospitalizations) and PARADISE-MI (1,281 deaths, MIs and strokes), trials the models had never seen.</p>
     </div>
 
     <div class="wide journals" aria-label="Published in">
       <p class="mono-label">Published in</p>
       <div class="jrow">
-        <a class="journal" href="https://doi.org/10.1161/CIRCHEARTFAILURE.124.012514" target="_blank" rel="noopener"><span class="jn">Circulation: <i>Heart Failure</i></span><span class="jm">2025 · HF-NLP in DELIVER ↗</span></a>
-        <a class="journal" href="https://doi.org/10.1016/j.jacc.2025.10.055" target="_blank" rel="noopener"><span class="jn">JACC</span><span class="jm">2025 · Auto-MACE in PARADISE-MI ↗</span></a>
-        <a class="journal" href="https://doi.org/10.1001/jamacardio.2023.4859" target="_blank" rel="noopener"><span class="jn">JAMA <i>Cardiology</i></span><span class="jm">2024 · NLP in INVESTED ↗</span></a>
-        <a class="journal" href="https://doi.org/10.1016/j.jchf.2023.02.012" target="_blank" rel="noopener"><span class="jn">JACC: <i>Heart Failure</i></span><span class="jm">2023 · NLP in health records ↗</span></a>
+        <a class="journal" href="https://doi.org/10.1161/CIRCHEARTFAILURE.124.012514" target="_blank" rel="noopener"><span class="jn">Circulation: <i>Heart Failure</i></span><span class="jm">2025 · HF-NLP in DELIVER <svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></span></a>
+        <a class="journal" href="https://doi.org/10.1016/j.jacc.2025.10.055" target="_blank" rel="noopener"><span class="jn">JACC</span><span class="jm">2025 · Auto-MACE in PARADISE-MI <svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></span></a>
+        <a class="journal" href="https://doi.org/10.1001/jamacardio.2023.4859" target="_blank" rel="noopener"><span class="jn">JAMA <i>Cardiology</i></span><span class="jm">2024 · NLP in INVESTED <svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></span></a>
+        <a class="journal" href="https://doi.org/10.1016/j.jchf.2023.02.012" target="_blank" rel="noopener"><span class="jn">JACC: <i>Heart Failure</i></span><span class="jm">2023 · NLP in health records <svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></span></a>
       </div>
     </div>
 
-    <div class="wide studies mt-gap">
-      <article class="study">
-        <div class="top"><span class="mono-label">Heart-failure hospitalization</span><a class="mono-label paper-link" href="https://doi.org/10.1161/CIRCHEARTFAILURE.124.012514" target="_blank" rel="noopener">Circ Heart Fail 2025 ↗</a></div>
-        <h4>DELIVER</h4>
-        <dl>
-          <dt>Trial</dt><dd>Dapagliflozin vs placebo, 6,063 patients</dd>
-          <dt>Tested on</dt><dd>1,597 potential HF hospitalizations</dd>
-        </dl>
-      </article>
-      <article class="study">
-        <div class="top"><span class="mono-label">CV death · MI · stroke</span><a class="mono-label paper-link" href="https://doi.org/10.1016/j.jacc.2025.10.055" target="_blank" rel="noopener">JACC 2025 ↗</a></div>
-        <h4>PARADISE-MI</h4>
-        <dl>
-          <dt>Trial</dt><dd>Sacubitril/valsartan vs ramipril, 5,661 patients</dd>
-          <dt>Tested on</dt><dd>1,281 deaths, MIs and strokes</dd>
-        </dl>
-      </article>
-    </div>
-
     <div class="col chapter-head sub">
-      <h3>Confidence tracks the committee.</h3>
-    </div>
-    <div class="col prose">
-      <p>The AI knows which cases are hard. Those are the ones physicians see.</p>
+      <h3>The AI knows which cases are hard. Only those go to physicians.</h3>
     </div>
 
     <figure class="wide fig-block">
@@ -749,11 +723,11 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
     <div class="col">
       <div class="tbl-wrap">
         <table class="mace">
-          <thead><tr><th>Endpoint</th><th>Events</th><th>AI confident</th><th>Agreement when confident</th><th>AI + physician review of uncertain</th></tr></thead>
+          <thead><tr><th>Endpoint</th><th>Events</th><th>Agreement</th></tr></thead>
           <tbody>
-            <tr><td>Cardiovascular death<span class="sub">CV, non-CV or unknown</span></td><td class="n">455</td><td class="n">69%</td><td class="n">97%</td><td class="n hi">98%</td></tr>
-            <tr><td>Myocardial infarction</td><td class="n">659</td><td class="n">46%</td><td class="n">89%</td><td class="n hi">95%</td></tr>
-            <tr><td>Stroke</td><td class="n">167</td><td class="n">81%</td><td class="n">88%</td><td class="n hi">89%</td></tr>
+            <tr><td>Cardiovascular death<span class="sub">CV, non-CV or unknown</span></td><td class="n">455</td><td class="n hi">98%</td></tr>
+            <tr><td>Myocardial infarction</td><td class="n">659</td><td class="n hi">95%</td></tr>
+            <tr><td>Stroke</td><td class="n">167</td><td class="n hi">89%</td></tr>
           </tbody>
         </table>
       </div>
@@ -789,7 +763,7 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <h2>A cockpit for the people who <em>adjudicate.</em></h2>
     </div>
     <div class="col prose">
-      <p>Adjudicators keep the final word. The reading is already done.</p>
+      <p>Adjudicators keep the final word. Pivotal trials spend physician time only where it matters; pragmatic trials get committee-grade endpoints instead of diagnosis codes.</p>
     </div>
 
     <figure class="wide fig-block">
@@ -810,27 +784,7 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
       </figcaption>
     </figure>
 
-    <ol class="wide steps">
-      <li><span class="mono-label">Queue</span><h4>Every case arrives pre-read</h4><p>Uncertain cases stand out.</p></li>
-      <li><span class="mono-label">Cockpit</span><h4>Evidence beside the source</h4><p>Each criterion links to the record.</p></li>
-      <li><span class="mono-label">Decision</span><h4>The adjudicator signs</h4><p>Confirm or override, then the next case.</p></li>
-    </ol>
 
-    <div class="col chapter-head sub">
-      <h3>Where it applies.</h3>
-    </div>
-    <div class="wide">
-      <div class="tbl-wrap">
-        <table class="fits">
-          <thead><tr><th></th><th>Pivotal trials<small>Phase II and III</small></th><th>Large-scale studies<small>Phase IV, pragmatic trials, real-world evidence</small></th></tr></thead>
-          <tbody>
-            <tr><td>Endpoints today</td><td>Physician committee adjudication</td><td>Diagnosis codes or all-cause outcomes</td></tr>
-            <tr><td>With Anjana</td><td>AI adjudication with physician review of uncertain events</td><td>Automated adjudication of health-record data</td></tr>
-            <tr><td>What changes</td><td>Faster and cheaper closeout; more reproducible; every decision auditable</td><td>More accurate than codes; efficient human oversight</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
   </section>
 
   <!-- ================= WHY NOW ================= -->
@@ -841,45 +795,28 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
     </div>
     <div class="wide opportunity-proof">
       <article class="stat">
-        <p class="num">15 → 117</p>
+        <p class="num">15 <svg class="arr" viewBox="0 0 24 12" aria-label="to"><path d="M2 6h19M16 1.5L21 6l-5 4.5"/></svg> 117</p>
         <h4>AI-enabled drugs in human trials</h4>
         <p>Early 2022 to December 2025; two independent counts.</p>
-        <a class="src" href="https://doi.org/10.1200/JCO.2026.44.16_suppl.11072" target="_blank" rel="noopener">Jayatunga 2022 · Haque 2026 ↗</a>
+        <a class="src" href="https://doi.org/10.1200/JCO.2026.44.16_suppl.11072" target="_blank" rel="noopener">Jayatunga 2022 · Haque 2026 <svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a>
       </article>
       <article class="stat">
         <p class="num">80–90%</p>
         <h4>Phase I success for AI-discovered molecules</h4>
         <p>Against 52% for the industry.</p>
-        <a class="src" href="https://doi.org/10.1016/j.drudis.2024.104009" target="_blank" rel="noopener">Jayatunga et al. 2024 ↗</a>
+        <a class="src" href="https://doi.org/10.1016/j.drudis.2024.104009" target="_blank" rel="noopener">Jayatunga et al. 2024 <svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a>
       </article>
       <article class="stat">
         <p class="num">9,000+</p>
         <h4>Events in ten outcome trials</h4>
         <p>Each one read by physicians.</p>
-        <a class="src" href="https://doi.org/10.1016/j.jacbts.2023.12.005" target="_blank" rel="noopener">Davidson et al. 2024 ↗</a>
+        <a class="src" href="https://doi.org/10.1016/j.jacbts.2023.12.005" target="_blank" rel="noopener">Davidson et al. 2024 <svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a>
       </article>
     </div>
     <div class="col prose mt-block">
       <p><strong>More drugs in, more events to adjudicate.</strong> Anjana makes committee-grade review affordable for every outcome trial.</p>
     </div>
 
-    <figure class="wide fig-block">
-      <div class="plate" data-fig="fig7">
-        <div class="frame">
-          <img class="poster" alt="Fig. 7: AI-enabled drugs in human trials rise from about 15 in 2022 to 117 in December 2025, one of them rentosertib, now in Phase III. AI-discovered molecules passed Phase I 80–90% of the time, against 52% for the industry. Survivors enter outcome trials, where events become dossiers that Anjana reads, routing only uncertain cases to a physician." src="" loading="lazy">
-          <video muted playsinline preload="none" aria-hidden="true"></video>
-        </div>
-      </div>
-      <figcaption class="figcap">
-        <span class="fig-n">Fig. 7</span>
-        <span>AI is filling the clinical pipeline, and outcome trials turn each surviving drug into events to adjudicate. Counts and rates come from the cited studies. The patient field and the routing lanes are illustrative.</span>
-        <span class="ctrls">
-          <button class="icon-btn" data-act="replay" aria-label="Replay figure 7"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.75 12a8.25 8.25 0 1 0 2.42-5.83L3.75 8.6"/><path d="M3.75 3.75V8.6H8.6"/></svg></button>
-          <button class="icon-btn" data-act="expand" aria-label="View full screen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 4H4v4.5M15.5 4H20v4.5M20 15.5V20h-4.5M8.5 20H4v-4.5"/></svg></button>
-          <button class="icon-btn" data-act="toggle" aria-label="Pause figure 7"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5v13M15 5.5v13" style="stroke-width:2.25"/></svg></button>
-        </span>
-      </figcaption>
-    </figure>
 
     <div class="col opportunity-sources">
       <details>
@@ -960,15 +897,15 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
     <div class="wide people">
       <article class="person">
         <span class="mono-ini" aria-hidden="true">SS</span>
-        <div><p class="mono-label">Senior investigator · MD</p><h4>Scott D. Solomon</h4><p>Edward D. Frohlich Distinguished Chair and Professor of Medicine, Harvard Medical School. Leads the Cardiac Imaging Core Laboratory and the Clinical Trials Endpoints Center at Brigham and Women's Hospital.</p></div>
+        <div><p class="mono-label">Senior investigator · MD</p><h4>Scott D. Solomon</h4><p>Professor of Medicine, Harvard Medical School. Leads the Clinical Trials Endpoints Center.</p></div>
       </article>
       <article class="person">
         <span class="mono-ini" aria-hidden="true">JC</span>
-        <div><p class="mono-label">Senior investigator · MD, MPH</p><h4>Jonathan W. Cunningham</h4><p>Cardiologist at Brigham and Women's Hospital and Harvard Medical School. Senior author of the HF-NLP and Auto-MACE studies.</p></div>
+        <div><p class="mono-label">Senior investigator · MD, MPH</p><h4>Jonathan W. Cunningham</h4><p>Cardiologist, Brigham and Women's Hospital. Senior author of the studies.</p></div>
       </article>
       <article class="person">
         <span class="mono-ini" aria-hidden="true">PM</span>
-        <div><p class="mono-label">Lead researcher · PhD</p><h4>Pablo M. Martí Castellote</h4><p>Brigham and Women's Hospital and the Broad Institute of MIT and Harvard. First author of the HF-NLP and Auto-MACE studies.</p></div>
+        <div><p class="mono-label">Lead researcher · PhD</p><h4>Pablo M. Martí Castellote</h4><p>Brigham and Women's Hospital and the Broad Institute. First author of the studies.</p></div>
       </article>
     </div>
   </section>
@@ -991,7 +928,7 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
 
 <footer class="wrap">
   <div class="wide">
-    <span>Anjana takes its name from the anjanas, the benevolent spirits of Cantabrian mythology. Figures re-draw published results from DELIVER and PARADISE-MI; records shown are synthetic. Fig. 7 illustrates the growth thesis, not a forecast. Sponsor names identify each trial's funder and do not imply endorsement of Anjana.</span>
+    <span>Anjana takes its name from the anjanas, the benevolent spirits of Cantabrian mythology. Figures re-draw published results from DELIVER and PARADISE-MI; records shown are synthetic. Sponsor names identify each trial's funder and do not imply endorsement of Anjana.</span>
     <span>© 2026 Anjana</span>
   </div>
 </footer>
@@ -1143,7 +1080,7 @@ footer .wide { display: flex; flex-wrap: wrap; justify-content: space-between; g
     el('circle', { cx: x(p.review), cy: y(p.agree), r: 16, fill: 'transparent' }, g);
     const c = el('circle', { cx: x(p.review), cy: y(p.agree), r: 5, fill: 'var(--paper)', stroke: 'var(--ink)', 'stroke-width': 2 }, g);
     g.addEventListener('mouseenter', () => {
-      tip.textContent = i === 4 ? 'Committee · reference' : `${p.review}% reviewed → ${p.agree}% agreement`;
+      tip.textContent = i === 4 ? 'Committee · reference' : `${p.review}% reviewed, ${p.agree}% agreement`;
       const r = svg.getBoundingClientRect(), s = r.width / W;
       tip.style.left = (x(p.review) * s) + 'px'; tip.style.top = (svg.offsetTop + y(p.agree) * s) + 'px'; tip.style.opacity = 1;
     });
